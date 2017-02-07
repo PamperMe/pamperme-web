@@ -1,0 +1,115 @@
+var express = require('express');
+var router = express.Router();
+var url = require('url');
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "pamperme"
+}, 'request');
+
+connection.connect();
+
+const QUERY1 = "SELECT * from clients";
+const QUERY2 = "SELECT * from babysitter";
+const QUERY3 = "SELECT * from critics";
+const QUERY4 = "SELECT * from appointments";
+const QUERY5 = "SELECT * from visits";
+const QUERY6 = "SELECT * from schedule";
+
+
+router.get('/clients', function (req, res) {
+
+    connection.query(QUERY1, function (err, rows, fields) {
+        console.log(err);
+
+        if (err) {
+            console.log("{'msg: 'error cannot add'}");
+        }
+        else {
+            res.send(rows);
+            console.log("{'msg: 'data is add'}");
+        }
+    });
+
+});
+
+router.get('/babysitter', function (req, res) {
+
+    connection.query(QUERY2, function (err, rows, fields) {
+        console.log(err);
+
+        if (err) {
+            console.log("{'msg: 'error cannot add'}");
+        }
+        else {
+            res.send(rows);
+            console.log("{'msg: 'data is add'}");
+        }
+    });
+
+});
+
+router.get('/critics', function (req, res) {
+
+    connection.query(QUERY3, function (err, rows, fields) {
+        console.log(err);
+
+        if (err) {
+            console.log("{'msg: 'error cannot add'}");
+        }
+        else {
+            res.send(rows);
+            console.log("{'msg: 'data is add'}");
+        }
+    });
+});
+
+router.get('/appointments', function (req, res) {
+
+    connection.query(QUERY4, function (err, rows, fields) {
+        console.log(err);
+
+        if (err) {
+            console.log("{'msg: 'error cannot add'}");
+        }
+        else {
+            res.send(rows);
+            console.log("{'msg: 'data is add'}");
+        }
+    });
+});
+
+router.get('/visits', function (req, res) {
+
+    connection.query(QUERY5, function (err, rows, fields) {
+        console.log(err);
+
+        if (err) {
+            console.log("{'msg: 'error cannot add'}");
+        }
+        else {
+            res.send(rows);
+            console.log("{'msg: 'data is add'}");
+        }
+    });
+});
+
+router.get('/schedule', function (req, res) {
+
+    connection.query(QUERY6, function (err, rows, fields) {
+        console.log(err);
+
+        if (err) {
+            console.log("{'msg: 'error cannot add'}");
+        }
+        else {
+            res.send(rows);
+            console.log("{'msg: 'data is add'}");
+        }
+    });
+});
+
+module.exports = router;
