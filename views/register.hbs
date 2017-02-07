@@ -1,0 +1,41 @@
+<div class="jumbotron jumbotron-registar fill">
+    <!--Normal regist form-->
+    <div class="container">
+        <div class="form-position">
+            <form class="form-signin" method="post" action="/register">
+                <h2 class="form-signin-heading">Registar</h2>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Endereço de email</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Endereço de email" required="" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Palavra-passe</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Palavra-passe" required="" name="password">
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Repetir palavra-passe" required="" name="passwordRepeat">
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Registar</button>
+            </form>
+            <hr>
+            <!--Social Buttons-->
+            <a class="btn btn-block btn-social btn-facebook">
+                <span class="fa fa-facebook"></span>Registar com a conta de Facebook
+            </a>
+            <a class="btn btn-block btn-social btn-google">
+                <span class="fa fa-google"></span>Registar com a conta Google
+            </a>
+            <hr>
+            <div class="btn btn-xs btn-info btn-block help" href="#help" data-toggle="collapse">Só estes dados?! Ajudem-me!</div>
+
+            <div id="help" class="collapse">
+                <div class="thumbnail">
+			  	<span class="text-help">
+			  		Se estranhou só pedirmos estes dados não se preocupe.
+			  		A primeira vez que entrar na conta os restantes dados e tipo de contas serão pedidos.
+			  	</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

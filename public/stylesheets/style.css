@@ -1,8 +1,92 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    margin-top: -50px;
 }
 
-a {
-  color: #00B7FF;
+.navbar-img {
+
+    width: 40px;
+    height: 40px;
+    margin-top: -10px;
+}
+
+.navbar, .jumbotron {
+
+    margin-bottom: 0;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    border-radius: 0px;
+}
+
+.carousel {
+    padding-top: 50px;
+}
+
+.full-screen {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.btn-group:after, .navbar-header:after {
+    clear: none;
+}
+
+.jumbotron-missao, .jumbotron-visao, .jumbotron-valores, .jumbotron-instagram {
+    text-align: center;
+}
+
+.jumbotron-missao {
+    background-color: #F8BBD0;
+}
+
+.jumbotron-visao {
+    background-color: #FFF59D;
+}
+
+.jumbotron-valores {
+    background-color: #90CAF9;
+}
+
+.jumbotron-instagram {
+    background-color: #FFF59D;
+}
+
+.jumbotron-registar, .jumbotron-login {
+    margin-top: 0px;
+    margin-bottom: -56px;
+    z-index: 50;
+    background-image: url('../images/blurredBG.jpg');
+}
+
+.footer {
+    background-color: #222;
+    color: #fff;
+}
+
+.form-position {
+    padding-top: 50px;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.text-help {
+    font-size: 12px;
+}
+
+.help {
+    cursor: help;
 }
