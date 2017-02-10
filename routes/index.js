@@ -84,7 +84,7 @@ router.post('/register', function (req, res) {
 
 router.post('/login', function (req, res) {
     firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
-        res.redirect('/user');
+        res.redirect('/');
     }).catch(function (error) {
         res.send(error);
     });
