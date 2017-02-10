@@ -4,7 +4,7 @@ var firebase = require('firebase');
 
 router.get('/logout', function (req, res) {
     firebase.auth().signOut().then(function () {
-            res.redirect('/')
+            res.redirect('/');
         }
     ).catch(function (error) {
         res.send(error);
@@ -12,7 +12,7 @@ router.get('/logout', function (req, res) {
 });
 
 router.get('/', function (req, res) {
-    res.send("profile");
+    res.render('profile',{name:"test"});
 });
 
 module.exports = router;

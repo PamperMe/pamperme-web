@@ -12,7 +12,8 @@ var connection = mysql.createConnection({
     database: "pamperme"
 }, 'request');
 
-
+var client = false;
+var babysitter = false;
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
 const USER = "SELECT * from clienttype where UID = '%s'";
@@ -35,19 +36,32 @@ firebase.auth().onAuthStateChanged(function (user) {
         }
     } else {
         loggedUser = null;
+        client = false;
+        babysitter = false;
     }
 });
 
 
 router.get('/', function (req, res) {
-    var client = false;
-    var babysitter = false;
     if (loggedUser != null) {
-        getUser(loggedUser.uid);
-        //TODO Check client here
-        client = true;
+        if (isBabysitter(loggedUser.uid, function (result) {
+                if (result) {
+                    babysitter = true;
+                    res.render('index', {title: "PamperMe", babySitter: babysitter});
+                }
+            })) {
+        } else if (isClient(loggedUser.uid, function (result) {
+                if (result) {
+                    client = true;
+                    res.render('index', {title: "PamperMe", client: client});
+                }
+            })) {
+        }else {
+            //TODO First time signed in control
+        }
+    } else {
+        res.render('index',{title: "PamperMe"});
     }
-    res.render('index', {title: "PamperMe", babySitter: babysitter, client: client})
 });
 
 
@@ -70,7 +84,7 @@ router.post('/register', function (req, res) {
 
 router.post('/login', function (req, res) {
     firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
-        res.redirect('/');
+        res.redirect('/user');
     }).catch(function (error) {
         res.send(error);
     });
@@ -80,7 +94,7 @@ router.get('/google', function (req, res) {
     function onSignIn(googleUser) {
         console.log('Google Auth Response', googleUser);
         // We need to register an Observer on Firebase Auth to make sure auth is initialized.
-        var unsubscribe = firebase.auth().onAuthStateChanged(function(firebaseUser) {
+        var unsubscribe = firebase.auth().onAuthStateChanged(function (firebaseUser) {
             unsubscribe();
             // Check if we are already signed-in Firebase with the correct user.
             if (!isUserEqual(googleUser, firebaseUser)) {
@@ -88,7 +102,7 @@ router.get('/google', function (req, res) {
                 var credential = firebase.auth.GoogleAuthProvider.credential(
                     googleUser.getAuthResponse().id_token);
                 // Sign in with credential from the Google user.
-                firebase.auth().signInWithCredential(credential).catch(function(error) {
+                firebase.auth().signInWithCredential(credential).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
                     var errorMessage = error.message;
@@ -106,26 +120,26 @@ router.get('/google', function (req, res) {
 });
 
 function getUser(uid) {
-    var query = util.format(USER,uid);
+    var query = util.format(USER, uid);
     connection.query(query, function (err, data) {
         if (err) {
             res.send(err);
         } else {
-            console.log(data);
-            if(data[0].type == 1){
-                getBabysitter(uid,function (err, done) {
-                    if(err){
+            if (data[0].type == 1) {
+                console.log("tipo1");
+                getBabysitter(uid, function (err, done) {
+                    if (err) {
                         return null;
                     } else {
-                        return done;
+                        babysitter = true;
                     }
                 });
             } else {
-                getClient(uid,function (err, done) {
-                    if(err){
+                getClient(uid, function (err, done) {
+                    if (err) {
                         return null;
                     } else {
-                        return done;
+                        client = true;
                     }
                 });
             }
@@ -134,26 +148,50 @@ function getUser(uid) {
 }
 
 
-function getClient(uid,callback) {
+function getClient(uid, callback) {
     var query = util.format(CLIENTS + " where UID = '%s'", uid);
     connection.query(query, function (err, rows, fields) {
         if (err) {
-            callback(err,null);
+            callback(err, null);
         }
         else {
-            callback(null,rows);
+            callback(null, rows);
         }
     });
 }
 
-function getBabysitter(uid,callback) {
+function getBabysitter(uid, callback) {
     var query = util.format(BABYSITTER + " where UID = '%s'", uid);
     connection.query(query, function (err, rows, fields) {
         if (err) {
-            callback(err,null);
+            callback(err, null);
         }
         else {
-            callback(null,rows);
+            callback(null, rows);
+        }
+    });
+}
+
+function isClient(uid, callback) {
+    var query = util.format(CLIENTS + " where UID = '%s'", uid);
+    connection.query(query, function (err, rows, fields) {
+        if (err) {
+            callback(false)
+        }
+        else {
+            callback(rows.length > 0);
+        }
+    });
+}
+
+function isBabysitter(uid, callback) {
+    var query = util.format(BABYSITTER + " where UID = '%s'", uid);
+    connection.query(query, function (err, rows, fields) {
+        if (err) {
+            callback(false);
+        }
+        else {
+            callback(rows.length > 0);
         }
     });
 }
