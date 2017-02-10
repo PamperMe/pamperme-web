@@ -1,36 +1,88 @@
 var express = require('express');
 var router = express.Router();
-var url = require('url');
+var util = require('util');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
+    password: "root",
     database: "pamperme"
 }, 'request');
 
 connection.connect();
 
-const QUERY1 = "SELECT * from clients";
-const QUERY2 = "SELECT * from babysitter";
-const QUERY3 = "SELECT * from critics";
-const QUERY4 = "SELECT * from appointments";
-const QUERY5 = "SELECT * from visits";
-const QUERY6 = "SELECT * from schedule";
+const CLIENTS = "SELECT * from clients";
+const BABYSITTER = "SELECT * from babysitter";
+const CRITICS = "SELECT * from critics";
+const APPOINTMENTS = "SELECT * from appointments";
+const VISITS = "SELECT * from visits";
+const SCHEDULES = "SELECT * from schedule";
 
+const USER = "SELECT * from clienttype where UID = '%s'";
+
+function getClient(uid,callback) {
+    var query = util.format(CLIENTS + " where UID = '%s'", uid);
+    connection.query(query, function (err, rows, fields) {
+            if (err) {
+                callback(err,null);
+            }
+            else {
+                callback(null,rows);
+            }
+    });
+}
+
+function getBabysitter(uid,callback) {
+    var query = util.format(BABYSITTER + " where UID = '%s'", uid);
+    connection.query(query, function (err, rows, fields) {
+        if (err) {
+            callback(err,null);
+        }
+        else {
+            callback(null,rows);
+        }
+    });
+}
+
+router.get('/user/:UID', function (req, res) {
+    var client_uid = req.params.UID;
+    var query = util.format(USER,client_uid);
+    connection.query(query, function (err, data) {
+        if (err) {
+            res.send(err);
+        } else {
+            console.log(data);
+            if(data[0].type == 1){
+                getBabysitter(client_uid,function (err, done) {
+                    if(err){
+                        res.send(err);
+                    } else {
+                        res.send(done);
+                    }
+                });
+            } else {
+                getClient(client_uid,function (err, done) {
+                    if(err){
+                        res.send(err);
+                    } else {
+                        res.send(done);
+                    }
+                });
+            }
+        }
+    })
+});
 
 router.get('/clients', function (req, res) {
-
-    connection.query(QUERY1, function (err, rows, fields) {
-        console.log(err);
+    connection.query(CLIENTS, function (err, rows, fields) {
 
         if (err) {
-            console.log("{'msg: 'error cannot add'}");
+            console.log(err);
+            res.send(err);
         }
         else {
             res.send(rows);
-            console.log("{'msg: 'data is add'}");
         }
     });
 
@@ -38,11 +90,11 @@ router.get('/clients', function (req, res) {
 
 router.get('/babysitter', function (req, res) {
 
-    connection.query(QUERY2, function (err, rows, fields) {
+    connection.query(BABYSITTER, function (err, rows, fields) {
         console.log(err);
 
         if (err) {
-            console.log("{'msg: 'error cannot add'}");
+            res.send(err)
         }
         else {
             res.send(rows);
@@ -54,11 +106,11 @@ router.get('/babysitter', function (req, res) {
 
 router.get('/critics', function (req, res) {
 
-    connection.query(QUERY3, function (err, rows, fields) {
+    connection.query(CRITICS, function (err, rows, fields) {
         console.log(err);
 
         if (err) {
-            console.log("{'msg: 'error cannot add'}");
+            res.send(err)
         }
         else {
             res.send(rows);
@@ -69,11 +121,11 @@ router.get('/critics', function (req, res) {
 
 router.get('/appointments', function (req, res) {
 
-    connection.query(QUERY4, function (err, rows, fields) {
+    connection.query(APPOINTMENTS, function (err, rows, fields) {
         console.log(err);
 
         if (err) {
-            console.log("{'msg: 'error cannot add'}");
+            res.send(err)
         }
         else {
             res.send(rows);
@@ -84,11 +136,11 @@ router.get('/appointments', function (req, res) {
 
 router.get('/visits', function (req, res) {
 
-    connection.query(QUERY5, function (err, rows, fields) {
+    connection.query(VISITS, function (err, rows, fields) {
         console.log(err);
 
         if (err) {
-            console.log("{'msg: 'error cannot add'}");
+            res.send(err)
         }
         else {
             res.send(rows);
@@ -99,11 +151,11 @@ router.get('/visits', function (req, res) {
 
 router.get('/schedule', function (req, res) {
 
-    connection.query(QUERY6, function (err, rows, fields) {
+    connection.query(SCHEDULES, function (err, rows, fields) {
         console.log(err);
 
         if (err) {
-            console.log("{'msg: 'error cannot add'}");
+            res.send(err)
         }
         else {
             res.send(rows);
