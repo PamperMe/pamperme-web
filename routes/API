@@ -4,10 +4,10 @@ var util = require('util');
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "pamperme"
+    host: "gi6kn64hu98hy0b6.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    user: "f2e6c77bzthgvg7s",
+    password: "xrfz9itqj7dzi79j",
+    database: "tyjvrswc7ous2q7a"
 }, 'request');
 
 connection.connect();
@@ -98,7 +98,6 @@ router.get('/babysitter', function (req, res) {
         }
         else {
             res.send(rows);
-            console.log("{'msg: 'data is add'}");
         }
     });
 
@@ -114,7 +113,6 @@ router.get('/critics', function (req, res) {
         }
         else {
             res.send(rows);
-            console.log("{'msg: 'data is add'}");
         }
     });
 });
@@ -129,7 +127,6 @@ router.get('/appointments', function (req, res) {
         }
         else {
             res.send(rows);
-            console.log("{'msg: 'data is add'}");
         }
     });
 });
@@ -144,7 +141,6 @@ router.get('/visits', function (req, res) {
         }
         else {
             res.send(rows);
-            console.log("{'msg: 'data is add'}");
         }
     });
 });
@@ -159,7 +155,6 @@ router.get('/schedule', function (req, res) {
         }
         else {
             res.send(rows);
-            console.log("{'msg: 'data is add'}");
         }
     });
 });

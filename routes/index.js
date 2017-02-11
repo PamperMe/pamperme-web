@@ -6,10 +6,10 @@ var util = require('util');
 var firebase = require('firebase');
 
 var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "pamperme"
+    host: "gi6kn64hu98hy0b6.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    user: "f2e6c77bzthgvg7s",
+    password: "xrfz9itqj7dzi79j",
+    database: "tyjvrswc7ous2q7a"
 }, 'request');
 
 var client = false;
