@@ -6,10 +6,10 @@ var util = require('util');
 var firebase = require('firebase');
 
 var connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "pamperme"
+    host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+    user: "lyq2twi3ij8swv3m",
+    password: "g3bpvh44ng094s21",
+    database: "gbzxf1l8o8clpop4"
 }, 'request');
 
 var client = false;
@@ -30,7 +30,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             email = user.email;
             photoUrl = user.photoURL;
             emailVerified = user.emailVerified;
-            uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
+            uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
                              // this value to authenticate with your backend server, if
                              // you have one. Use User.getToken() instead.
         }
