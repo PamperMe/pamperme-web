@@ -6,43 +6,48 @@
             </a>
         </div>
         <div class="clearfix hidden"></div>
+        <div class="pull-right">
         {{# if client }}
-            <!--TODO Make different layouts for babysitters and client-->
-            <div class="btn-group pull-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>Client<span
-                            class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="/user/">User Account</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/user/logout">Logout</a></li>
-                    </ul>
-                </li>
-
+            <div class="btn-group group-action">
+                <button type="button" class="btn btn-default btn-sm" href="/user/profile">Zézocas</button>
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Agendamento</a></li>
+                    <li><a href="#">Histórico</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/user/logout">Sair</a></li>
+                </ul>
+                <img src="img/cara-girl.jpg" class="img-circle img-action">
             </div>
         {{else}}
             {{# if babySitter}}
-                <div class="btn-group pull-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>Babysitter<span
-                                class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/user/profile">User Account</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/user/logout">Logout</a></li>
-                        </ul>
-                    </li>
-
-                </div>
+            <div class="btn-group group-action">
+                <button type="button" class="btn btn-default btn-sm" href="/user/profile">Zézocas</button>
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Agendamentos</a></li>
+                    <li><a href="#">Disponibilidade</a></li>
+                    <li><a href="#">Histórico</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/user/logout">Sair</a></li>
+                </ul>
+                <img src="img/cara-girl.jpg" class="img-circle img-action">
+            </div>
             {{else}}
-                <div class="btn-group pull-right">
-                    <a href="/login" class="btn btn-default navbar-btn">Entrar</a>
-                    <a href="/register" class="btn btn-success navbar-btn">Registar</a>
+
+                <div class="btn-group">
+                    <a href="entrar.html" class="btn btn-primary navbar-btn">Entrar</a>
+                    <a href="registar.html" class="btn btn-success navbar-btn">Registar</a>
                 </div>
+            </div>
             {{/if}}
         {{/if}}
-
     </div>
 </nav>
