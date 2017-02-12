@@ -2,7 +2,15 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
-                <img alt="Brand" class="navbar-img" src="images/logo.png">
+            {{# if client }}
+                <img src="img/cara-girl.jpg" class="img-circle navbar-img">
+            {{else}}
+                {{# if babySitter}}
+                    <img src="img/cara-girl.jpg" class="img-circle navbar-img">
+                {{else}}
+                    <img alt="Brand" class="navbar-img" src="images/logo.png">
+                {{/if}}
+            {{/if}}
             </a>
         </div>
         <div class="clearfix hidden"></div>
@@ -20,7 +28,7 @@
                     <li role="separator" class="divider"></li>
                     <li><a href="/user/logout">Sair</a></li>
                 </ul>
-                <img src="img/cara-girl.jpg" class="img-circle img-action">
+
             </div>
         {{else}}
             {{# if babySitter}}
@@ -31,14 +39,13 @@
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu">
-                    <li role="separator" class="divider"></li>
                     <li><a href="#">Agendamentos</a></li>
                     <li><a href="#">Disponibilidade</a></li>
                     <li><a href="#">Histórico</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/user/logout">Sair</a></li>
                 </ul>
-                <img src="img/cara-girl.jpg" class="img-circle img-action">
+
             </div>
             {{else}}
 
