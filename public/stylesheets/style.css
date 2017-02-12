@@ -1,5 +1,3 @@
-
-
 .fill {
     width: 100%;
     height: 100%;
@@ -11,82 +9,111 @@
     margin-top: -50px;
 }
 
-.navbar-img {
-
+.img-action, .navbar-img{
     width: 40px;
     height: 40px;
+    margin-left: 15px;
+    margin-top: -4px;
+}
+.navbar-img{
+    margin-left: 0px;
     margin-top: -10px;
 }
 
-.navbar, .jumbotron {
+.navbar,.jumbotron{
 
     margin-bottom: 0;
 }
-
-.navbar {
+.navbarbottom{
+    border-radius: 0px;
+    text-align:center;
+}
+.navbartop{
     position: fixed;
     z-index: 100;
     width: 100%;
     border-radius: 0px;
 }
-
-.carousel {
+.carousel{
     padding-top: 50px;
 }
-
 .full-screen {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-
-.btn-group:after, .navbar-header:after {
+.btn-group:after, .navbar-header:after{
     clear: none;
 }
-
-.jumbotron-missao, .jumbotron-visao, .jumbotron-valores, .jumbotron-instagram {
+.jumbotron-missao, .jumbotron-visao, .jumbotron-valores, .jumbotron-instagram{
     text-align: center;
 }
-
-.jumbotron-missao {
+.jumbotron-missao{
     background-color: #F8BBD0;
 }
-
-.jumbotron-visao {
+.jumbotron-visao{
     background-color: #FFF59D;
 }
-
-.jumbotron-valores {
+.jumbotron-valores{
     background-color: #90CAF9;
 }
-
-.jumbotron-instagram {
+.jumbotron-instagram{
     background-color: #FFF59D;
 }
-
-.jumbotron-registar, .jumbotron-login {
+.jumbotron-registar, .jumbotron-login{
     margin-top: 0px;
     margin-bottom: -56px;
     z-index: 50;
     background-image: url('../images/blurredBG.jpg');
 }
 
-.footer {
+.footer{
     background-color: #222;
     color: #fff;
 }
-
-.form-position {
+.form-position{
     padding-top: 50px;
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
 }
 
-.text-help {
-    font-size: 12px;
+.caret{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.group-action{
+    margin-top: 10px;
+}
+.no-margin{
+    margin:0px;
 }
 
-.help {
-    cursor: help;
+.img-profile{
+    width: 100px;
+    height: 100px;
+}
+.thumb-name, .thumb-price, .thumb-price, .thumb-description, .thumb-age{
+    display: inline-block;
+    width: 100%;
+}
+.thumb-price, .thumb-age{
+    width: 50%;
+}
+.thumb-name, .thumb-price, .thumb-price, .thumb-description, .img-profile, .thumb-age{
+    margin-top: 5px;
+}
+.link-profile:link, .link-profile:hover, .link-profile:visited,.link-profile:active{
+
+    text-decoration: none;
+    color: #222;
+}
+.thumb-description{
+    color:#777;
+}
+
+.move-group{
+    margin-top: -12px;
+    margin-bottom: -12px;
+
 }
