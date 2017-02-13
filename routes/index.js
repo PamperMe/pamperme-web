@@ -47,13 +47,15 @@ router.get('/', function (req, res) {
         if (isBabysitter(loggedUser.uid, function (result) {
                 if (result) {
                     babysitter = true;
-                    res.render('index', {title: "PamperMe", babySitter: babysitter});
+                    var user = loggedUser;
+                    res.render('index', {title: "PamperMe", babySitter: babysitter, user: user});
                 }
             })) {
         } else if (isClient(loggedUser.uid, function (result) {
                 if (result) {
                     client = true;
-                    res.render('index', {title: "PamperMe", client: client});
+                    var user = loggedUser;
+                    res.render('index', {title: "PamperMe", client: client, user: user});
                 }
             })) {
         }else {
