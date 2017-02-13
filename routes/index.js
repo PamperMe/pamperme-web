@@ -32,9 +32,6 @@ const USER = "SELECT * from clienttype where UID = '%s'";
 
 
 router.get('/', function (req, res) {
-    if(res.locals.login == true){
-
-    }
     res.render('index', {title: "PamperMe"});
 });
 
