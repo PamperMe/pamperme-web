@@ -92,14 +92,14 @@
     width: 100px;
     height: 100px;
 }
-.thumb-name, .thumb-price, .thumb-price, .thumb-description, .thumb-age{
+.thumb-name, .thumb-price, .thumb-price, .thumb-deion, .thumb-age{
     display: inline-block;
     width: 100%;
 }
 .thumb-price, .thumb-age{
     width: 50%;
 }
-.thumb-name, .thumb-price, .thumb-price, .thumb-description, .img-profile, .thumb-age{
+.thumb-name, .thumb-price, .thumb-price, .thumb-deion, .img-profile, .thumb-age{
     margin-top: 5px;
 }
 .link-profile:link, .link-profile:hover, .link-profile:visited,.link-profile:active{
@@ -107,7 +107,7 @@
     text-decoration: none;
     color: #222;
 }
-.thumb-description{
+.thumb-deion{
     color:#777;
 }
 
