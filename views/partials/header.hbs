@@ -6,7 +6,7 @@
                 <!--TODO put correct image-->
                 <img src="/images/logo.png" class="navbar-img" class="img-circle navbar-img">
             {{else}}
-                {{# if babySitter}}
+                {{# if babysitter}}
                     <!--TODO put correct image-->
                     <img src="/images/logo.png" class="navbar-img" class="img-circle navbar-img">
                 {{else}}
@@ -33,9 +33,9 @@
 
             </div>
         {{else}}
-            {{# if babySitter}}
+            {{# if babysitter}}
             <div class="btn-group group-action">
-                <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{user.email}}</button>
+                <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{user.name}}</button>
                 <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>

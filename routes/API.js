@@ -13,7 +13,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 const CLIENTS = "SELECT * from clients";
-const BABYSITTER = "SELECT * from babysitter";
+const BABYSITTER = "SELECT * from babysitterIsLoggedIn";
 const CRITICS = "SELECT * from critics";
 const APPOINTMENTS = "SELECT * from appointments";
 const VISITS = "SELECT * from visits";
@@ -88,7 +88,7 @@ router.get('/clients', function (req, res) {
 
 });
 
-router.get('/babysitter', function (req, res) {
+router.get('/babysitterIsLoggedIn', function (req, res) {
 
     connection.query(BABYSITTER, function (err, rows, fields) {
         console.log(err);

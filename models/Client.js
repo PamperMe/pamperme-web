@@ -1,6 +1,6 @@
 function Client(client) {
     this.name = client.name;
-    this.uid = client.uid;
+    this.uid = client.UID;
     this.address = client.address;
     this.email = client.email;
     this.phone = client.phone;

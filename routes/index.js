@@ -1,8 +1,19 @@
 var express = require('express');
+var app = express();
 var router = express.Router();
 var mysql = require('mysql');
 var util = require('util');
 
+
+var session = require('express-session');
+
+var mysqlSession = require('express-mysql-session');
+
+
+var User = require('../models/User');
+
+
+var myUser;
 var firebase = require('firebase');
 
 var connection = mysql.createConnection({
@@ -18,52 +29,13 @@ const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
 const USER = "SELECT * from clienttype where UID = '%s'";
 
-var loggedUser;
-
-
-firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        loggedUser = user;
-        var name, email, photoUrl, uid, emailVerified;
-        if (user != null) {
-            name = user.displayName;
-            email = user.email;
-            photoUrl = user.photoURL;
-            emailVerified = user.emailVerified;
-            uid = user.uid;  // The user's ID, unique to the Firebase project. Do NOT use
-                             // this value to authenticate with your backend server, if
-                             // you have one. Use User.getToken() instead.
-        }
-    } else {
-        loggedUser = null;
-        client = false;
-        babysitter = false;
-    }
-});
 
 
 router.get('/', function (req, res) {
-    if (loggedUser != null) {
-        if (isBabysitter(loggedUser.uid, function (result) {
-                if (result) {
-                    babysitter = true;
-                    var user = loggedUser;
-                    res.render('index', {title: "PamperMe", babySitter: babysitter, user: user});
-                }
-            })) {
-        } else if (isClient(loggedUser.uid, function (result) {
-                if (result) {
-                    client = true;
-                    var user = loggedUser;
-                    res.render('index', {title: "PamperMe", client: client, user: user});
-                }
-            })) {
-        }else {
-            //TODO First time signed in control
-        }
-    } else {
-        res.render('index',{title: "PamperMe"});
+    if(res.locals.login == true){
+
     }
+    res.render('index', {title: "PamperMe"});
 });
 
 
@@ -86,7 +58,19 @@ router.post('/register', function (req, res) {
 
 router.post('/login', function (req, res) {
     firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
-        res.redirect('/');
+        if(data != null){
+            getUser(data.uid,function (code, result) {
+                if(code == 1){
+                    req.app.locals.babysitter = true;
+                    req.app.locals.user = result;
+                    res.redirect('/');
+                } else if(code == 2){
+                    req.app.locals.client = true;
+                    req.app.locals.user = result;
+                    res.redirect('/');
+                }
+            })
+        }
     }).catch(function (error) {
         res.send(error);
     });
@@ -121,27 +105,26 @@ router.get('/google', function (req, res) {
     }
 });
 
-function getUser(uid) {
+
+function getUser(uid,callback) {
     var query = util.format(USER, uid);
     connection.query(query, function (err, data) {
         if (err) {
-            res.send(err);
         } else {
             if (data[0].type == 1) {
-                console.log("tipo1");
                 getBabysitter(uid, function (err, done) {
                     if (err) {
-                        return null;
+                        callback(null,err);
                     } else {
-                        babysitter = true;
+                        callback(1,done);
                     }
                 });
             } else {
                 getClient(uid, function (err, done) {
                     if (err) {
-                        return null;
+                        callback(null,err);
                     } else {
-                        client = true;
+                        callback(2,done);
                     }
                 });
             }
@@ -149,15 +132,16 @@ function getUser(uid) {
     })
 }
 
-
 function getClient(uid, callback) {
     var query = util.format(CLIENTS + " where UID = '%s'", uid);
     connection.query(query, function (err, rows, fields) {
         if (err) {
-            callback(err, null);
+            callback(err, null)
         }
-        else {
-            callback(null, rows);
+        if (rows.length > 0) {
+            callback(null, rows[0]);
+        } else {
+            callback("no user found",null);
         }
     });
 }
@@ -166,34 +150,12 @@ function getBabysitter(uid, callback) {
     var query = util.format(BABYSITTER + " where UID = '%s'", uid);
     connection.query(query, function (err, rows, fields) {
         if (err) {
-            callback(err, null);
+            callback(err, null)
         }
-        else {
-            callback(null, rows);
-        }
-    });
-}
-
-function isClient(uid, callback) {
-    var query = util.format(CLIENTS + " where UID = '%s'", uid);
-    connection.query(query, function (err, rows, fields) {
-        if (err) {
-            callback(false)
-        }
-        else {
-            callback(rows.length > 0);
-        }
-    });
-}
-
-function isBabysitter(uid, callback) {
-    var query = util.format(BABYSITTER + " where UID = '%s'", uid);
-    connection.query(query, function (err, rows, fields) {
-        if (err) {
-            callback(false);
-        }
-        else {
-            callback(rows.length > 0);
+        if (rows.length > 0) {
+            callback(null, rows[0]);
+        } else {
+            callback("no user found",null);
         }
     });
 }
