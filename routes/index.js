@@ -7,9 +7,6 @@ var util = require('util');
 
 var session = require('express-session');
 
-var mysqlSession = require('express-mysql-session');
-
-
 var User = require('../models/User');
 
 
