@@ -12,8 +12,6 @@ var cookieParser = require('cookie-parser');
 
 var session  = require('express-session');
 
-var loggedUser;
-var babysitterIsLoggedIn = false, clientIsLoggedIn = false;
 
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
@@ -75,10 +73,6 @@ app.use(function (req, res, next) {
 });
 
 app.use(function (req, res, next) {
-    if(firebase.auth().currentUser != null){
-        res.locals.login = true;
-    } else {
-    }
     res.locals.session = req.session;
     next();
 });
