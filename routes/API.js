@@ -13,16 +13,16 @@ var connection = mysql.createConnection({
 connection.connect();
 
 const CLIENTS = "SELECT * from clients";
-const BABYSITTER = "SELECT * from babysitterIsLoggedIn";
+const BABYSITTER = "SELECT * from babysitter";
 const CRITICS = "SELECT * from critics";
 const APPOINTMENTS = "SELECT * from appointments";
 const VISITS = "SELECT * from visits";
 const SCHEDULES = "SELECT * from schedule";
 
-const USER = "SELECT * from clienttype where UID = '%s'";
+const USER = "SELECT * from user_type where uid = '%s'";
 
 function getClient(uid,callback) {
-    var query = util.format(CLIENTS + " where UID = '%s'", uid);
+    var query = util.format(CLIENTS + " where uid = '%s'", uid);
     connection.query(query, function (err, rows, fields) {
             if (err) {
                 callback(err,null);
@@ -34,7 +34,7 @@ function getClient(uid,callback) {
 }
 
 function getBabysitter(uid,callback) {
-    var query = util.format(BABYSITTER + " where UID = '%s'", uid);
+    var query = util.format(BABYSITTER + " where uid = '%s'", uid);
     connection.query(query, function (err, rows, fields) {
         if (err) {
             callback(err,null);
@@ -45,7 +45,7 @@ function getBabysitter(uid,callback) {
     });
 }
 
-router.get('/user/:UID', function (req, res) {
+router.get('/USER/:UID', function (req, res) {
     var client_uid = req.params.UID;
     var query = util.format(USER,client_uid);
     connection.query(query, function (err, data) {
@@ -74,7 +74,7 @@ router.get('/user/:UID', function (req, res) {
     })
 });
 
-router.get('/clients', function (req, res) {
+router.get('/CLIENTS', function (req, res) {
     connection.query(CLIENTS, function (err, rows, fields) {
 
         if (err) {
@@ -88,7 +88,7 @@ router.get('/clients', function (req, res) {
 
 });
 
-router.get('/babysitterIsLoggedIn', function (req, res) {
+router.get('/BABYSITTER', function (req, res) {
 
     connection.query(BABYSITTER, function (err, rows, fields) {
         console.log(err);
@@ -103,7 +103,7 @@ router.get('/babysitterIsLoggedIn', function (req, res) {
 
 });
 
-router.get('/critics', function (req, res) {
+router.get('/CRITICS', function (req, res) {
 
     connection.query(CRITICS, function (err, rows, fields) {
         console.log(err);
@@ -117,7 +117,7 @@ router.get('/critics', function (req, res) {
     });
 });
 
-router.get('/appointments', function (req, res) {
+router.get('/APPOINTMENTS', function (req, res) {
 
     connection.query(APPOINTMENTS, function (err, rows, fields) {
         console.log(err);
@@ -131,7 +131,7 @@ router.get('/appointments', function (req, res) {
     });
 });
 
-router.get('/visits', function (req, res) {
+router.get('/VISITS', function (req, res) {
 
     connection.query(VISITS, function (err, rows, fields) {
         console.log(err);
@@ -145,7 +145,7 @@ router.get('/visits', function (req, res) {
     });
 });
 
-router.get('/schedule', function (req, res) {
+router.get('/SCHEDULE', function (req, res) {
 
     connection.query(SCHEDULES, function (err, rows, fields) {
         console.log(err);
