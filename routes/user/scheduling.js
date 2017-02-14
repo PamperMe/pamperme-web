@@ -38,9 +38,9 @@ router.get('/', isLoggedIn, function (req, res) {
 
 });
 
-router.get('/babysitter/', function (req, res) {
-    var sitter_id = req.locals.UID;
-    res.send("Ola");
+router.get('/babysitter/:uid', function (req, res) {
+    var sitter_id = req.params.uid;
+    res.send(sitter_id);
 })
 
 
