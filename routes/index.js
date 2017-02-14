@@ -24,7 +24,7 @@ var client = false;
 var babysitter = false;
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
-const USER = "SELECT * from clienttype where UID = '%s'";
+const USER = "SELECT * from user_type where uid = '%s'";
 
 
 
@@ -44,6 +44,7 @@ router.get('/register', function (req, res) {
 router.post('/register', function (req, res) {
     firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
         res.redirect('/');
+
     }).catch(function (error) {
         res.send(error);
     })
@@ -62,6 +63,9 @@ router.post('/login', function (req, res) {
                     req.app.locals.client = true;
                     req.app.locals.user = result;
                     res.redirect('/');
+                } else if(code == 3){
+                    //TODO First time login
+                    res.redirect('/')
                 }
             })
         }
@@ -105,29 +109,34 @@ function getUser(uid,callback) {
     connection.query(query, function (err, data) {
         if (err) {
         } else {
-            if (data[0].type == 1) {
-                getBabysitter(uid, function (err, done) {
-                    if (err) {
-                        callback(null,err);
-                    } else {
-                        callback(1,done);
-                    }
-                });
-            } else {
-                getClient(uid, function (err, done) {
-                    if (err) {
-                        callback(null,err);
-                    } else {
-                        callback(2,done);
-                    }
-                });
+            if(data.length > 0){
+                if (data[0].type == 1) {
+                    getBabysitter(uid, function (err, done) {
+                        if (err) {
+                            callback(null,err);
+                        } else {
+                            callback(1,done);
+                        }
+                    });
+                } else {
+                    getClient(uid, function (err, done) {
+                        if (err) {
+                            callback(null,err);
+                        } else {
+                            callback(2,done);
+                        }
+                    });
+                }
+            }
+            else {
+                callback(3,null);
             }
         }
     })
 }
 
 function getClient(uid, callback) {
-    var query = util.format(CLIENTS + " where UID = '%s'", uid);
+    var query = util.format(CLIENTS + " where uid = '%s'", uid);
     connection.query(query, function (err, rows, fields) {
         if (err) {
             callback(err, null)
@@ -141,7 +150,7 @@ function getClient(uid, callback) {
 }
 
 function getBabysitter(uid, callback) {
-    var query = util.format(BABYSITTER + " where UID = '%s'", uid);
+    var query = util.format(BABYSITTER + " where uid = '%s'", uid);
     connection.query(query, function (err, rows, fields) {
         if (err) {
             callback(err, null)
