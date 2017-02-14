@@ -5,6 +5,8 @@ var mysql = require('mysql');
 
 var query_sitters = "SELECT * FROM babysitter";
 
+var future_visits = "SELECT * FROM visits";
+
 var connection = mysql.createConnection({
     host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     user: "lyq2twi3ij8swv3m",
@@ -14,17 +16,33 @@ var connection = mysql.createConnection({
 
 
 router.get('/', isLoggedIn, function (req, res) {
-    connection.query(query_sitters,function (err,done) {
-        if(err){
-            babysitters = null;
-            res.render('user/scheduling');
-        } else {
-            babysitters = done;
-            res.render('user/scheduling', {babysitters:babysitters});
-        }
-    })
+    if(req.app.locals.client){
+        connection.query(query_sitters,function (err,done) {
+            if(err){
+                babysitters = null;
+                res.render('user/scheduling');
+            } else {
+                res.render('user/scheduling', {babysitters:done});
+            }
+        });
+    } else if(req.app.locals.babysitter){
+        connection.query(future_visits,function (err,done) {
+            if(err){
+                babysitters = null;
+                res.render('user/scheduling');
+            } else {
+                res.render('user/scheduling', {visits:done});
+            }
+        });
+    }
 
 });
+
+router.get('/babysitter/', function (req, res) {
+    var sitter_id = req.locals.UID;
+    res.send("Ola");
+})
+
 
 function isLoggedIn(req,res,next) {
     if(req.app.locals.user){

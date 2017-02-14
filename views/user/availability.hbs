@@ -7,7 +7,11 @@
         <button class="btn btn-lg btn-success" type="submit">procurar</button>
     </div>
     <div class="result-schedule" name="result">
-
+        {{# if schedule}}
+            {{#each schedule}}
+                <div>{{this.date}}</div>
+            {{/each}}
+        {{/if}}
     </div>
 
 

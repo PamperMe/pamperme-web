@@ -1,7 +1,14 @@
 <div>
     {{# if babysitters}}
         {{#each babysitters}}
-            <div>{{this.name}}</div>
+            <a href="/babysitter/{{this.id}}"><div>{{this.name}}</div></a>
+        {{/each}}
+    {{/if}}
+
+    {{# if visits}}
+        {{#each visits}}
+            <div>{{this.id_visits}}</div>
+            <div>{{this.date}}</div>
         {{/each}}
     {{/if}}
 </div>

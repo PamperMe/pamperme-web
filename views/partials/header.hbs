@@ -21,7 +21,7 @@
     <div class="pull-right">
         {{# if client }}
             <div class="btn-group group-action">
-                <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{user.email}}</button>
+                <button type="button" class="btn btn-default btn-sm"><a href="/user/profile">{{user.name}}</a></button>
                 <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                     <span class="caret"></span>
@@ -38,7 +38,7 @@
         {{else}}
             {{# if babysitter}}
                 <div class="btn-group group-action">
-                    <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{user.name}}</button>
+                    <button type="button" class="btn btn-default btn-sm"><a href="/user/profile">{{user.name}}</a></button>
                     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
@@ -56,7 +56,7 @@
             {{else}}
                 {{# if email}}
                     <div class="btn-group group-action">
-                        <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{email}}</button>
+                        <button type="button" class="btn btn-default btn-sm"><a href="/user/profile">{{email}}</a></button>
                         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                             <span class="caret"></span>

@@ -39,7 +39,6 @@ router.get('/register', function (req, res) {
 router.post('/register', function (req, res) {
     firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
         res.redirect('/');
-
     }).catch(function (error) {
         res.send(error);
     })

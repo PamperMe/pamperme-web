@@ -9,6 +9,17 @@
     margin-top: -50px;
 }
 
+a{
+    text-transform: none;
+    color:black;
+}
+
+a:hover{
+    text-transform: none;
+    text-decoration: none;
+    color:black;
+}
+
 .img-action, .navbar-img{
     width: 40px;
     height: 40px;

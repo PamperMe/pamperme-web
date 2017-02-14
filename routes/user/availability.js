@@ -2,9 +2,12 @@ var express = require('express');
 var router = express.Router();
 var firebase = require('firebase');
 var mysql = require('mysql');
+var util = require('util');
 var app = express();
 
 var babysitters;
+
+var getAvailability = "SELECT * FROM schedule where id_babysitter = %s";
 
 var connection = mysql.createConnection({
     host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
@@ -12,6 +15,22 @@ var connection = mysql.createConnection({
     password: "g3bpvh44ng094s21",
     database: "gbzxf1l8o8clpop4"
 }, 'request');
+
+
+router.get('/',isLoggedIn, function (req, res) {
+    if(req.app.locals.babysitter){
+        var query = util.format(getAvailability, req.app.locals.user.id);
+        connection.query(query,function (err, done) {
+            if(err){
+                res.send(err);
+            } else{
+                res.render('user/availability',{schedule:done});
+            }
+        });
+    } else{
+        res.render('/');
+    }
+});
 
 
 router.post('/', isLoggedIn, function (req, res) {

@@ -17,6 +17,10 @@ router.get('/logout', function (req, res) {
     })
 });
 
+router.get('/profile',isLoggedIn, function (req, res) {
+    res.render('user/profile');
+});
+
 router.get('/', isLoggedIn, function (req, res) {
     res.render('user/profile',{name:"test"});
 });
