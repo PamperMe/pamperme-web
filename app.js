@@ -46,6 +46,7 @@ var api = require('./routes/API');
 var scheduling = require('./routes/user/scheduling');
 var availability = require('./routes/user/availability');
 var history = require('./routes/user/history');
+var firstLogin = require('./routes/user/firstLogin');
 
 var app = express();
 
@@ -85,7 +86,7 @@ app.use('/API', api);
 app.use('/user/availability',availability);
 app.use('/user/scheduling',scheduling);
 app.use('/user/history',history);
-
+app.use('/user/firstLogin',firstLogin);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

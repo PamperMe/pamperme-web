@@ -2,27 +2,28 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">
-            {{# if client }}
-                <!--TODO put correct image-->
-                <div style="position: absolute; margin-left: 50px">client</div>
-                <img src="/images/logo.png" class="navbar-img" class="img-circle navbar-img">
-            {{else}}
-                {{# if babysitter}}
-                    <div style="position: absolute; margin-left: 50px">babysitter</div>
+                {{# if client }}
                     <!--TODO put correct image-->
+                    <div style="position: absolute; margin-left: 50px">client</div>
                     <img src="/images/logo.png" class="navbar-img" class="img-circle navbar-img">
                 {{else}}
-                    <img alt="Brand" class="img-circle navbar-img" src="/images/logo.png">
+                    {{# if babysitter}}
+                        <div style="position: absolute; margin-left: 50px">babysitter</div>
+                        <!--TODO put correct image-->
+                        <img src="/images/logo.png" class="navbar-img" class="img-circle navbar-img">
+                    {{else}}
+                        <img alt="Brand" class="img-circle navbar-img" src="/images/logo.png">
+                    {{/if}}
                 {{/if}}
-            {{/if}}
             </a>
         </div>
         <div class="clearfix hidden"></div>
-        <div class="pull-right">
+    <div class="pull-right">
         {{# if client }}
             <div class="btn-group group-action">
-                <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{user.name}}</button>
-                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{user.email}}</button>
+                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -36,27 +37,46 @@
             </div>
         {{else}}
             {{# if babysitter}}
-            <div class="btn-group group-action">
-                <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{user.name}}</button>
-                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="/user/scheduling">Agendamento</a></li>
-                    <li><a href="/user/history">Histórico</a></li>
-                    <li><a href="/user/availability">Disponibilidade</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="/user/logout">Sair</a></li>
-                </ul>
+                <div class="btn-group group-action">
+                    <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{user.name}}</button>
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/scheduling">Agendamento</a></li>
+                        <li><a href="/user/history">Histórico</a></li>
+                        <li><a href="/user/availability">Disponibilidade</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/user/logout">Sair</a></li>
+                    </ul>
 
-            </div>
-            {{else}}
-
-                <div class="btn-group">
-                    <a href="/login" class="btn btn-primary navbar-btn">Entrar</a>
-                    <a href="/register" class="btn btn-success navbar-btn">Registar</a>
                 </div>
+            {{else}}
+                {{# if email}}
+                    <div class="btn-group group-action">
+                        <button type="button" class="btn btn-default btn-sm" href="/user/profile">{{email}}</button>
+                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/scheduling">Agendamento</a></li>
+                            <li><a href="/user/history">Histórico</a></li>
+                            <li><a href="/user/availability">Disponibilidade</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/user/logout">Sair</a></li>
+                        </ul>
+
+                    </div>
+                {{else}}
+                    <div class="btn-group">
+                        <a href="/login" class="btn btn-primary navbar-btn">Entrar</a>
+                        <a href="/register" class="btn btn-success navbar-btn">Registar</a>
+                    </div>
+                {{/if}}
             </div>
             {{/if}}
         {{/if}}

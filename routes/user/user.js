@@ -9,6 +9,7 @@ router.get('/logout', function (req, res) {
             req.app.locals.babysitter = false;
             req.app.locals.client = false;
             req.app.locals.user = null;
+            req.app.locals.email = null;
             express.session = null;
         }
     ).catch(function (error) {

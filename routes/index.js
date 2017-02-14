@@ -3,15 +3,10 @@ var app = express();
 var router = express.Router();
 var mysql = require('mysql');
 var util = require('util');
-
-
 var session = require('express-session');
-
 var User = require('../models/User');
-
-
-var myUser;
 var firebase = require('firebase');
+
 
 var connection = mysql.createConnection({
     host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
@@ -65,7 +60,8 @@ router.post('/login', function (req, res) {
                     res.redirect('/');
                 } else if(code == 3){
                     //TODO First time login
-                    res.redirect('/')
+                    req.app.locals.email = data.email;
+                    res.redirect('/user/firstLogin');
                 }
             })
         }
