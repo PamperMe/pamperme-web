@@ -1,11 +1,12 @@
-<form class="form-signin" method="post" action="/user/schedule">
+<form class="form-signin" method="post" action="/user/scheduling">
     <h2 class="form-signin-heading">Agendar</h2>
     <div class="form-group">
-        <input type="time" id="startHour" name="startHour">
+        <input type="date" id="dayMonth" name="dayMonth">
+        <input type="number" id="startHour" name="startHour" max="24" min="0">
         <input type="number" id="duration" name="duration">
         <button class="btn btn-lg btn-success" type="submit">procurar</button>
     </div>
-    <div class="result-schedule">
+    <div class="result-schedule" name="result">
 
     </div>
 
