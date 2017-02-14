@@ -6,4 +6,7 @@ router.get('/', function (req, res) {
     res.render('user/scheduling');
 });
 
+router.post('/schedule', function (req, res) {
+
+});
 module.exports = router;
