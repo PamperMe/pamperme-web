@@ -1,1 +1,62 @@
-<h1>{{user.name}}</h1>
+<!--<h6>{{user.email}}1</h6>
+<h6>{{user.name}}2</h6>
+<h6>{{user.age}}3</h6>
+<h6>{{user.location}}4</h6>
+<h6>{{user.evaluation}}5</h6>
+<h6>{{user.price}}6</h6>
+<h6>{{user.description}}7</h6>
+<h6>{{user.phone}}8</h6>-->
+<div class="container">
+    <div class="jumbotron fill no-margin">
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <div class="thumbnail profile-img">
+                    <!--Imagem Lado esquerdo-->
+                    <img class="img-circle img-responsive" src="/images/selena-gomez.jpg">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
+                <div class="thumbnail profile-info">
+                    <!--Info Centrado-->
+                    <p><h3><span>Selena Gomez</span></h3></p>
+                    <p><h4><span>Idade: 24</span></h4></p>
+                    <p><h4><span>Localidade: Damaia</span></h4></p>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="thumbnail profile-contact">
+                    <!--Info rating/contact/price h-->
+                    <span>7.5</span><!--rating-->
+                    <div><!--Contact-->
+                        <span>{{user.email}}</span>
+                        <span>{{user.phone}}</span>
+                    </div>
+                    <span>15€/h</span><!--price h-->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="thumbnail profile-description">
+                    <!--Descrição da babysitter-->
+                    <span>{{user.description}}
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec suscipit nunc, eu hendrerit massa. Etiam ornare nibh quis mi faucibus, eget rutrum orci lobortis. Fusce non mauris sed lectus vehicula cursus nec ac tellus. Nunc vitae ex vel neque aliquet vestibulum. Etiam viverra nibh urna, vel eleifend ante porttitor nec. Nulla gravida odio a lacus ultrices feugiat. Curabitur tincidunt, mauris a vestibulum fermentum, lectus arcu mattis arcu, quis convallis ligula ante a dui. Maecenas nec tincidunt ex. Nulla faucibus feugiat eros, a aliquam tortor feugiat in. Praesent vehicula dapibus tempus. Suspendisse eget mi vel dolor efficitur convallis ac eu nisi. Sed mattis ac ex sit amet vehicula. Aliquam leo metus, porttitor ut scelerisque vel, viverra at sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis sit amet commodo magna, sollicitudin finibus neque. Aliquam interdum consequat purus id tincidunt.
+
+Suspendisse elementum odio nisl, sed eleifend quam blandit nec. Integer fermentum vitae mauris ut semper. Nunc egestas, libero sit amet aliquet volutpat, orci nibh euismod felis, a commodo lorem sem non est. Morbi non orci lacus. Curabitur odio dui, bibendum vel blandit at, pellentesque ac sem. Aenean in congue libero. Aenean suscipit rhoncus ipsum quis consequat. In hac habitasse platea dictumst.
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!--Aparecer só se reviews != null-->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="thumbnail profile-reviews">
+                    <!--Reviews Babysitter-->
+                    <!--Criar uma div class thumbnail para ele por as reviews-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

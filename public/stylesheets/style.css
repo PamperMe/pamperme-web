@@ -95,6 +95,9 @@ a:hover{
 .group-action{
     margin-top: 10px;
 }
+.no-padding{
+    padding:0px;
+}
 .no-margin{
     margin:0px;
 }
@@ -102,6 +105,10 @@ a:hover{
 .img-profile{
     width: 100px;
     height: 100px;
+}
+.thumbnail{
+    border:0px;
+
 }
 .thumb-name, .thumb-price, .thumb-price, .thumb-deion, .thumb-age{
     display: inline-block;
@@ -131,4 +138,23 @@ a:hover{
     .navbar {
         border-radius: 0px;
     }
+}
+.img-responsive{
+    max-height:150px;
+    max-width:150px;
+}
+.profile-img, .profile-info, .profile-contact{
+
+}
+.profile-info{
+
+}
+.profile-description{
+    padding:10px;
+    text-align: justify;
+}
+
+.profile-contact{
+    text-align: center;
+
 }
