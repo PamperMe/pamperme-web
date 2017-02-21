@@ -3,7 +3,7 @@ $(function () {
 });
 $('.menu').click(function(){
     $('.menu-nav').children().each(function () {
-        $('.menu').reoveClass('menu-active');
+        $('.menu').reoveClass('menu-active');//coisas
     });
 
 
