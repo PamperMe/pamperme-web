@@ -39,9 +39,7 @@ router.get('/', isLoggedIn, function (req, res) {
 });
 
 router.get('/babysitter/:uid', function (req, res) {
-
         res.render('user/profile');
-
 
 });
 
