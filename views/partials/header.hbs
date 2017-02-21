@@ -21,54 +21,39 @@
     <div class="pull-right">
         {{# if client }}
             <div class="btn-group group-action">
-                <button type="button" class="btn btn-default btn-sm"><a href="/user/profile">{{user.name}}</a></button>
-                <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="/user/scheduling">Marcar</a></li>
-                    <li><a href="/user/history">Histórico</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="/user/logout">Sair</a></li>
+                <ul>
+                    <li class=""><a href="/user/profile">{{user.name}}</a></li>
+                    <li class=""><a href="/user/scheduling">Marcar</a></li>
+                    <li class=""><a href="/user/history">Histórico</a></li>
+                    <li class=""><a href="/user/logout">Sair</a></li>
                 </ul>
-
             </div>
         {{else}}
             {{# if babysitter}}
                 <div class="btn-group group-action">
-                    <button type="button" class="btn btn-default btn-sm"><a href="/user/profile">{{user.name}}</a></button>
-                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a href="/user/scheduling">Marcações</a></li>
-                        <li><a href="/user/history">Histórico</a></li>
-                        <li><a href="/user/availability">Disponibilidade</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="/user/logout">Sair</a></li>
+                    <ul class="menu-nav">
+                        <a href="/user/profile"><li class="menu menu-active">{{user.name}}</li></a>
+                        <a href="/user/scheduling"><li class="menu">Marcações</li></a>
+                        <a href="/user/history"><li class="menu">Histórico</li></a>
+                        <a href="/user/availability"><li class="menu">Disponibilidade</li></a>
+                        <a href="/user/logout"><li class="menu">Sair</li></a>
                     </ul>
-
                 </div>
             {{else}}
                 {{# if email}}
                     <div class="btn-group group-action">
-                        <button type="button" class="btn btn-default btn-sm"><a href="/user/profile">{{email}}</a></button>
-                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="/user/scheduling">Agendamento</a></li>
+                        <ul class="">
+                            <li class=""><a href="/user/profile">{{email}}</a></li>
+                            <!--Fica só disponivel o email e sair já que ainda não preencheu os dados
+                            <li><a href="/user/scheduling">Marcações</a></li>
                             <li><a href="/user/history">Histórico</a></li>
                             <li><a href="/user/availability">Disponibilidade</a></li>
                             <li role="separator" class="divider"></li>
+                            -->
+
                             <li><a href="/user/logout">Sair</a></li>
                         </ul>
+
 
                     </div>
                 {{else}}

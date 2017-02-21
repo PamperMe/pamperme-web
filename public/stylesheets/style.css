@@ -9,16 +9,21 @@
     margin-top: -50px;
 }
 
-a{
+.profile-bbsitter{
     text-transform: none;
-
 }
 
-a:hover{
+.profile-bbsitter:hover{
     text-transform: none;
     text-decoration: none;
     color: black;
 }
+.link-instagram,.link-instagram:hover{
+    text-transform: none;
+    text-decoration: none;
+    color: #ff4482;
+}
+
 
 .img-action, .navbar-img{
     width: 40px;
@@ -92,9 +97,7 @@ a:hover{
     margin-top: 7px;
     margin-bottom: 7px;
 }
-.group-action{
-    margin-top: 10px;
-}
+
 .no-padding{
     padding:0px;
 }
@@ -157,4 +160,44 @@ a:hover{
 .profile-contact{
     text-align: center;
 
+}
+
+.group-action ul{
+    padding-left: 0px;
+    padding-top: 15px;
+    margin:0px;
+}
+
+.menu-nav a{
+    text-transform: none;
+    text-decoration: none;
+    color: #FFF;
+}
+.menu-nav li{
+    text-transform: none;
+    text-decoration: none;
+    color: #FFF;
+}
+.menu, .menu-active{
+    display: inline;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    transition: color .4s, background-color .4s ;
+}
+.menu:hover{
+    color: #222;
+    background-color: #FFF;
+}
+.menu-active{
+    color:#222 !important;
+    background-color: #FFF !important;
+}
+
+.menu-active::after{
+    position: relative;
+    width: 10px;
+    height: 10px;
+    background-color: #FFF;
 }
