@@ -2,9 +2,6 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
 $('.menu').click(function(){
-    $('.menu-nav').children().each(function () {
-        $('.menu').reoveClass('menu-active');//coisas
-    });
-
-
+    alert( this.textContent this.cssText. );
+    //$(this).removeClass( "menu-active" );
 });

@@ -9,14 +9,12 @@
     margin-top: -50px;
 }
 
-a{
-    text-transform: none;
-
-}
-
-a:hover{
+a, a:hover{
     text-transform: none;
     text-decoration: none;
+}
+
+.profile-sitter:hover{
     color: black;
 }
 
@@ -158,3 +156,28 @@ a:hover{
     text-align: center;
 
 }
+.group-action{
+    margin:0;
+}
+.menu-nav{
+    margin:0;
+    padding:0;
+    padding-top: 15px;
+
+}
+.menu{
+    display: inline;
+    padding:18px 10px 18px 10px;
+    color: #fff;
+
+    transition: color .4s,background-color .4s;
+}
+.menu:hover{
+    background-color: #ffffff;
+    color:#222;
+}
+.menu-active{
+    background-color: #ffffff;
+    color:#222;
+}
+
