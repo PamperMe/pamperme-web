@@ -23,8 +23,8 @@
                 <div class="thumbnail profile-info">
                     <!--Info Centrado-->
                     <p><h3><span> Nome: Selena </span></h3></p>
-                    <p><h4><span>Idade: 24</span></h4></p>
-                    <p><h4><span>Localidade: Damaia</span></h4></p>
+                    <p><h4><span> Idade: 24 </span></h4></p>
+                    <p><h4><span> Localidade: Damaia </span></h4></p>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
@@ -38,6 +38,37 @@
                 </div>
                 <br>
                 <button type="button" class=" btn btn-primary" > Contactar </button>
+                {{# if user}}
+                    {{#each user}}
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                        <div class="thumbnail profile-img">
+                            <!--Imagem Lado esquerdo-->
+                            <img class="img-circle img-responsive" src="/images/selena-gomez.jpg">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
+                        <div class="thumbnail profile-info">
+                            <!--Info Centrado-->
+                            <p><h3><span> Nome: Selena </span></h3></p>
+                            <p><h4><span> Idade: 24 </span></h4></p>
+                            <p><h4><span> Localidade: Damaia </span></h4></p>
+                        </div>
+                    </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                    <div class="thumbnail profile-contact">
+                        <!--Info rating/contact/price h-->
+                        <span>7.5/10 </span><!--rating-->
+                        <div><!--Contact-->
+                            <span> Phone: {{babysitter.phone}} </span>
+                        </div>
+                        <span>15€/h</span><!--price h-->
+                    </div>
+                    <br>
+                    <button type="button" class=" btn btn-primary" > Contactar </button>
+                    <button type="button" class=" btn btn-primary" > Editar </button>
+                    {{/each}}
+                    {{/if}}
+
             </div>
         </div>
         <div class="row">
