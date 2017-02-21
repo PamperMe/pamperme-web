@@ -36,6 +36,10 @@ router.get('/register', function (req, res) {
     res.render('register');
 });
 
+router.get('/babysitter', function (req, res) {
+    res.render('babysitter_list');
+});
+
 router.post('/register', function (req, res) {
     firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
         res.redirect('/');
