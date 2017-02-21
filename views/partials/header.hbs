@@ -21,6 +21,7 @@
     <div class="pull-right">
         {{# if client }}
             <div class="btn-group group-action">
+                <i class="material-icons btn-sso">menu</i>
                 <ul class="menu-nav">
                     <a href="/user/profile"><li class="menu"><strong>{{user.name}}</strong></li></a>
                     <a href="/user/scheduling"><li class="menu"><strong>Marcar</strong></li></a>
@@ -31,6 +32,7 @@
         {{else}}
             {{# if babysitter}}
                 <div class="btn-group group-action">
+                    <i class="material-icons btn-sso pull-right">menu</i>
                     <ul class="menu-nav">
                         <a href="/user/profile"><li class="menu"><strong>{{user.name}}</strong></li></a>
                         <a href="/user/scheduling"><li class="menu"><strong>Marcações</strong></li></a>
@@ -42,8 +44,9 @@
             {{else}}
                 {{# if email}}
                     <div class="btn-group group-action">
-                        <ul class="">
-                            <li class=""><a href="/user/profile">{{email}}</a></li>
+                        <i class="material-icons btn-sso">menu</i>
+                        <ul class="menu-nav">
+                            <a href="/user/profile"><li class="menu">{{email}}</li></a>
                             <!--Fica só disponivel o email e sair já que ainda não preencheu os dados
                             <li><a href="/user/scheduling">Marcações</a></li>
                             <li><a href="/user/history">Histórico</a></li>
@@ -51,7 +54,7 @@
                             <li role="separator" class="divider"></li>
                             -->
 
-                            <li><a href="/user/logout">Sair</a></li>
+                            <a href="/user/logout"><li>Sair</li></a>
                         </ul>
 
 

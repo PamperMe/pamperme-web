@@ -1,7 +1,13 @@
+var displayMenu = false;
+
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
-$('.menu').click(function(){
-    alert( this.textContent this.cssText. );
-    //$(this).removeClass( "menu-active" );
+$('.btn-sso').click(function(){
+    if($('.menu-nav').css("display") != "inline"){
+        $('.menu-nav').css({display:"inline"});
+    }else{
+        $('.menu-nav').css({display:"none"});
+    }
+
 });
