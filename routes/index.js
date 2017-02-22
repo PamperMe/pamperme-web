@@ -53,11 +53,11 @@ router.post('/login', function (req, res) {
                 if(code == 1){
                     req.app.locals.babysitter = true;
                     req.app.locals.user = result;
-                    res.redirect('/');
+                    res.redirect('/user/profile');
                 } else if(code == 2){
                     req.app.locals.client = true;
                     req.app.locals.user = result;
-                    res.redirect('/');
+                    res.redirect('/user/profile');
                 } else if(code == 3){
                     //TODO First time login
                     req.app.locals.email = data.email;

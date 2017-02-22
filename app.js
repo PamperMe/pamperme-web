@@ -110,8 +110,10 @@ firebase.auth().onAuthStateChanged(function (user) {
             if(code != null){
                 if(code == 1){
                     app.locals.babysitter = true;
+                    app.locals.babysitterr = done;
                 } else if(code == 2){
                     app.locals.client = true;
+                    app.locals.clientt = done;
                 }
             }
         });
