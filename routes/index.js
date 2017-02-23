@@ -8,19 +8,26 @@ var User = require('../models/User');
 var firebase = require('firebase');
 
 
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
     host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     user: "lyq2twi3ij8swv3m",
     password: "g3bpvh44ng094s21",
-    database: "gbzxf1l8o8clpop4"
-}, 'request');
+    database: "gbzxf1l8o8clpop4",
+    limit:25
+})
+
+// var connection = mysql.createConnection({
+//     host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+//     user: "lyq2twi3ij8swv3m",
+//     password: "g3bpvh44ng094s21",
+//     database: "gbzxf1l8o8clpop4"
+// }, 'request');
 
 var client = false;
 var babysitter = false;
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
 const USER = "SELECT * from user_type where uid = '%s'";
-
 
 
 router.get('/', function (req, res) {
@@ -48,17 +55,17 @@ router.post('/register', function (req, res) {
 
 router.post('/login', function (req, res) {
     firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
-        if(data != null){
-            getUser(data.uid,function (code, result) {
-                if(code == 1){
+        if (data != null) {
+            getUser(data.uid, function (code, result) {
+                if (code == 1) {
                     req.app.locals.babysitter = true;
                     req.app.locals.user = result;
                     res.redirect('/user/profile');
-                } else if(code == 2){
+                } else if (code == 2) {
                     req.app.locals.client = true;
                     req.app.locals.user = result;
                     res.redirect('/user/profile');
-                } else if(code == 3){
+                } else if (code == 3) {
                     //TODO First time login
                     req.app.locals.email = data.email;
                     res.redirect('/user/firstLogin');
@@ -100,32 +107,32 @@ router.get('/google', function (req, res) {
 });
 
 
-function getUser(uid,callback) {
+function getUser(uid, callback) {
     var query = util.format(USER, uid);
     connection.query(query, function (err, data) {
         if (err) {
         } else {
-            if(data.length > 0){
+            if (data.length > 0) {
                 if (data[0].type == 1) {
                     getBabysitter(uid, function (err, done) {
                         if (err) {
-                            callback(null,err);
+                            callback(null, err);
                         } else {
-                            callback(1,done);
+                            callback(1, done);
                         }
                     });
                 } else {
                     getClient(uid, function (err, done) {
                         if (err) {
-                            callback(null,err);
+                            callback(null, err);
                         } else {
-                            callback(2,done);
+                            callback(2, done);
                         }
                     });
                 }
             }
             else {
-                callback(3,null);
+                callback(3, null);
             }
         }
     })
@@ -140,7 +147,7 @@ function getClient(uid, callback) {
         if (rows.length > 0) {
             callback(null, rows[0]);
         } else {
-            callback("no user found",null);
+            callback("no user found", null);
         }
     });
 }
@@ -154,7 +161,7 @@ function getBabysitter(uid, callback) {
         if (rows.length > 0) {
             callback(null, rows[0]);
         } else {
-            callback("no user found",null);
+            callback("no user found", null);
         }
     });
 }

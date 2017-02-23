@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressHbs = require('express-handlebars');
 var mysql = require('mysql');
+var busboy = require('connect-busboy');
 
 var cookieParser = require('cookie-parser');
 
@@ -57,6 +58,7 @@ app.set('view engine', '.hbs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(busboy());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -117,6 +119,14 @@ firebase.auth().onAuthStateChanged(function (user) {
                 }
             }
         });
+        app.locals.firebaseUser = user;
+        // user.updateProfile({
+        //     photoURL:"http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-md.png"
+        // }).then(function () {
+        //     console.log("mudou foto");
+        // },function (error) {
+        //     console.log(error);
+        // })
     }
 
 })
