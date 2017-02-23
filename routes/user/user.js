@@ -48,6 +48,7 @@ router.post('/fileupload', upload.any(), function (req, res) {
                 photoURL: "https://storage.googleapis.com/pamperme-15d4e.appspot.com/" + results[0].name
             });
             fs.unlink(req.files[0].path,function (err) {
+                //TODO remove callback and put null to test if works
                 console.log(err);
             });
             res.redirect("/user/profile");
