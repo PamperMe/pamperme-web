@@ -81,6 +81,11 @@ a, a:hover{
     background-color: #222;
     color: #fff;
 }
+
+.icon-social{
+    max-height:50px;
+    max-width: 50px;
+}
 .form-position{
     padding-top: 50px;
     max-width: 330px;

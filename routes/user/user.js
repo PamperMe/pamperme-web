@@ -49,8 +49,8 @@ router.post('/fileupload', upload.any(), function (req, res) {
             });
             fs.unlink(req.files[0].path,function (err) {
                 console.log(err);
-            })
-            res.redirect('profile');
+            });
+            res.redirect("/user/profile");
         });
 });
 
