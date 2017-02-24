@@ -2,17 +2,19 @@ var express = require('express');
 var router = express.Router();
 var firebase = require('firebase');
 var mysql = require('mysql');
+var util = require('util');
 
-var query_sitters = "SELECT * FROM babysitter";
+var query_sitters = "SELECT * FROM babysitter WHERE date >= NOW()";
 
-var future_visits = "SELECT * FROM visits";
+var future_visits = "SELECT * FROM visits WHERE date >= NOW()";
 
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
     host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     user: "lyq2twi3ij8swv3m",
     password: "g3bpvh44ng094s21",
-    database: "gbzxf1l8o8clpop4"
-}, 'request');
+    database: "gbzxf1l8o8clpop4",
+    limit:5
+});
 
 
 router.get('/', isLoggedIn, function (req, res) {
@@ -42,7 +44,6 @@ router.get('/babysitter/:uid', function (req, res) {
         res.render('user/profile');
 
 });
-
 
 function isLoggedIn(req,res,next) {
     if(req.app.locals.user){

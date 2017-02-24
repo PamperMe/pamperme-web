@@ -3,6 +3,8 @@
         {{#each babysitters}}
             <a class="profile-sitter" href="/user/scheduling/babysitter/{{this.uid}}"><div>{{this.name}}</div></a>
         {{/each}}
+    {{else}}
+
     {{/if}}
 
     {{# if visits}}
@@ -10,5 +12,9 @@
             <div>{{this.id_visits}}</div>
             <div>{{this.date}}</div>
         {{/each}}
+    {{else}}
+        <div class="container">
+            <h1 style="padding: 100px 0;">Não existem Dados.</h1>
+        </div>
     {{/if}}
 </div>

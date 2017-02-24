@@ -13,7 +13,7 @@ var connection = mysql.createPool({
     user: "lyq2twi3ij8swv3m",
     password: "g3bpvh44ng094s21",
     database: "gbzxf1l8o8clpop4",
-    limit:25
+    limit:5
 });
 
 var client = false;
@@ -137,10 +137,12 @@ function getClient(uid, callback) {
         if (err) {
             callback(err, null)
         }
-        if (rows.length > 0) {
-            callback(null, rows[0]);
-        } else {
-            callback("no user found", null);
+        if(rows != undefined){
+            if (rows.length > 0) {
+                callback(null, rows[0]);
+            } else {
+                callback("no user found", null);
+            }
         }
     });
 }
@@ -151,10 +153,12 @@ function getBabysitter(uid, callback) {
         if (err) {
             callback(err, null)
         }
-        if (rows.length > 0) {
-            callback(null, rows[0]);
-        } else {
-            callback("no user found", null);
+        if(rows != undefined){
+            if (rows.length > 0) {
+                callback(null, rows[0]);
+            } else {
+                callback("no user found", null);
+            }
         }
     });
 }

@@ -8,7 +8,7 @@ var connection = mysql.createPool({
     user: "lyq2twi3ij8swv3m",
     password: "g3bpvh44ng094s21",
     database: "gbzxf1l8o8clpop4",
-    limit:25
+    limit:5
 })
 
 

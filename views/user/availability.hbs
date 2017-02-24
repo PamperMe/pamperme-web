@@ -1,16 +1,18 @@
-<form class="form-signin" method="post" action="/user/availability">
-    <h2 class="form-signin-heading">Agendar</h2>
-    <div class="form-group">
-        <input type="date" id="dayMonth" name="dayMonth">
-        <input type="number" id="startHour" name="startHour" max="24" min="0">
-        <input type="number" id="duration" name="duration">
-        <button class="btn btn-lg btn-success" type="submit">procurar</button>
-    </div>
-    <div class="result-schedule" name="result">
-        {{# if schedule}}
-            {{#each schedule}}
-                <div>{{this.date}}</div>
-            {{/each}}
-        {{/if}}
-    </div>
-</form>
+<div class="container">
+    <form class="form-signin" method="post" action="/user/availability">
+        <h2 class="form-signin-heading">Agendar</h2>
+        <div class="form-group">
+            <input type="date" id="dayMonth" name="dayMonth">
+            <input type="number" id="startHour" name="startHour" max="24" min="0">
+            <input type="number" id="duration" name="duration">
+            <button class="btn btn-lg btn-success" type="submit">procurar</button>
+        </div>
+        <div class="result-schedule" name="result">
+            {{# if schedule}}
+                {{#each schedule}}
+                    <div>{{this.date}}</div>
+                {{/each}}
+            {{/if}}
+        </div>
+    </form>
+</div>
