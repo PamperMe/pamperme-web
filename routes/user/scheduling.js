@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var mysql = require('mysql');
-var util = require('util');
+const express = require('express');
+const router = express.Router();
+const mysql = require('mysql');
+const util = require('util');
 
-var query_sitters = "SELECT * FROM babysitter WHERE date >= NOW()";
+const query_sitters = "SELECT * FROM babysitter";
 
-var connection = mysql.createPool({
+const connection = mysql.createPool({
     host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
     user: "lyq2twi3ij8swv3m",
     password: "g3bpvh44ng094s21",

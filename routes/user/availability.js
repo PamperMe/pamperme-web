@@ -16,7 +16,6 @@ var connection = mysql.createPool({
 
 
 router.get('/',isLoggedIn, function (req, res) {
-    if(req.app.locals.babysitter){
         var query = util.format(getAvailability, req.app.locals.user.id);
         connection.query(query,function (err, done) {
             if(err){
@@ -25,9 +24,6 @@ router.get('/',isLoggedIn, function (req, res) {
                 res.render('user/availability',{schedule:done});
             }
         });
-    } else{
-        res.render('/');
-    }
 });
 
 
