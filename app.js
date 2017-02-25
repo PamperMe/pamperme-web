@@ -48,6 +48,7 @@ var scheduling = require('./routes/user/scheduling');
 var availability = require('./routes/user/availability');
 var history = require('./routes/user/history');
 var firstLogin = require('./routes/user/firstLogin');
+var schedules = require('./routes/user/schedules');
 
 var app = express();
 
@@ -87,6 +88,7 @@ app.use('/user',users);
 app.use('/API', api);
 app.use('/user/availability',availability);
 app.use('/user/scheduling',scheduling);
+app.use('/user/schedules',schedules);
 app.use('/user/history',history);
 app.use('/user/firstLogin',firstLogin);
 // catch 404 and forward to error handler
