@@ -1,17 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const mysql = require('mysql');
 const util = require('util');
 
 const query_sitters = "SELECT * FROM babysitter";
 
-const connection = mysql.createPool({
-    host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "lyq2twi3ij8swv3m",
-    password: "g3bpvh44ng094s21",
-    database: "gbzxf1l8o8clpop4",
-    limit: 5
-});
+const connection = require('../../models/Connect');
 
 
 router.get('/', isLoggedIn, function (req, res) {
@@ -22,11 +15,6 @@ router.get('/', isLoggedIn, function (req, res) {
             res.render('user/scheduling', {data: result});
         }
     });
-});
-
-router.get('/babysitter/:uid', function (req, res) {
-    res.render('user/profile');
-
 });
 
 function isLoggedIn(req, res, next) {

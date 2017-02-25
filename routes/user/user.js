@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
 var util = require('util');
 var fs = require('fs');
 var firebase = require('firebase');
@@ -9,7 +8,7 @@ var firebase = require('firebase');
 var update_photo_url_query = "UPDATE %s SET photo_url = '%s' WHERE uid = '%s';";
 
 var multer = require('multer');
-var upload = multer({dest: 'public/uploads/'})
+var upload = multer({dest: 'public/uploads/'});
 
 var gcloud = require('google-cloud');
 var gcs = gcloud.storage({
@@ -17,19 +16,7 @@ var gcs = gcloud.storage({
     keyFilename: 'key.json'
 });
 
-const connection = mysql.createPool({
-    host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "lyq2twi3ij8swv3m",
-    password: "g3bpvh44ng094s21",
-    database: "gbzxf1l8o8clpop4",
-    limit: 5
-});
-
-
-// gcs.createBucket('my-new-bucket', function (err, bucket) {
-//     if (!err) {
-//     }
-// });
+const connection = require('../../models/Connect');
 
 var bucket = gcs.bucket('pamperme-15d4e.appspot.com');
 

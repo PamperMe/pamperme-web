@@ -1,22 +1,13 @@
 var express = require('express');
-var app = express();
 var router = express.Router();
-var mysql = require('mysql');
 var util = require('util');
 var session = require('express-session');
 var User = require('../models/User');
 var firebase = require('firebase');
 
 
-var connection = mysql.createPool({
-    host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "lyq2twi3ij8swv3m",
-    password: "g3bpvh44ng094s21",
-    database: "gbzxf1l8o8clpop4",
-    limit:5
-});
+var connection = require('../models/Connect');
 
-var client = false;
 var babysitter = false;
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";

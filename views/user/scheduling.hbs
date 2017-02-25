@@ -1,7 +1,7 @@
 <div class="container">
     {{# if data}}
         {{#each data}}
-            <a class="profile-sitter" href="/user/scheduling/babysitter/{{this.uid}}"><div>{{this.name}}</div></a>
+            <a class="profile-sitter" href="/babysitter/{{this.uid}}"><div>{{this.name}}</div></a>
         {{/each}}
     {{else}}
         <div class="container">

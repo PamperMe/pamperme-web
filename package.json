@@ -13,7 +13,7 @@
     "express": "^4.14.1",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.1",
-    "firebase": "^3.6.8",
+    "firebase": "^3.6.10",
     "firebase-admin": "^4.1.0",
     "google-cloud": "^0.47.0",
     "hbs": "~4.0.1",

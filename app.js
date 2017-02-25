@@ -6,7 +6,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressHbs = require('express-handlebars');
-var mysql = require('mysql');
 var busboy = require('connect-busboy');
 
 var cookieParser = require('cookie-parser');
@@ -22,12 +21,7 @@ const USER = "SELECT * from clienttype where UID = '%s'";
 var firebase = require('firebase');
 
 
-var connection = mysql.createConnection({
-    host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "lyq2twi3ij8swv3m",
-    password: "g3bpvh44ng094s21",
-    database: "gbzxf1l8o8clpop4"
-}, 'request');
+const connection = require('./models/Connect');
 
 
 // Initialize Firebase
@@ -49,6 +43,7 @@ var availability = require('./routes/user/availability');
 var history = require('./routes/user/history');
 var firstLogin = require('./routes/user/firstLogin');
 var schedules = require('./routes/user/schedules');
+var babysitter = require('./routes/babysitter');
 
 var app = express();
 
@@ -91,6 +86,7 @@ app.use('/user/scheduling',scheduling);
 app.use('/user/schedules',schedules);
 app.use('/user/history',history);
 app.use('/user/firstLogin',firstLogin);
+app.use('/babysitter',babysitter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

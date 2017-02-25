@@ -1,18 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var mysql = require('mysql');
-var util = require('util');
-var app = express();
+const express = require('express');
+const router = express.Router();
+const util = require('util');
+
 
 var getAvailability = "SELECT * FROM schedule where id_babysitter = %s";
 
-var connection = mysql.createPool({
-    host: "sabaik6fx8he7pua.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
-    user: "lyq2twi3ij8swv3m",
-    password: "g3bpvh44ng094s21",
-    database: "gbzxf1l8o8clpop4",
-    limit: 5
-});
+const connection = require('../../models/Connect');
 
 
 router.get('/',isLoggedIn, function (req, res) {
