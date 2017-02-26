@@ -54,7 +54,7 @@ router.post('/fileupload', upload.any(), function (req, res) {
                     }
                 });
             } else {
-                var query = util.format(update_client_photo_url_query,"clients",photo_url,req.app.locals.user.uid);
+                var query = util.format(update_photo_url_query,"clients",photo_url,req.app.locals.user.uid);
                 connection.query(query,function (err, done) {
                     if(err){
                         res.send(err);
@@ -109,11 +109,10 @@ router.post('/profile/edit',isLoggedIn,function (req, res) {
                    req.app.locals.user.phone = req.body.phone;
                    req.app.locals.user.address = req.body.address;
                }
+                res.redirect('/user/profile');
             }
         }
-
     });
-    res.render('user/edit_profile');
 
 });
 

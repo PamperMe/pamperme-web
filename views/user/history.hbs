@@ -1,7 +1,18 @@
-<div>
+<div class="container">
+    <h1>Historico</h1>
     {{# if data}}
         {{#each data}}
-            <div>{{data}}</div>
+            <ul>
+                <p>name {{this.babysitter_name}}</p>
+                <p>client {{this.client_name}}</p>
+                <p>date {{this.date}}</p>
+                <p>start {{this.start_hour}}</p>
+                <p>dur {{this.duration}}</p>
+                <p>eval {{this.evaluation}}</p>
+                <p>addres {{this.address}}</p>
+                <p>{{this.price}}</p>
+                <br>
+            </ul>
         {{/each}}
     {{else}}
     <div class="container">

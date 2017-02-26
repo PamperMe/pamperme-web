@@ -3,17 +3,17 @@ var router = express.Router();
 var firebase = require('firebase');
 var util = require('util');
 
-var future_visits = "SELECT * FROM visits WHERE date >= NOW()";
+var future_visits = "SELECT * FROM visits WHERE date >= NOW() and id_babysitter = %s";
 
 const connection = require('../../models/Connect');
 
 
 router.get('/', isLoggedIn, function (req, res) {
-    connection.query(future_visits, function (err, done) {
+    connection.query(util.format(future_visits,req.app.locals.user.id), function (err, done) {
         if (err) {
-            res.render('user/scheduling');
+            res.render('user/schedules');
         } else {
-            res.render('user/scheduling', {data: done});
+            res.render('user/schedules', {data: done});
         }
     });
 
