@@ -79,7 +79,43 @@ router.get('/profile', isLoggedIn, function (req, res) {
 
 router.get('/profile/edit',isLoggedIn,function (req, res) {
     res.render('user/edit_profile');
-})
+});
+
+router.post('/profile/edit',isLoggedIn,function (req, res) {
+    var query;
+    if(req.app.locals.babysitter){
+        query = util.format("UPDATE babysitter set name = '%s' , birthday =  '%s' , location = '%s', price = '%s' , phone = '%s' , description = '%s' where uid = '%s' "
+            ,req.body.name , req.body.birthday, req.body.location, req.body.price, req.body.phone, req.body.description, req.app.locals.user.uid);
+
+    } else {
+        query = util.format("UPDATE clients set name = '%s' , address =  '%s' , phone = '%s' where uid = '%s' "
+            ,req.body.name, req.body.address, req.body.phone, req.app.locals.user.uid);
+
+    }
+    connection.query(query, function (err, done) {
+        if(err){
+        res.send(err);
+        }else{
+            if(done.affectedRows == 1){
+               if(req.app.locals.babysitter) {
+                   req.app.locals.user.name = req.body.name;
+                   req.app.locals.user.birthday = req.body.birthday;
+                   req.app.locals.user.location = req.body.location;
+                   req.app.locals.user.price = req.body.price;
+                   req.app.locals.user.phone = req.body.phone;
+                   req.app.locals.user.description = req.body.description;
+               }else{
+                   req.app.locals.user.name = req.body.name;
+                   req.app.locals.user.phone = req.body.phone;
+                   req.app.locals.user.address = req.body.address;
+               }
+            }
+        }
+
+    });
+    res.render('user/edit_profile');
+
+});
 
 function isLoggedIn(req, res, next) {
     if (req.app.locals.user) {

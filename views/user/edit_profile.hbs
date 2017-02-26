@@ -1,112 +1,35 @@
-<!--<h6>{{user.email}}1</h6>
-<h6>{{user.name}}2</h6>
-<h6>{{user.age}}3</h6>
-<h6>{{user.location}}4</h6>
-<h6>{{user.evaluation}}5</h6>
-<h6>{{user.price}}6</h6>
-<h6>{{user.description}}7</h6>
-<h6>{{user.phone}}8</h6>-->
-
-<!--Se id profile == id user : é editavel-->
-<!--Se não : apenas para ler-->
-
-<div class="container">
+<form method="post" action="/user/profile/edit">
     {{# if babysitter}}
-        <div class="jumbotron fill no-margin">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                    <div class="thumbnail profile-img">
-                        <!--Imagem Lado esquerdo-->
-                        <img class="img-circle img-responsive" src="{{user.photo_url}}">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
-                    <div class="thumbnail profile-info">
-                        <!--Info Centrado-->
-                        <p>
-                        <h3><span> Nome: {{user.name}} </span></h3></p>
-                        <p><h4><span> Idade: {{user.birthday}} </span></h4></p>
-                        <p><h4><span> Localidade: {{user.location}} </span></h4></p>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                    <div class="thumbnail profile-contact">
-                        <!--Info rating/contact/price h-->
-                        <span>7.5/10 </span><!--rating-->
-                        <div><!--Contact-->
-                            <span> Phone: {{user.phone}} </span>
-                        </div>
-                        <span>{{user.price}}€/h</span><!--price h-->
-                    </div>
-                    <br>
-                    <button type="button" class=" btn btn-primary"> Contactar</button>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="thumbnail profile-description">
-                            <!--Descrição da babysitter-->
-                            <span> {{user.description}}</span>
-                            <form id="uploadForm"
-                                  enctype="multipart/form-data"
-                                  action="/user/fileupload"
-                                  method="post">
-                                <input type="file" name="userPhoto"/>
-                                <input type="submit" value="Upload Image" name="submit">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        Name:<br>
+        <input type="text" value="{{user.name}}" name="name">
+        <p></p>
+        Birthday:<br>
+        //TODO mudar o type para date
+        <input type="text" value="{{user.birthday}}" name="birthday">
+        <p></p>
+        Location:<br>
+        <input type="text" value="{{user.location}}" name="location">
+        <p></p>
+        Price:<br>
+        <input type="number" value="{{user.price}}" name="price">
+        <p></p>
+        Phone:<br>
+        <input type="text" value="{{user.phone}}" name="phone">
+        <p></p>
+        Description:<br>
+        <input type="text" value="{{user.description}}" name="description">
+        <p></p>
+        <button type="submit">Guardar</button>
     {{else}}
         {{#if client}}
-            <div class="jumbotron fill no-margin">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                        <div class="thumbnail profile-img">
-                            <!--Imagem Lado esquerdo-->
-                            <img class="img-circle img-responsive" src="{{user.photo_url}}">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
-                        <div class="thumbnail profile-info">
-                            <!--Info Centrado-->
-                            <p>
-                            <h3><span> Nome: {{user.name}} </span></h3></p>
-                            <p><h4><span> Localidade: {{user.address}} </span></h4></p>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                        <div class="thumbnail profile-contact">
-                            <!--Info rating/contact/price h-->
-                            <div><!--Contact-->
-                                <span> Phone: {{user.phone}} </span>
-                            </div>
-                        </div>
-                        <br>
-                        <a href="/user/profile/edit"><button type="button" class=" btn btn-primary"> Editar</button></a>
-                    </div>
-                    <form id="uploadForm"
-                          enctype="multipart/form-data"
-                          action="/user/fileupload"
-                          method="post">
-                        <input type="file" name="userPhoto"/>
-                        <input type="submit" value="Upload Image" name="submit">
-                    </form>
-                </div>
-            </div>
+            Name:
+            <p><input type="text" value="{{user.name}}" name="name"></p>
+            Address:
+            <p><input type="text" value="{{user.address}}" name="address"></p>
+            Phone:
+            <p><input type="text" value="{{user.phone}}" name="phone"></p>
+            <button type="submit">Guardar</button>
         {{/if}}
-    {{/if}}
+    {{/ if}}
 
-    <!--Aparecer só se reviews != null-->
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="thumbnail profile-reviews">
-                <!--Reviews Babysitter-->
-                <!--Criar uma div class thumbnail para ele por as reviews-->
-            </div>
-        </div>
-    </div>
-
-</div>
-</div>
+</form>
