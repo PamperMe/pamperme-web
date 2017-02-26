@@ -1,33 +1,35 @@
 <div class="container">
     <h1>Historico</h1>
-    {{# if babysitter}}
-        {{# if data}}
-        <ul>
-            <p>client {{this.client_name}}</p>
-            <p>date {{this.date}}</p>
-            <p>address {{this.address}}</p>
-            <p>start {{this.start_hour}}</p>
-            <p>dur {{this.duration}}</p>
-            <p>eval {{this.evaluation}}</p>
-            <p>{{this.price}}</p>
-            <br>
-        </ul>
+    {{# if data}}
+        {{# if babysitter}}
+            {{#each data}}
+                <ul>
+                    <p>client {{this.client_name}}</p>
+                    <p>date {{this.date}}</p>
+                    <p>address {{this.address}}</p>
+                    <p>start {{this.start_hour}}</p>
+                    <p>dur {{this.duration}}</p>
+                    <p>eval {{this.evaluation}}</p>
+                    <p>{{this.price}}</p>
+                    <br>
+                </ul>
+            {{/each}}
+        {{else}}
+            {{#each data}}
+                <ul>
+                    <p>name {{this.babysitter_name}}</p>
+                    <p>date {{this.date}}</p>
+                    <p>start {{this.start_hour}}</p>
+                    <p>dur {{this.duration}}</p>
+                    <p>eval {{this.evaluation}}</p>
+                    <p>{{this.price}}</p>
+                    <br>
+                </ul>
+            {{/each}}
+        {{/if}}
     {{else}}
-    {{/if}}
-        {{#each data}}
-            <ul>
-                <p>name {{this.babysitter_name}}</p>
-                <p>date {{this.date}}</p>
-                <p>start {{this.start_hour}}</p>
-                <p>dur {{this.duration}}</p>
-                <p>eval {{this.evaluation}}</p>
-                <p>{{this.price}}</p>
-                <br>
-            </ul>
-        {{/each}}
-    {{else}}
-    <div class="container">
-        <h1 style="padding: 100px 0;">Não existem Dados.</h1>
-    </div>
+        <div class="container">
+            <h1 style="padding: 100px 0;">Não existem Dados.</h1>
+        </div>
     {{/if}}
 </div>

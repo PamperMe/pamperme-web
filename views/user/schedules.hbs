@@ -1,8 +1,15 @@
 <div class="container">
     {{#if data}}
         {{#each data}}
-            <div>{{this.id_visits}}</div>
-            <div>{{this.date}}</div>
+            <ul>
+                <p>client {{this.client_name}}</p>
+                <p>date {{this.date}}</p>
+                <p>address {{this.address}}</p>
+                <p>start {{this.start_hour}}</p>
+                <p>dur {{this.duration}}</p>
+                <p>value {{this.price}}</p>
+                <br>
+            </ul>
         {{/each}}
     {{else}}
         <div class="container">
