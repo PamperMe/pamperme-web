@@ -37,8 +37,7 @@ router.get('/logout', function (req, res) {
 });
 
 router.post('/fileupload', upload.any(), function (req, res) {
-    return bucket.upload(req.files[0].path)
-        .then((results) => {
+    return bucket.upload(req.files[0].path).then((results) => {
         var photo_url = "https://storage.googleapis.com/pamperme-15d4e.appspot.com/" + results[0].name;
             firebase.auth().currentUser.updateProfile({
                 photoURL: photo_url
@@ -74,10 +73,13 @@ router.post('/fileupload', upload.any(), function (req, res) {
         });
 });
 
-
 router.get('/profile', isLoggedIn, function (req, res) {
     res.render('user/profile');
 });
+
+router.get('/profile/edit',isLoggedIn,function (req, res) {
+    res.render('user/edit_profile');
+})
 
 function isLoggedIn(req, res, next) {
     if (req.app.locals.user) {
