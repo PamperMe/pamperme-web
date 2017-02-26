@@ -11,3 +11,7 @@ $('.btn-sso').click(function(){
     }
 
 });
+
+$(function () {
+    $('#availability_date_picker').datetimepicker();
+});
