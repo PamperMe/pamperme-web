@@ -1,15 +1,26 @@
 <div class="container">
     <h1>Historico</h1>
-    {{# if data}}
+    {{# if babysitter}}
+        {{# if data}}
+        <ul>
+            <p>client {{this.client_name}}</p>
+            <p>date {{this.date}}</p>
+            <p>address {{this.address}}</p>
+            <p>start {{this.start_hour}}</p>
+            <p>dur {{this.duration}}</p>
+            <p>eval {{this.evaluation}}</p>
+            <p>{{this.price}}</p>
+            <br>
+        </ul>
+    {{else}}
+    {{/if}}
         {{#each data}}
             <ul>
                 <p>name {{this.babysitter_name}}</p>
-                <p>client {{this.client_name}}</p>
                 <p>date {{this.date}}</p>
                 <p>start {{this.start_hour}}</p>
                 <p>dur {{this.duration}}</p>
                 <p>eval {{this.evaluation}}</p>
-                <p>addres {{this.address}}</p>
                 <p>{{this.price}}</p>
                 <br>
             </ul>
