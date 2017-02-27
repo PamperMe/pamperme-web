@@ -20,7 +20,6 @@ router.get('/', isLoggedIn, function (req, res) {
         if(err){
             res.send(err);
         } else {
-            console.log(done);
             res.render('user/history', {data:done});
         }
 
