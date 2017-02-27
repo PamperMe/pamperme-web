@@ -9,7 +9,7 @@ const search_query = "SELECT distinct b.uid,b.name from babysitter b inner join 
 const connection = require('../../models/Connect');
 
 
-router.get('/', function (req, res) {
+router.get('/', isLoggedIn, function (req, res) {
     req.app.locals.searchName = "";
     req.app.locals.searchLocation = "";
     req.app.locals.searchPrice = "";
@@ -25,7 +25,7 @@ router.get('/', function (req, res) {
 });
 
 
-router.post('/', function (req, res) {
+router.post('/', isLoggedIn, function (req, res) {
     var name, location, priceMin, priceMax, date, evaluation, query, value;
     var combined = ' where ';
     if (req.body.name != "") {
