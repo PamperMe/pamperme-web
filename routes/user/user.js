@@ -36,6 +36,7 @@ router.get('/logout', function (req, res) {
     })
 });
 
+
 router.post('/fileupload', upload.any(), function (req, res) {
     return bucket.upload(req.files[0].path).then((results) => {
         var photo_url = "https://storage.googleapis.com/pamperme-15d4e.appspot.com/" + results[0].name;

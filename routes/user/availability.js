@@ -14,7 +14,11 @@ router.get('/',isLoggedIn, function (req, res) {
             if(err){
                 res.send(err);
             } else{
-                res.render('user/availability',{schedule:done});
+                var availability = [];
+                for(var i = 0; i < done.length; i++){
+                    availability[i] = new Availability(done[i]);
+                }
+                res.render('user/availability',{schedule:availability});
             }
         });
 });
@@ -24,9 +28,6 @@ router.post('/', isLoggedIn, function (req, res) {
     var dayMonth = req.body.dayMonth.toString();
     var startHour = req.body.startHour.valueOf().toString();
     var duration = req.body.duration;
-    console.log(dayMonth);
-    console.log(startHour);
-    console.log(duration);
     var query = "INSERT INTO schedule(id_babysitter,date,start_hour,end_hour) VALUES ("
         + req.app.locals.user.id + ",'" + dayMonth + "'," + startHour + "," + duration + ")";
     connection.query(query,function (err, done) {
@@ -52,6 +53,13 @@ function isLoggedIn(req,res,next) {
         return next();
     }
     res.redirect('/login');
+}
+
+function Availability(data) {
+    var formattedDate = util.format("%s/%s/%s", data.date.getDate(), data.date.getMonth() + 1, data.date.getFullYear());
+    this.date = formattedDate;
+    this.start_hour = data.start_hour;
+    this.end_hour = data.end_hour;
 }
 
 module.exports = router;
