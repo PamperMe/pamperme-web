@@ -51,6 +51,8 @@ var app = express();
 app.engine('.hbs', expressHbs({defaultLayout: 'layout', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
+app.use('/lib_scripts', express.static(__dirname + '/node_modules/'));
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -118,13 +120,6 @@ firebase.auth().onAuthStateChanged(function (user) {
             }
         });
         app.locals.firebaseUser = user;
-        // user.updateProfile({
-        //     photoURL:"http://www.clker.com/cliparts/d/L/P/X/z/i/no-image-icon-md.png"
-        // }).then(function () {
-        //     console.log("mudou foto");
-        // },function (error) {
-        //     console.log(error);
-        // })
     }
 
 })
