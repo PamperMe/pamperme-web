@@ -3,7 +3,7 @@ const router = express.Router();
 const util = require('util');
 
 
-var getAvailability = "SELECT * FROM schedule where id_babysitter = %s";
+var getAvailability = "SELECT * FROM schedule where id_babysitter = %s and date >= now() order by date asc";
 
 const connection = require('../../models/Connect');
 
@@ -37,7 +37,7 @@ router.post('/', isLoggedIn, function (req, res) {
             if(done.affectedRows < 1){
                 res.send("erro");
             } else {
-                res.redirect('/user/scheduling');
+                res.redirect('/user/availability');
             }
         }
     });

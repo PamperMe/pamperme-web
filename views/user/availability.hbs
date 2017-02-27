@@ -1,15 +1,16 @@
+<div class="jumbotron fill">
 <div class="container">
     <form class="form-signin" method="post" action="/user/availability">
         <h2 class="form-signin-heading">Agendar</h2>
         <div class="thumbnail">
             <div class="row">
                 <div  class="col-lg-2 col-xs-12">
-                    <input type="text" id="dayMonth" placeholder="Data" name="dayMonth">
+                    <input type="text" id="dayMonth" placeholder="Data" name="dayMonth" required>
                 </div>
                 <div  class="col-lg-2 col-xs-12">
 
                         <label for="startHour">Hora de Inicio</label>
-                        <select name="startHour" id="startHour">
+                        <select name="startHour" id="startHour" required>
                             <option value="0">00h</option>
                             <option value="1">01h</option>
                             <option value="2">02h</option>
@@ -111,4 +112,6 @@
             </table>
         </div>
     </form>
+</div>
+
 </div>

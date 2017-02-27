@@ -39,7 +39,7 @@ a, a:hover{
     margin-bottom: 0;
 }
 .jumbotron{
-    text-align: center;
+
 }
 .navbarbottom{
     border-radius: 0px;
@@ -75,7 +75,6 @@ a, a:hover{
 }
 .jumbotron-registar, .jumbotron-login{
     margin-top: 0px;
-    margin-bottom: -56px;
     z-index: 50;
     background-image: url('../images/blurredBG.jpg');
 }
