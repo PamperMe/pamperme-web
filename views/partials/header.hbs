@@ -16,10 +16,10 @@
             </a>
         </div>
         <div class="clearfix hidden"></div>
-    <div class="pull-right">
+    <div class="pull-right menu-orientation">
         {{# if client }}
             <div class="btn-group group-action">
-                <i class="material-icons btn-sso">menu</i>
+                <i class="material-icons btn-sso pull-right">menu</i>
                 <ul class="menu-nav">
                     <a href="/user/profile"><li class="menu"><strong>{{user.name}}</strong></li></a>
                     <a href="/user/scheduling"><li class="menu"><strong>Marcar</strong></li></a>
@@ -31,13 +31,16 @@
             {{# if babysitter}}
                 <div class="btn-group group-action">
                     <i class="material-icons btn-sso pull-right">menu</i>
-                    <ul class="menu-nav">
-                        <a href="/user/profile"><li class="menu"><strong>{{user.name}}</strong></li></a>
-                        <a href="/user/schedules"><li class="menu"><strong>Marcações</strong></li></a>
-                        <a href="/user/history"><li class="menu"><strong>Histórico</strong></li></a>
-                        <a href="/user/availability"><li class="menu"><strong>Disponibilidade</strong></li></a>
-                        <a href="/user/logout"><li class="menu"><strong>Sair</strong></li></a>
-                    </ul>
+                    <div class="menu-nav-container">
+                        <ul class="menu-nav">
+                            <a href="/user/profile"><li class="menu"><strong>{{user.name}}</strong></li></a>
+                            <a href="/user/schedules"><li class="menu"><strong>Marcações</strong></li></a>
+                            <a href="/user/history"><li class="menu"><strong>Histórico</strong></li></a>
+                            <a href="/user/availability"><li class="menu"><strong>Disponibilidade</strong></li></a>
+                            <a href="/user/logout"><li class="menu"><strong>Sair</strong></li></a>
+                        </ul>
+                    </div>
+
                 </div>
             {{else}}
                 {{# if email}}
