@@ -17,6 +17,7 @@
     "firebase-admin": "^4.1.0",
     "google-cloud": "^0.47.0",
     "hbs": "~4.0.1",
+    "jquery-bar-rating": "^1.2.2",
     "morgan": "~1.7.0",
     "multer": "^1.3.0",
     "mysql": "^2.13.0",

@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-social.css">
     <link rel="stylesheet" type="text/css" href="/datepicker/css/main.css">
 
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib_scripts/jquery-bar-rating/dist/themes/fontawesome-stars.css">
 
 </head>
 <body>
@@ -34,7 +36,6 @@
 
 <!--DATEPICKER-->
 <script src="http://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css"></script>-->
 <script>
     $('#dayMonth').datepicker({
         inline: true,
@@ -45,9 +46,19 @@
         selectOtherMonths: true,
         dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
     });
+
+    $(function() {
+        $('#babysitterRate').barrating({
+            allowEmpty:true,
+            theme: 'fontawesome-stars',
+            initialRating:"{{searchEvaluation}}"
+        });
+    });
 </script>
 
 <!--DATEPICKER-->
+
+<script src="/lib_scripts/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
 
 
 </body>

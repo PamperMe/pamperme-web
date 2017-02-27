@@ -84,9 +84,11 @@ router.get('/profile/edit',isLoggedIn,function (req, res) {
 
 router.post('/profile/edit',isLoggedIn,function (req, res) {
     var query;
+    var description = req.body.description;
+    description = description.replace(/\r\n/gi,'<br>');
     if(req.app.locals.babysitter){
         query = util.format("UPDATE babysitter set name = '%s' , birthday =  '%s' , location = '%s', price = '%s' , phone = '%s' , description = '%s' where uid = '%s' "
-            ,req.body.name , req.body.birthday, req.body.location, req.body.price, req.body.phone, req.body.description, req.app.locals.user.uid);
+            ,req.body.name , req.body.birthday, req.body.location, req.body.price, req.body.phone, description, req.app.locals.user.uid);
 
     } else {
         query = util.format("UPDATE clients set name = '%s' , address =  '%s' , phone = '%s' where uid = '%s' "
@@ -104,7 +106,7 @@ router.post('/profile/edit',isLoggedIn,function (req, res) {
                    req.app.locals.user.location = req.body.location;
                    req.app.locals.user.price = req.body.price;
                    req.app.locals.user.phone = req.body.phone;
-                   req.app.locals.user.description = req.body.description;
+                   req.app.locals.user.description = description;
                }else{
                    req.app.locals.user.name = req.body.name;
                    req.app.locals.user.phone = req.body.phone;

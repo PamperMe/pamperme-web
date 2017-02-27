@@ -1,11 +1,23 @@
 <div class="container">
 
-    <form action="/" method="post">
+    <form action="/user/scheduling" method="post">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Nome" id="name">
-            <input type="text" class="form-control" placeholder="Localização" id="location">
-            <input type="text" class="form-control" placeholder="Preço" id="price">
-            <input type="text" class="form-control" placeholder="Data" class="dayMonth">
+            <input type="text" class="form-control" placeholder="Nome" value="{{searchName}}" name="name" id="name">
+            <input type="text" class="form-control" placeholder="Localização" value="{{searchLocation}}" name="location" id="location">
+            <input type="text" class="form-control" placeholder="Preço Mínimo" value="{{searchPriceMin}}" name="priceMin" id="priceMin">
+            <input type="text" class="form-control" placeholder="Preço Máximo" value="{{searchPriceMax}}" name="priceMax" id="priceMax">
+            <input type="text" class="form-control" placeholder="Data" value="{{searchDate}}" name="date" id="dayMonth">
+            <select id="babysitterRate" name="evaluation">
+                <option value=""></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <button type="submit" class="btn btn-md btn-success">Pesquisar</button>
+
         </div>
     </form>
     <div class="panel panel-default">
