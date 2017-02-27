@@ -1,5 +1,3 @@
-var displayMenu = false;
-
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 });
@@ -9,9 +7,4 @@ $('.btn-sso').click(function(){
     }else{
         $('.menu-nav').css({display:"none"});
     }
-
-});
-
-$(function () {
-    $('#availability_date_picker').datetimepicker();
 });

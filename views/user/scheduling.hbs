@@ -1,11 +1,31 @@
 <div class="container">
-    {{# if data}}
-        {{#each data}}
-            <a class="profile-sitter" href="/babysitter/{{this.uid}}"><div>{{this.name}}</div></a>
-        {{/each}}
-    {{else}}
-        <div class="container">
-            <h1 style="padding: 100px 0;">Não existem Dados.</h1>
+
+    <form action="/" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Nome" id="name">
+            <input type="text" class="form-control" placeholder="Localização" id="location">
+            <input type="text" class="form-control" placeholder="Preço" id="price">
+            <input type="text" class="form-control" placeholder="Data" class="dayMonth">
         </div>
-    {{/if}}
+    </form>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Babysitters</div>
+        <!-- List group -->
+        {{# if data}}
+            {{#each data}}
+                <ul class="list-group babysitter-list">
+                    <a href="/babysitter/{{this.uid}}">
+                        <li class="list-group-item">{{this.name}}</li>
+                    </a>
+                </ul>
+            {{/each}}
+        {{else}}
+            <div class="container">
+                <h1 style="padding: 100px 0;">Não existem Dados.</h1>
+            </div>
+        {{/if}}
+    </div>
+
+
 </div>

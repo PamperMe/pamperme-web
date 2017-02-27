@@ -135,6 +135,15 @@ a, a:hover{
     color:#777;
 }
 
+.babysitter-list a{
+    text-transform: none;
+    color:black;
+}
+
+.babysitter-list li:hover{
+    background-color: #f3f3f3;
+}
+
 .move-group{
     margin-top: -12px;
     margin-bottom: -12px;

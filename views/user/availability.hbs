@@ -2,17 +2,50 @@
     <form class="form-signin" method="post" action="/user/availability">
         <h2 class="form-signin-heading">Agendar</h2>
         <div class="form-group">
-            <input type="text" id="dayMonth" placeholder="Data" name="dayMonth">
+            <input type="text" id="dayMonth" name="dayMonth">
             <input type="number" id="startHour" name="startHour" max="23" min="0">
             <input type="number" id="duration" name="duration">
             <button class="btn btn-lg btn-success" type="submit">Adicionar Disponibilidade</button>
         </div>
         <div class="result-schedule" name="result">
-            {{# if schedule}}
-                {{#each schedule}}
-                    <div>{{this.date}}</div>
-                {{/each}}
-            {{/if}}
+
         </div>
     </form>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <h3 class="panel-title">Disponibilidade</h3>
+        </div>
+
+        <!-- Table -->
+        <table class="table">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Hora Inicio</th>
+                    <th>Hora Fim</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{# if schedule}}
+                    {{#each schedule}}
+                        <tr>
+                            <td>
+                                {{this.date}}
+                            </td>
+                            <td>
+                                {{this.start_hour}}:00
+                            </td>
+                            <td>
+                                {{this.end_hour}}:00
+                            </td>
+                        </tr>
+                    {{/each}}
+                {{/if}}
+                </tbody>
+            </table>
+        </table>
+    </div>
 </div>
