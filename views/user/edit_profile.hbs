@@ -1,35 +1,55 @@
-<form method="post" action="/user/profile/edit">
-    {{# if babysitter}}
-        Name:<br>
-        <input type="text" value="{{user.name}}" name="name">
-        <p></p>
-        Birthday:<br>
-        //TODO mudar o type para date
-        <input type="text" value="{{user.birthday}}" name="birthday">
-        <p></p>
-        Location:<br>
-        <input type="text" value="{{user.location}}" name="location">
-        <p></p>
-        Price:<br>
-        <input type="number" value="{{user.price}}" name="price">
-        <p></p>
-        Phone:<br>
-        <input type="text" value="{{user.phone}}" name="phone">
-        <p></p>
-        Description:<br>
-        <input type="text" value="{{user.description}}" name="description">
-        <p></p>
-        <button type="submit">Guardar</button>
-    {{else}}
-        {{#if client}}
-            Name:
-            <p><input type="text" value="{{user.name}}" name="name"></p>
-            Address:
-            <p><input type="text" value="{{user.address}}" name="address"></p>
-            Phone:
-            <p><input type="text" value="{{user.phone}}" name="phone"></p>
-            <button type="submit">Guardar</button>
-        {{/if}}
-    {{/ if}}
+<div class="jumbotron jumbotron fill">
+    <div class="container">
+        <div class="form-position">
+            <form method="post" action="/user/profile/edit">
+                {{# if babysitter}}
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" class="form-control" value="{{user.name}}" name="name" id="name">
+                        </p>
+                        <label for="dayMonth">Aniversário</label>
+                        <!--//TODO mudar o type para date-->
+                        <input type="text" class="form-control" id="dayMonth" placeholder="Aniversário"  name="birthday" value="{{user.birthday}}">
+                        </p>
+                        <label for="location">Localidade</label>
+                        <input type="text" id="location" class="form-control" value="{{user.location}}" name="location">
+                        </p>
+                        <label for="price">Preço (€/H)</label>
+                        <input type="number" id="price" class="form-control" value="{{user.price}}" name="price">
+                        </p>
+                        <label for="phone">Telefone</label>
+                        <input type="text" id="phone" class="form-control" value="{{user.phone}}" name="phone">
+                        </p>
+                        <label for="description">Descrição</label>
+                        <textarea rows="5" id="description" class="form-control" name="description">{{user.description}}</textarea>
+                    </div>
 
-</form>
+                    <button class="btn btn-success btn-block" type="submit">Guardar</button>
+                {{else}}
+                    {{#if client}}
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" value="{{user.name}}" name="name" id="name">
+                            </p>
+                            <label for="address">Morada</label>
+                            <input type="text" class="form-control" value="{{user.address}}" name="address" id="address">
+                            </p>
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" value="{{user.phone}}" name="phone" id="phone">
+                            </p>
+                        </div>
+                        <button class="btn btn-success btn-block" type="submit">Guardar</button>
+                    {{/if}}
+                {{/ if}}
+
+            </form>
+        </div>
+    </div>
+
+</div>
+    <div class="container">
+
+    </div>
+
+
+</div>
