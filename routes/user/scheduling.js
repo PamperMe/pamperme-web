@@ -66,7 +66,7 @@ router.post('/', isLoggedIn, function (req, res) {
         req.app.locals.searchEvaluation = value;
     }
 
-    if (combined != " where ") {
+    if (combined != " where " ) {
         combined = combined.substring(0, combined.length - 5);
         query = util.format(search_query, combined);
     } else {
