@@ -25,9 +25,7 @@
             {{#each data}}
 
                 <ul class="list-group babysitter-list">
-                    <a>
-                        <img class="img-circle img-responsive" src="{{babysitter.photo_url}}">
-                    </a>
+                    <a><img class="img-circle img-responsive" src="{{this.photo_url}}"></a>
                     <a href="/babysitter/{{this.uid}}">
                         <li class="list-group-item">{{this.name}}</li>
                     </a>

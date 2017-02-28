@@ -158,8 +158,9 @@ a, a:hover{
     }
 }
 .img-responsive{
-    max-height:150px;
-    max-width:150px;
+    max-height:100px;
+    max-width:100px;
+    left: auto;
 }
 .profile-img, .profile-info, .profile-contact{
 
