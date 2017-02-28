@@ -23,18 +23,41 @@
         <!-- List group -->
         {{# if data}}
             {{#each data}}
-
                 <ul class="list-group babysitter-list">
-                    <a><img class="img-circle img-responsive" src="{{this.photo_url}}"></a>
+                    <a href="/babysitter/{{this.uid}}">
+                        <img  class="img-circle img-responsive" src="{{this.photo_url}}">
+                    </a>
                     <a href="/babysitter/{{this.uid}}">
                         <li class="list-group-item">{{this.name}}</li>
                     </a>
                 </ul>
+
             {{/each}}
         {{else}}
             <div class="container">
                 <h1 style="padding: 100px 0;">Não existem Dados.</h1>
             </div>
         {{/if}}
+        {{# if this.photo_url}}
+            <ul class="list-group babysitter-list">
+                <a href="/babysitter/{{this.uid}}">
+                    <img  class="img-circle img-responsive" src="{{this.photo_url}}">
+                </a>
+                <a href="/babysitter/{{this.uid}}">
+                    <li class="list-group-item">{{this.name}}</li>
+                </a>
+            </ul>
+            {{else}}
+            <ul class="list-group babysitter-list">
+                <a href="/babysitter/{{this.uid}}">
+                    <img  class="img-circle img-responsive" src="/images/icon_undifined.png">
+                </a>
+                <a href="/babysitter/{{this.uid}}">
+                    <li class="list-group-item">{{this.name}}</li>
+                </a>
+            </ul>
+        {{/if}}
     </div>
 </div>
+
+

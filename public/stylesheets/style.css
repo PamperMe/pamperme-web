@@ -158,9 +158,9 @@ a, a:hover{
     }
 }
 .img-responsive{
-    max-height:100px;
-    max-width:100px;
-    left: auto;
+    max-height: 50px;
+    max-width: 50px;
+
 }
 .profile-img, .profile-info, .profile-contact{
 
