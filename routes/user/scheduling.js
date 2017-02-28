@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const util = require('util');
 
-const query_sitters = "SELECT distinct uid, name FROM babysitter";
+const query_sitters = "SELECT distinct uid, name, photo_url FROM babysitter";
 
-const search_query = "SELECT distinct b.uid,b.name from babysitter b inner join schedule s on s.id_babysitter = b.id %s";
+const search_query = "SELECT distinct b.uid,b.name, b.photo_url from babysitter b inner join schedule s on s.id_babysitter = b.id %s";
 
 const connection = require('../../models/Connect');
 
@@ -58,6 +58,7 @@ router.post('/', isLoggedIn, function (req, res) {
         combined = combined.concat(evaluation);
     }
     req.app.locals.searchName = req.body.name;
+
     req.app.locals.searchLocation = req.body.location;
     req.app.locals.searchPriceMin = req.body.priceMin;
     req.app.locals.searchPriceMax = req.body.priceMax;
