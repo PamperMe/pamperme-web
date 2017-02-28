@@ -10,8 +10,10 @@ $(window).resize(function(){
 });
 $('.btn-sso').click(function(){
     if($('.menu-nav').css("display") != "inline"){
+        $('.menu-nav-container').css({"margin-top":"50px"});
         $('.menu-nav').css({display:"inline"});
     }else{
         $('.menu-nav').css({display:"none"});
+        $('.menu-nav-container').css({"margin-top":"0"});
     }
 });

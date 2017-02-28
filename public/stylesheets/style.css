@@ -195,7 +195,6 @@ a, a:hover{
 
 }
 .menu-nav-container{
-    margin-top:50px;
     padding-top: 0px;
 }
 .menu{
@@ -224,6 +223,7 @@ a, a:hover{
         position: relative;
     }
     .menu-nav-container{
+        background-color: #222;
         padding-top: 50px;
     }
     .menu-orientation{

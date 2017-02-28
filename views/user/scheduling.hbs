@@ -2,9 +2,12 @@
     <form action="/user/scheduling" method="post">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Nome" value="{{searchName}}" name="name" id="name">
-            <input type="text" class="form-control" placeholder="Localização" value="{{searchLocation}}" name="location" id="location">
-            <input type="text" class="form-control" placeholder="Preço Mínimo" value="{{searchPriceMin}}" name="priceMin" id="priceMin">
-            <input type="text" class="form-control" placeholder="Preço Máximo" value="{{searchPriceMax}}" name="priceMax" id="priceMax">
+            <input type="text" class="form-control" placeholder="Localização" value="{{searchLocation}}" name="location"
+                   id="location">
+            <input type="text" class="form-control" placeholder="Preço Mínimo" value="{{searchPriceMin}}"
+                   name="priceMin" id="priceMin">
+            <input type="text" class="form-control" placeholder="Preço Máximo" value="{{searchPriceMax}}"
+                   name="priceMax" id="priceMax">
             <input type="text" class="form-control" placeholder="Data" value="{{searchDate}}" name="date" id="dayMonth">
             <select id="babysitterRate" name="evaluation">
                 <option value=""></option>
@@ -23,13 +26,17 @@
         <!-- List group -->
         {{# if data}}
             {{#each data}}
+                <a href="/babysitter/{{this.uid}}">
+                    <ul class="list-group babysitter-list">
+                        {{#if this.photo_url}}
+                            <img class="img-circle img-responsive" src="{{this.photo_url}}">
+                        {{else}}
+                            <img class="img-circle img-responsive" src="/images/selena-gomez.jpg">
+                        {{/if}}
 
-                <ul class="list-group babysitter-list">
-                    <a><img class="img-circle img-responsive" src="{{this.photo_url}}"></a>
-                    <a href="/babysitter/{{this.uid}}">
                         <li class="list-group-item">{{this.name}}</li>
-                    </a>
-                </ul>
+                    </ul>
+                </a>
             {{/each}}
         {{else}}
             <div class="container">
