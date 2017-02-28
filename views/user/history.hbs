@@ -52,15 +52,52 @@
             {{/each}}
         {{else}}
             {{#each data}}
-                <ul>
-                    <p>name {{this.babysitter_name}}</p>
-                    <p>date {{this.date}}</p>
-                    <p>start {{this.start_hour}}</p>
-                    <p>dur {{this.duration}}</p>
-                    <p>eval {{this.evaluation}}</p>
-                    <p>{{this.price}}</p>
-                    <br>
-                </ul>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th> Client </th>
+                        <th> Date </th>
+                        <th> Address </th>
+                        <th> Start Hour </th>
+                        <th> Duration </th>
+                        <th> Evaluation </th>
+                        <th> Price </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>{{this.client_name}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.address}}</td>
+                        <td>{{this.start_hour}}</td>
+                        <td>{{this.duration}}</td>
+                        <td>{{this.evaluation}}</td>
+                        <td>{{this.price}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>{{this.client_name}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.address}}</td>
+                        <td>{{this.start_hour}}</td>
+                        <td>{{this.duration}}</td>
+                        <td>{{this.evaluation}}</td>
+                        <td>{{this.price}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>{{this.client_name}}</td>
+                        <td>{{this.date}}</td>
+                        <td>{{this.address}}</td>
+                        <td>{{this.start_hour}}</td>
+                        <td>{{this.duration}}</td>
+                        <td>{{this.evaluation}}</td>
+                        <td>{{this.price}}</td>
+                    </tr>
+                    </tbody>
+                </table>
             {{/each}}
         {{/if}}
     {{else}}
