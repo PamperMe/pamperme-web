@@ -118,6 +118,13 @@ a, a:hover{
     background-size:cover;
 }
 
+.img-profile-big{
+    width:175px;
+    height: 175px;
+    background-position: center;
+    background-size: cover;
+}
+
 .img-profile-small{
     width: 75px;
     height: 75px;
@@ -206,12 +213,19 @@ a, a:hover{
     max-width:100px;
     left: auto;
 }
-.profile-img, .profile-info, .profile-contact{
+.profile-contact{
 
 }
+
+.profile-img{
+    width: 200px;
+    height: 200px;
+}
+
 .profile-info{
-
+    min-height:175px;
 }
+
 .profile-description{
     padding:10px;
     text-align: justify;
