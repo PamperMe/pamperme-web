@@ -36,7 +36,6 @@ a, a:hover{
 }
 
 .navbar,.jumbotron{
-
     margin-bottom: 0;
 }
 .jumbotron{
@@ -191,6 +190,7 @@ a, a:hover{
 .babysitter-list a{
     text-transform: none;
     color:black;
+
 }
 
 .babysitter-list li:hover{
@@ -211,6 +211,7 @@ a, a:hover{
 .img-responsive{
     max-height: 50px;
     max-width: 50px;
+    align: left;
 
 }
 .profile-contact{

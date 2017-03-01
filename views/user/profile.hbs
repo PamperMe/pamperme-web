@@ -26,7 +26,7 @@
                         <p>
                         <h3><span> Nome: {{user.name}} </span></h3></p>
                         <p><h4><span> Idade: {{user.birthday}} </span></h4></p>
-                        <p><h4><span> Localidade: {{user.location}} </span></h4></p>
+                        <p><h4><span class="glyphicon glyphicon-home"> {{user.location}} </span></h4></p>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
@@ -34,12 +34,16 @@
                         <!--Info rating/contact/price h-->
                         <span>7.5/10 </span><!--rating-->
                         <div><!--Contact-->
-                            <span> Phone: {{user.phone}} </span>
+                            <span class="glyphicon glyphicon-phone"> {{user.phone}} </span>
                         </div>
                         <span>{{user.price}}€/h</span><!--price h-->
                         <br>
                         <br>
-                        <a href="/user/profile/edit"  class=" btn btn-primary btn-block">Editar</a>
+                        <a href="/user/profile/edit">
+                            <button type="button" class=" btn btn-primary">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="row">
@@ -47,11 +51,11 @@
                         <div class="thumbnail profile-description">
                             <!--Descrição da babysitter-->
                             <span> {{{user.description}}}</span>
-                            <form id="uploadForm"
-                                  enctype="multipart/form-data"
-                                  action="/user/fileupload"
-                                  method="post">
-                                <input type="file" name="userPhoto"/>
+                            <form   id="uploadForm"
+                                    enctype="multipart/form-data"
+                                    action="/user/fileupload"
+                                    method="post">
+                                <input class="glyphicon glyphicon-camera" type="file" name="userPhoto"/>
                                 <input type="submit" value="Upload Image" name="submit">
                             </form>
                         </div>
@@ -74,18 +78,22 @@
                             <!--Info Centrado-->
                             <p>
                             <h3><span> Nome: {{user.name}} </span></h3></p>
-                            <p><h4><span> Localidade: {{user.address}} </span></h4></p>
+                            <p><h4><span class="glyphicon glyphicon-home"></span> {{user.address}}</h4></p>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                         <div class="thumbnail profile-contact">
                             <!--Info rating/contact/price h-->
                             <div><!--Contact-->
-                                <span> Phone: {{user.phone}} </span>
+                                <span class="glyphicon glyphicon-phone"> {{user.phone}} </span>
                             </div>
                         </div>
                         <br>
-                        <a href="/user/profile/edit"><button type="button" class=" btn btn-primary"> Editar</button></a>
+                        <a href="/user/profile/edit">
+                            <button type="button" class=" btn btn-primary">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </a>
                     </div>
                     <form id="uploadForm"
                           enctype="multipart/form-data"
