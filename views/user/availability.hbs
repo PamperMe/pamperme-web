@@ -81,34 +81,31 @@
 
                 </div>
 
-                <!-- Table -->
-                <table class="table">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Hora Inicio</th>
-                            <th>Hora Fim</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {{# if schedule}}
-                            {{#each schedule}}
-                                <tr>
-                                    <td>
-                                        {{this.date}}
-                                    </td>
-                                    <td>
-                                        {{this.start_hour}}:00
-                                    </td>
-                                    <td>
-                                        {{this.end_hour}}:00
-                                    </td>
-                                </tr>
-                            {{/each}}
-                        {{/if}}
-                        </tbody>
-                    </table>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fim</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{# if schedule}}
+                        {{#each schedule}}
+                            <tr>
+                                <td>
+                                    {{this.date}}
+                                </td>
+                                <td>
+                                    {{this.start_hour}}:00
+                                </td>
+                                <td>
+                                    {{this.end_hour}}:00
+                                </td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                    </tbody>
                 </table>
             </div>
         </form>

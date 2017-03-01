@@ -2,103 +2,73 @@
     <h1>Histórico</h1>
     {{# if data}}
         {{# if babysitter}}
-            {{#each data}}
+
+            <div class="panel panel-default">
+                <!-- Table -->
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th> Client </th>
-                        <th> Date </th>
-                        <th> Address </th>
-                        <th> Start Hour </th>
-                        <th> Duration </th>
-                        <th> Evaluation </th>
-                        <th> Price </th>
+                        <th>Cliente</th>
+                        <th>Data</th>
+                        <th>Morada</th>
+                        <th>Hora Início</th>
+                        <th>Duração</th>
+                        <th>Avaliação</th>
+                        <th>Preço</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>{{this.client_name}}</td>
-                        <td>{{this.date}}</td>
-                        <td>{{this.address}}</td>
-                        <td>{{this.start_hour}}</td>
-                        <td>{{this.duration}}</td>
-                        <td>{{this.evaluation}}</td>
-                        <td>{{this.price}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>{{this.client_name}}</td>
-                        <td>{{this.date}}</td>
-                        <td>{{this.address}}</td>
-                        <td>{{this.start_hour}}</td>
-                        <td>{{this.duration}}</td>
-                        <td>{{this.evaluation}}</td>
-                        <td>{{this.price}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>{{this.client_name}}</td>
-                        <td>{{this.date}}</td>
-                        <td>{{this.address}}</td>
-                        <td>{{this.start_hour}}</td>
-                        <td>{{this.duration}}</td>
-                        <td>{{this.evaluation}}</td>
-                        <td>{{this.price}}</td>
-                    </tr>
+                    {{#each data}}
+                        <tr>
+                            <td>{{this.client_name}}</td>
+                            <td>{{this.date}}</td>
+                            <td>{{this.address}}</td>
+                            <td>{{this.start_hour}}</td>
+                            <td>{{this.duration}}</td>
+                            <td>{{this.evaluation}}</td>
+                            <td>{{this.price}}</td>
+                        </tr>
+                    {{/each}}
                     </tbody>
                 </table>
-            {{/each}}
+            </div>
+
         {{else}}
-            {{#each data}}
+
+            <div class="panel panel-default">
+                <!-- Table -->
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th> Client </th>
-                        <th> Date </th>
-                        <th> Address </th>
-                        <th> Start Hour </th>
-                        <th> Duration </th>
-                        <th> Evaluation </th>
-                        <th> Price </th>
+                        <th>Data</th>
+                        <th>Hora Início</th>
+                        <th>Duração</th>
+                        <th>Avaliação</th>
+                        <th>Preço</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>{{this.client_name}}</td>
-                        <td>{{this.date}}</td>
-                        <td>{{this.address}}</td>
-                        <td>{{this.start_hour}}</td>
-                        <td>{{this.duration}}</td>
-                        <td>{{this.evaluation}}</td>
-                        <td>{{this.price}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>{{this.client_name}}</td>
-                        <td>{{this.date}}</td>
-                        <td>{{this.address}}</td>
-                        <td>{{this.start_hour}}</td>
-                        <td>{{this.duration}}</td>
-                        <td>{{this.evaluation}}</td>
-                        <td>{{this.price}}</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>{{this.client_name}}</td>
-                        <td>{{this.date}}</td>
-                        <td>{{this.address}}</td>
-                        <td>{{this.start_hour}}</td>
-                        <td>{{this.duration}}</td>
-                        <td>{{this.evaluation}}</td>
-                        <td>{{this.price}}</td>
-                    </tr>
+                    {{#each data}}
+                        <tr class="link">
+                            <td>{{this.date}}</td>
+                            <td>{{this.start_hour}}</td>
+                            <td>{{this.duration}}</td>
+                            <td>
+                                {{#if this.evaluation}}
+                                    {{this.evaluation}}
+                                {{else}}
+                                    <!--TODO put input if empty-->
+                                    need input
+                                {{/if}}
+
+                            </td>
+                            <td>{{this.price}}</td>
+                        </tr>
+                    {{/each}}
                     </tbody>
                 </table>
-            {{/each}}
+            </div>
+
         {{/if}}
     {{else}}
         <div class="container">

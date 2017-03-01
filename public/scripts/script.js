@@ -17,3 +17,10 @@ $('.btn-sso').click(function(){
         $('.menu-nav-container').css({"margin-top":"0"});
     }
 });
+
+
+$('tr[data-href]').on("click", function() {
+    document.location = $(this).data('href');
+    // TODO colocar popup para aceitar/rejeitar marcação
+    alert("Colocar popup aqui");
+});
