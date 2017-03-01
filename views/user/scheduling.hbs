@@ -1,4 +1,5 @@
 <div class="container">
+    <h1>FACAM ISSO AO VOSSO GOSTO</h1>
     <form action="/user/scheduling" method="post">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Nome" value="{{searchName}}" name="name" id="name">
@@ -31,7 +32,7 @@
                         <li class="list-group-item babysitter-list-cell">
                             <table>
                                 <tr>
-                                    <td>
+                                    <td class="start">
                                         {{#if this.photo_url}}
                                             <img class="img-circle img-profile-small"
                                                  style="background-image: url({{this.photo_url}})">
@@ -40,9 +41,19 @@
                                                  style="background-image: url('/images/selena-gomez.jpg')">
                                         {{/if}}
                                     </td>
-                                    <td>
-                                        <div>
+                                    <td class="middle">
+                                        <div class="-align-left">
                                             {{this.name}}
+                                        </div>
+                                    </td>
+                                    <td class="end">
+                                        <div class="-align-right">
+                                            {{#if this.location}}
+                                                {{this.location}}
+                                            {{else}}
+                                                <span>Indisponível</span>
+                                            {{/if}}
+
                                         </div>
                                     </td>
                                 </tr>

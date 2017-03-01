@@ -125,6 +125,27 @@ a, a:hover{
     background-size: cover;
 }
 
+.babysitter-list-cell table{
+    width:100%;
+}
+
+.babysitter-list-cell table tr .start{
+    width: 10%
+}
+
+.babysitter-list-cell table tr .middle{
+    width: 70%
+}
+
+.babysitter-list-cell table tr  span{
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+.babysitter-list-cell table tr .end{
+    width: 20%;
+    text-align: right;
+}
 
 .babysitter-list-cell table tr td div{
     margin-left: 15px;
