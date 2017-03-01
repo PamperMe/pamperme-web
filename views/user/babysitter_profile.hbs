@@ -3,55 +3,59 @@
         <div class="jumbotron fill no-margin">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                    <div class="thumbnail profile-img">
+                    <div class="profile-img">
                         <!--Imagem Lado esquerdo-->
-                        <img class="img-circle img-responsive" src="{{data.photo_url}}">
+                        <img class="img-circle img-profile-big"
+                             style="background-image: url({{user.photo_url}})">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
-                    <div class="thumbnail profile-info">
-                        <!--Info Centrado-->
-                        <p>
-                        <h3><span> Nome: {{data.name}} </span></h3></p>
-                        <p><h4><span> Idade: {{data.birthday}} </span></h4></p>
-                        <p><h4><span> Localidade: {{data.location}} </span></h4></p>
+                    <div class="thumbnail">
+                        <h2 style="text-align: center; width: 100%; margin: 20px 0"><span>{{data.name}} </span></h2>
+                        <div>
+                            <table style=" width: 100%;margin: 0 auto;">
+                                <tr>
+                                    <td>
+                                        <h5><span>{{data.birthday}} anos</span></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5><span>{{data.location}}</span></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5><span>{{data.evaluation}}</span></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5><span>{{data.phone}}</span></h5>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h5><span>{{data.price}}</span></h5>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
+                {{#if data.description}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="thumbnail profile-description">
+                            <!--Descrição da babysitter-->
+                            <span> {{{data.description}}}</span>
+                        </div>
+                    </div>
+                {{/if}}
                 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
                     <div class="thumbnail profile-contact">
                         <!--Info rating/contact/price h-->
-                        <span>7.5/10 </span><!--rating-->
-                        <div><!--Contact-->
-                            <span> Phone: {{data.phone}} </span>
-                        </div>
-                        <span>{{data.price}}€/h</span><!--price h-->
-                    </div>
-                    <br>
-                    <button type="button" class=" btn btn-primary"> Contactar</button>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        {{#if data.description}}
-                        <div class="thumbnail profile-description">
-                            <!--Descrição da babysitter-->
-                            <span> {{data.description}}</span>
-                        </div>
-                        {{/if}}
-                        <div class="thumbnail profile-description">
-                            <h3>Disponibilidade</h3>
-                            {{#if availability}}
-                                {{#each availability}}
-                                    <ul>
-                                        <div>data - {{this.date}}</div>
-                                        <div>hora inicio - {{this.start_hour}}</div>
-                                        <div>hora fim - {{this.end_hour}}</div>
-                                    </ul>
-                                {{/each}}
-                            {{else}}
-                                <div>Não existem dados.</div>
-                            {{/if}}
-
-                        </div>
+                        <a href="#" class=" btn btn-primary btn-block">Contactar</a>
                     </div>
                 </div>
             </div>

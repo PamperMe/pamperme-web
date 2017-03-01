@@ -114,7 +114,57 @@ a, a:hover{
 .img-profile{
     width: 100px;
     height: 100px;
+    background-repeat:no-repeat;
+    background-size:cover;
 }
+
+.img-profile-big{
+    width:175px;
+    height: 175px;
+    background-position: center;
+    background-size: cover;
+}
+
+.img-profile-small{
+    width: 75px;
+    height: 75px;
+    background-position: center;
+    background-size: cover;
+}
+
+.babysitter-list-cell table{
+    width:100%;
+}
+
+.babysitter-list-cell table tr .start{
+    width: 10%
+}
+
+.babysitter-list-cell table tr .middle{
+    width: 70%
+}
+
+.babysitter-list-cell table tr  span{
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+.babysitter-list-cell table tr .end{
+    width: 20%;
+    text-align: right;
+}
+
+.babysitter-list-cell table tr td div{
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+
+.babysitter-list{
+    margin-bottom: 15px;
+}
+
+
 .thumbnail{
     border:0px;
 
@@ -152,6 +202,7 @@ a, a:hover{
     margin-bottom: -12px;
 
 }
+
 @media (min-width: 768px){
     .navbar {
         border-radius: 0px;
@@ -162,12 +213,19 @@ a, a:hover{
     max-width: 50px;
 
 }
-.profile-img, .profile-info, .profile-contact{
+.profile-contact{
 
 }
+
+.profile-img{
+    width: 200px;
+    height: 200px;
+}
+
 .profile-info{
-
+    min-height:175px;
 }
+
 .profile-description{
     padding:10px;
     text-align: justify;
@@ -195,7 +253,6 @@ a, a:hover{
 
 }
 .menu-nav-container{
-    margin-top:50px;
     padding-top: 0px;
 }
 .menu{
@@ -224,6 +281,7 @@ a, a:hover{
         position: relative;
     }
     .menu-nav-container{
+        background-color: #222;
         padding-top: 50px;
     }
     .menu-orientation{

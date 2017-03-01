@@ -1,13 +1,13 @@
 <div class="jumbotron fill">
-<div class="container">
-    <form class="form-signin" method="post" action="/user/availability">
-        <h2 class="form-signin-heading">Agendar</h2>
-        <div class="thumbnail">
-            <div class="row">
-                <div  class="col-lg-2 col-xs-12">
-                    <input type="text" id="dayMonth" placeholder="Data" name="dayMonth" required>
-                </div>
-                <div  class="col-lg-2 col-xs-12">
+    <div class="container">
+        <form class="form-signin" method="post" action="/user/availability">
+            <h2 class="form-signin-heading">Agendar</h2>
+            <div class="thumbnail">
+                <div class="row">
+                    <div class="col-lg-2 col-xs-12">
+                        <input type="text" id="dayMonth" placeholder="Data" name="dayMonth" required>
+                    </div>
+                    <div class="col-lg-2 col-xs-12">
 
                         <label for="startHour">Hora de Inicio</label>
                         <select name="startHour" id="startHour" required>
@@ -36,10 +36,10 @@
                             <option value="22">22h</option>
                             <option value="23">23h</option>
                         </select>
-                </div>
-                <div  class="col-lg-2 col-xs-12">
+                    </div>
+                    <div class="col-lg-2 col-xs-12">
                         <label for="duration">Duração</label>
-                        <select  name="duration" id="duration">
+                        <select name="duration" id="duration">
                             <option value="1">01h</option>
                             <option value="2">02h</option>
                             <option value="3">03h</option>
@@ -64,25 +64,23 @@
                             <option value="22">22h</option>
                             <option value="23">23h</option>
                         </select>
+                    </div>
+                    <div class="col-lg-2 col-xs-12">
+                        <button class="btn btn-xs btn-success" type="submit">Adicionar Disponibilidade</button>
+                    </div>
                 </div>
-                <div  class="col-lg-2 col-xs-12">
-                    <button class="btn btn-xs btn-success" type="submit">Adicionar Disponibilidade</button>
-                </div>
+
+
             </div>
 
 
-        </div>
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <h3 class="panel-title">Disponibilidade</h3>
 
+                </div>
 
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">
-                <h3 class="panel-title">Disponibilidade</h3>
-
-            </div>
-
-            <!-- Table -->
-            <table class="table">
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -102,16 +100,15 @@
                                     {{this.start_hour}}:00
                                 </td>
                                 <td>
-                                    {{this.end_hour}}
+                                    {{this.end_hour}}:00
                                 </td>
                             </tr>
                         {{/each}}
                     {{/if}}
                     </tbody>
                 </table>
-            </table>
-        </div>
-    </form>
-</div>
+            </div>
+        </form>
+    </div>
 
 </div>

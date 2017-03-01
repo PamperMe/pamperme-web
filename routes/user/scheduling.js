@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const util = require('util');
 
-const query_sitters = "SELECT distinct uid, name, photo_url FROM babysitter";
+const query_sitters = "SELECT distinct uid, name, photo_url, location FROM babysitter";
 
-const search_query = "SELECT distinct b.uid,b.name, b.photo_url from babysitter b inner join schedule s on s.id_babysitter = b.id %s";
+const search_query = "SELECT distinct b.uid,b.name, b.photo_url, b.location from babysitter b left join schedule s on s.id_babysitter = b.id %s";
 
 const connection = require('../../models/Connect');
 
@@ -33,7 +33,7 @@ router.post('/', isLoggedIn, function (req, res) {
         combined = combined.concat(name);
     }
     if (req.body.location != "") {
-        location = util.format("b.location like '%s' and ", req.body.location);
+        location = util.format("b.location like '%s' and ", "%" + req.body.location + "%");
         combined = combined.concat(location);
     }
     if (req.body.priceMin != "") {
@@ -66,7 +66,6 @@ router.post('/', isLoggedIn, function (req, res) {
     if (value != undefined) {
         req.app.locals.searchEvaluation = value;
     }
-
     if (combined != " where " ) {
         combined = combined.substring(0, combined.length - 5);
         query = util.format(search_query, combined);
