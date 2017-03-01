@@ -114,7 +114,23 @@ a, a:hover{
 .img-profile{
     width: 100px;
     height: 100px;
+    background-repeat:no-repeat;
+    background-size:cover;
 }
+
+.img-profile-small{
+    width: 75px;
+    height: 75px;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.babysitter-list-cell table tr td div{
+    margin-left: 15px;
+    font-size: 20px;
+}
+
 .thumbnail{
     border:0px;
 

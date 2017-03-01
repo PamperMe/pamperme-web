@@ -28,13 +28,27 @@
             {{#each data}}
                 <a href="/babysitter/{{this.uid}}">
                     <ul class="list-group babysitter-list">
-                        {{#if this.photo_url}}
-                            <img class="img-circle img-responsive" src="{{this.photo_url}}">
-                        {{else}}
-                            <img class="img-circle img-responsive" src="/images/selena-gomez.jpg">
-                        {{/if}}
+                        <li class="list-group-item babysitter-list-cell">
+                            <table>
+                                <tr>
+                                    <td>
+                                        {{#if this.photo_url}}
+                                            <img class="img-circle img-profile-small"
+                                                 style="background-image: url({{this.photo_url}})">
+                                        {{else}}
+                                            <img class="img-circle img-profile-small"
+                                                 style="background-image: url('/images/selena-gomez.jpg')">
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        <div>
+                                            {{this.name}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
 
-                        <li class="list-group-item">{{this.name}}</li>
+                        </li>
                     </ul>
                 </a>
             {{/each}}
