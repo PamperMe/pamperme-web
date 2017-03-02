@@ -44,6 +44,7 @@ router.post('/login', function (req, res) {
                 if (code == 1) {
                     req.app.locals.babysitter = true;
                     req.app.locals.user = result;
+                    req.app.locals.userAge = getAge(result.birthday);
                     res.redirect('/user/profile');
                 } else if (code == 2) {
                     req.app.locals.client = true;
@@ -153,5 +154,14 @@ function getBabysitter(uid, callback) {
         }
     });
 }
-
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
 module.exports = router;

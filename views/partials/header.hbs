@@ -16,19 +16,21 @@
             </a>
         </div>
         <div class="clearfix hidden"></div>
-    <div class="pull-right menu-orientation">
         {{# if client }}
-            <div class="btn-group group-action">
-                <i class="material-icons btn-sso pull-right">menu</i>
-                <ul class="menu-nav">
-                    <a href="/user/profile"><li class="menu"><strong>{{user.name}}</strong></li></a>
-                    <a href="/user/scheduling"><li class="menu"><strong>Marcar</strong></li></a>
-                    <a href="/user/history"><li class="menu"><strong>Histórico</strong></li></a>
-                    <a href="/user/logout"><li class="menu"><strong><span class="glyphicon glyphicon-log-out"></span></strong></li></a>
-                </ul>
+            <div class="pull-right menu-orientation">
+                <div class="btn-group group-action">
+                    <i class="material-icons btn-sso pull-right">menu</i>
+                    <ul class="menu-nav">
+                        <a href="/user/profile"><li class="menu"><strong>{{user.name}}</strong></li></a>
+                        <a href="/user/scheduling"><li class="menu"><strong>Marcar</strong></li></a>
+                        <a href="/user/history"><li class="menu"><strong>Histórico</strong></li></a>
+                        <a href="/user/logout"><li class="menu"><strong><span class="glyphicon glyphicon-log-out"></span></strong></li></a>
+                    </ul>
+                </div>
             </div>
         {{else}}
             {{# if babysitter}}
+            <div class="pull-right menu-orientation">
                 <div class="btn-group group-action">
                     <i class="material-icons btn-sso pull-right">menu</i>
                     <div class="menu-nav-container">
@@ -40,10 +42,11 @@
                             <a href="/user/logout"><li class="menu"><strong><span class="glyphicon glyphicon-log-out"></span></strong></li></a>
                         </ul>
                     </div>
-
                 </div>
+            </div>
             {{else}}
                 {{# if email}}
+                    <div class="pull-right menu-orientation">
                     <div class="btn-group group-action">
                         <i class="material-icons btn-sso">menu</i>
                         <ul class="menu-nav">
@@ -57,16 +60,16 @@
 
                             <a href="/user/logout"><li>Sair</li></a>
                         </ul>
-
-
                     </div>
+                </div>
                 {{else}}
+                <div class="pull-right">
                     <div class="btn-group">
                         <a href="/login" class="btn btn-primary navbar-btn">Entrar</a>
                         <a href="/register" class="btn btn-success navbar-btn">Registar</a>
                     </div>
+                </div>
                 {{/if}}
-            </div>
             {{/if}}
         {{/if}}
     </div>

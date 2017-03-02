@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>FACAM ISSO AO VOSSO GOSTO</h1>
+    <h2>Pesquisar Babysitter</h2>
     <form action="/user/scheduling" method="post">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Nome" value="{{searchName}}" name="name" id="name">
@@ -30,7 +30,7 @@
     <!-- List group -->
     {{# if data}}
         {{#each data}}
-            <a href="/babysitter/{{this.uid}}">
+            <a href="/babysitter/{{this.uid}}/1">
                 <ul class="list-group babysitter-list">
                     <li class="list-group-item babysitter-list-cell">
                         <table>
