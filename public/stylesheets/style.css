@@ -60,7 +60,9 @@ a, a:hover{
 .btn-group:after, .navbar-header:after{
     clear: none;
 }
-
+.jumbotron-missao, .jumbotron-visao, .jumbotron-valores, .jumbotron-instagram{
+    text-align: center;
+}
 .jumbotron-missao{
     background-color: #F8BBD0;
 }
