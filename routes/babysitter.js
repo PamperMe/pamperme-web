@@ -5,7 +5,7 @@ const util = require('util');
 const query_sitters = "SELECT distinct * FROM babysitter where uid = '%s'";
 
 const query_availability = "select date, start_hour, end_hour, babysitter.id from schedule " +
-    "inner join babysitter on babysitter.id = schedule.id_babysitter where babysitter.uid = '%s' order by date limit %s, %s";
+    "inner join babysitter on babysitter.id = schedule.id_babysitter where babysitter.uid = '%s' and date > now() order by date limit %s, %s";
 
 const query_page_counter = "select count(*) entries from schedule " +
     "inner join babysitter on babysitter.id = schedule.id_babysitter where babysitter.uid = '%s'"
@@ -72,12 +72,18 @@ router.post('/:uid/:id/confirm', isLoggedIn, function (req, res) {
     });
 });
 
-router.post('/:uid/:id/schedule', isLoggedIn, function (req, res) {
+router.post('/:uid/:id/confirmed', isLoggedIn, function (req, res) {
     var userID = req.app.locals.user.id;
-    connection.query(util.format(select_sitter_id,req.params.uid));
+    var id_client, id_babysitter, date, start_hour, duration;
+    id_client = req.app.locals.user.id;
+    id_babysitter = req.params.id;
+    date = req.body.date;
+    start_hour = req.body.start_hour;
+    duration = req.body.duration;
     var query_schedule = "Insert into visits (id_client, id_babysitter, date, start_hour, duration, confirmation) " +
-        "values (10, 13, '2017-04-02', 19, 3, 0)";
-    connection.query(query_schedule,function (err, done) {
+        "values (%s, %s, '%s', %s, %s, 0)";
+    var query = util.format(query_schedule, id_client, id_babysitter, date, start_hour, duration);
+    connection.query(query,function (err, done) {
         if(err){
             res.send(err);
         } else {

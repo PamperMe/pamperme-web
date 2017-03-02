@@ -7,21 +7,22 @@
                         <h3 class="panel-title">Confirmar Marcação</h3>
                     </div>
                     <div class="panel-body">
-                        <form action="/" method="post">
+                        <form action="confirmed" method="post">
                             <div class="form-group fl-bbsitter">
                                 {{#each data}}
                                     <label for="sitterNome">Babyssiter</label><br>
                                     <h4>{{this.name}}</h4><br>
-                                    <label for="dayMonth">Data</label><br>
+                                    <label>Data</label><br>
                                     <h4>{{../date}}</h4><br>
-                                    <label for="dayMonth">Hora Inicio Minimo</label><br>
+                                    <label>Hora Inicio Minimo</label><br>
                                     <h4>{{../start_hour}}</h4><br>
-                                    <label for="dayMonth">Hora Fim Maximo</label><br>
+                                    <label>Hora Fim Maximo</label><br>
                                     <h4>{{../end_hour}}</h4><br>
-                                    <label for="dayMonth">Hora Inicio</label><br>
-                                    <input type="text" placeholder="Inicio" name="duration"><br>
-                                    <label for="dayMonth">Duração</label><br>
+                                    <label for="start_hour">Hora Inicio</label><br>
+                                    <input type="text" placeholder="Inicio" name="start_hour"><br>
+                                    <label for="duration">Duração</label><br>
                                     <input type="text" placeholder="Duração" name="duration">
+                                    <input type="text" name="date" hidden value="{{../date}}">
                                     <button type="submit" class="btn btn-lg btn-success btn-block">Confirmar</button>
                                 {{/each}}
                             </div>
