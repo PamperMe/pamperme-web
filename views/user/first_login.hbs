@@ -1,10 +1,37 @@
-<input type="input" name="clienteName"/>
-<input type="input" name="clienteAddres"/>
-<input type="input" name="clientPhone"/>
+<div class="fill no-margin">
+    <div class="container">
+        <div class="row">
+            <div   class="col-lg-4 col-lg-offset-4">
 
-<input type="input" name="sitterNome"/>
-<input type="date" name="sitterBirthday"/>
-<input type="input" name="sitterLocation"/>
-<input type="input" name="sitterPhone"/>
-<input type="number" name="sitterPrice"/>
-<input type="textarea" name="sitterDescription"/>
+                <h2>Escolha o tipo de conta</h2>
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="btn-fl-bbsitter active"><a href="#">Babysitter</a></li>
+                    <li role="presentation" class="btn-fl-client"><a href="#">Família</a></li>
+                </ul>
+                <div class="form-group fl-client">
+                    <label for="clienteName">Nome</label><br>
+                    <input type="input" class="form-control" id="clienteName" name="clienteName"/><br>
+                    <label for="clienteAddres">Morada</label><br>
+                    <input type="input" class="form-control" id="clienteAddres" name="clienteAddres"/><br>
+                    <label for="clientPhone">Telefone</label><br>
+                    <input type="input" class="form-control" id="clientPhone" name="clientPhone"/>
+                </div>
+                <div class="form-group fl-bbsitter">
+                    <label for="sitterNome">Nome</label><br>
+                    <input type="input" class="form-control" id="sitterNome" name="sitterNome"/><br>
+                    <label for="dayMonth">Aniversário</label><br>
+                    <input type="text" class="form-control" id="dayMonth" placeholder="Aniversário"  name="sitterBirthday"><br>
+                    <label for="sitterLocation">Localidade</label><br>
+                    <input type="input" class="form-control" id="sitterLocation" name="sitterLocation"/><br>
+                    <label for="sitterPhone">Telefone</label><br>
+                    <input type="input" class="form-control" id="sitterPhone" name="sitterPhone"/><br>
+                    <label for="sitterPrice">Preço</label><br>
+                    <input type="number" class="form-control" id="sitterPrice" name="sitterPrice"/><br>
+                    <label for="sitterDescription">Descrição</label><br>
+                    <textarea rows="5" class="form-control" id="sitterDescription" name="sitterDescription"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
