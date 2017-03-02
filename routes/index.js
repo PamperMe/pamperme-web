@@ -42,8 +42,9 @@ router.post('/login', function (req, res) {
         if (data != null) {
             getUser(data.uid, function (code, result) {
                 if (code == 1) {
+                    var babysitter = new Babysitter(result);
                     req.app.locals.babysitter = true;
-                    req.app.locals.user = result;
+                    req.app.locals.user = babysitter;
                     req.app.locals.userAge = getAge(result.birthday);
                     res.redirect('/user/profile');
                 } else if (code == 2) {
@@ -154,6 +155,23 @@ function getBabysitter(uid, callback) {
         }
     });
 }
+
+
+function Babysitter(data){
+    var formattedDate = util.format("%s/%s/%s", data.birthday.getDate(), data.birthday.getMonth() + 1, data.birthday.getFullYear());
+    this.birthday = formattedDate;
+    this.description = data.description;
+    this.email = data.email;
+    this.evaluation = data.evaluation;
+    this.id = data.id;
+    this.location = data.location;
+    this.name = data.name;
+    this.phone = data.phone;
+    this.photo_url = data.photo_url;
+    this.price = data.price;
+    this.uid = data.uid;
+}
+
 function getAge(dateString) {
     var today = new Date();
     var birthDate = new Date(dateString);

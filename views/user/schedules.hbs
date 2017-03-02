@@ -1,6 +1,8 @@
-<div class="fill no-margin">
 
-    <div class="container ">
+<div class="container ">
+    <div class="jumbotron no-margin">
+
+
         <h1> Marcações </h1>
         {{#if toConfirm}}
             <div class="panel panel-default">
@@ -116,9 +118,13 @@
             </div>
 
         {{else}}
-            <div class="container">
-                <h1 style="padding: 100px 0;">Não existem Dados.</h1>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Marcações Confirmadas</h2>
+
             </div>
+              <h4>Não existem Dados.</h4>
+        </div>
         {{/if}}
     </div>
 </div>
