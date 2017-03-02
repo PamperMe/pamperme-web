@@ -12,6 +12,7 @@ var babysitter = false;
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
 const USER = "SELECT * from user_type where uid = '%s'";
+const counter_visits = "SELECT count(*) from visits where id_babysitter = id_client and confirmation = 0;";
 
 
 router.get('/', function (req, res) {
