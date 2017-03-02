@@ -1,105 +1,104 @@
-<div class="fill no-margin">
 <div class="container">
-    <h1>Histórico</h1>
-    {{# if data}}
-        {{# if babysitter}}
-
-            <div class="panel panel-default">
-                <!-- Table -->
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>
-                            <span class="glyphicon glyphicon-user"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-home"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-play"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-time"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-euro"></span>
-                        </th>
-
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each data}}
+    <div class="jumbotron fill no-margin">
+        <h1>Histórico</h1>
+        {{# if data}}
+            {{# if babysitter}}
+                <div class="panel panel-default">
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td>{{this.client_name}}</td>
-                            <td>{{this.date}}</td>
-                            <td>{{this.address}}</td>
-                            <td>{{this.start_hour}}</td>
-                            <td>{{this.duration}}</td>
-                            <td>{{this.evaluation}}</td>
-                            <td>{{this.price}}</td>
-                        </tr>
-                    {{/each}}
-                    </tbody>
-                </table>
-            </div>
+                            <th>
+                                <span class="glyphicon glyphicon-user"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-home"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-play"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-time"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-euro"></span>
+                            </th>
 
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each data}}
+                            <tr>
+                                <td>{{this.client_name}}</td>
+                                <td>{{this.date}}</td>
+                                <td>{{this.address}}</td>
+                                <td>{{this.start_hour}}</td>
+                                <td>{{this.duration}}</td>
+                                <td>{{this.evaluation}}</td>
+                                <td>{{this.price}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            {{else}}
+
+                <div class="panel panel-default">
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-play"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-time"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-euro"></span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each data}}
+                            <tr class="link">
+                                <td>{{this.date}}</td>
+                                <td>{{this.start_hour}}</td>
+                                <td>{{this.duration}}</td>
+                                <td>
+                                    {{#if this.evaluation}}
+                                        {{this.evaluation}}
+                                    {{else}}
+                                        <!--TODO put input if empty-->
+                                        0
+                                    {{/if}}
+
+                                </td>
+                                <td>{{this.price}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            {{/if}}
         {{else}}
-
-            <div class="panel panel-default">
-                <!-- Table -->
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-play"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-time"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-star-empty"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-euro"></span>
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each data}}
-                        <tr class="link">
-                            <td>{{this.date}}</td>
-                            <td>{{this.start_hour}}</td>
-                            <td>{{this.duration}}</td>
-                            <td>
-                                {{#if this.evaluation}}
-                                    {{this.evaluation}}
-                                {{else}}
-                                    <!--TODO put input if empty-->
-                                    need input
-                                {{/if}}
-
-                            </td>
-                            <td>{{this.price}}</td>
-                        </tr>
-                    {{/each}}
-                    </tbody>
-                </table>
+            <div class="container">
+                <h1 style="padding: 100px 0;">Não existem Dados.</h1>
             </div>
-
         {{/if}}
-    {{else}}
-        <div class="container">
-            <h1 style="padding: 100px 0;">Não existem Dados.</h1>
-        </div>
-    {{/if}}
-</div>
+    </div>
 </div>

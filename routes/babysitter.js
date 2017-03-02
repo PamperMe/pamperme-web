@@ -12,7 +12,7 @@ const query_page_counter = "select count(*) entries from schedule " +
 
 const connection = require('../models/Connect');
 
-router.get('/:uid/:page', function (req, res) {
+router.get('/:uid/:page',isLoggedIn, function (req, res) {
     var data,uid;
     connection.query(util.format(query_sitters, req.params.uid), function (err, done) {
         if (err) {
@@ -63,15 +63,23 @@ router.get('/:uid/:page', function (req, res) {
     });
 });
 
-router.get('/:uid/:id/schedule',function (req, res) {
+router.post('/:uid/:id/confirm', isLoggedIn, function (req, res) {
+    var query = "Select distinct * from babysitter where id = " + req.params.id;
+    connection.query(query,function (err, done) {
+        if(!err){
+            res.render("user/scheduleForm", {data: done, date:req.body.date, start_hour:req.body.start_hour, end_hour: req.body.end_hour});
+        }
+    });
+});
+
+router.post('/:uid/:id/schedule', isLoggedIn, function (req, res) {
     var userID = req.app.locals.user.id;
-    connection.query(util.format(select_sitter_id,req.params.uid))
+    connection.query(util.format(select_sitter_id,req.params.uid));
     var query_schedule = "Insert into visits (id_client, id_babysitter, date, start_hour, duration, confirmation) " +
         "values (10, 13, '2017-04-02', 19, 3, 0)";
-
     connection.query(query_schedule,function (err, done) {
         if(err){
-
+            res.send(err);
         } else {
             if(done.affectedRows == 1){
                 res.redirect("/user/profile");
@@ -79,6 +87,8 @@ router.get('/:uid/:id/schedule',function (req, res) {
         }
     });
 });
+
+
 
 function isLoggedIn(req, res, next) {
     if (req.app.locals.user) {

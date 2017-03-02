@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="jumbotron fill no-margin">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Confirmar Marcação</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="/" method="post">
+                            <div class="form-group fl-bbsitter">
+                                {{#each data}}
+                                    <label for="sitterNome">Babyssiter</label><br>
+                                    <h4>{{this.name}}</h4><br>
+                                    <label for="dayMonth">Data</label><br>
+                                    <h4>{{../date}}</h4><br>
+                                    <label for="dayMonth">Hora Inicio Minimo</label><br>
+                                    <h4>{{../start_hour}}</h4><br>
+                                    <label for="dayMonth">Hora Fim Maximo</label><br>
+                                    <h4>{{../end_hour}}</h4><br>
+                                    <label for="dayMonth">Hora Inicio</label><br>
+                                    <input type="text" placeholder="Inicio" name="duration"><br>
+                                    <label for="dayMonth">Duração</label><br>
+                                    <input type="text" placeholder="Duração" name="duration">
+                                    <button type="submit" class="btn btn-lg btn-success btn-block">Confirmar</button>
+                                {{/each}}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
