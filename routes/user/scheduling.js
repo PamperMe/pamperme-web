@@ -24,7 +24,6 @@ router.get('/', isLoggedIn, function (req, res) {
     });
 });
 
-
 router.post('/', isLoggedIn, function (req, res) {
     var name, location, priceMin, priceMax, date, evaluation, query, value;
     var combined = ' where ';
