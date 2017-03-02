@@ -6,6 +6,7 @@ const query_sitters = "SELECT distinct uid, id, name, photo_url, location FROM b
 
 const search_query = "SELECT distinct b.uid,b.name, b,id, b.photo_url, b.location from babysitter b left join schedule s on s.id_babysitter = b.id %s";
 
+
 const connection = require('../../models/Connect');
 
 
