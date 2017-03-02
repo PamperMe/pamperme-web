@@ -299,7 +299,12 @@ a, a:hover{
     background-color: #ffffff;
     color:#223;
 }
-
+.nav-pills{
+    margin: 10px 0px 10px 0px;
+}
+.fl-client{
+    display: none;
+}
 @media(max-width:768px){
 
     .small-h2{
