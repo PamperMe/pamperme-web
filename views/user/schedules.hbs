@@ -5,38 +5,38 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>
+                    <th style="text-align: center">
                         <span class="glyphicon glyphicon-user"></span>
                     </th>
-                    <th>
+                    <th style="text-align: center">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </th>
-                    <th>
+                    <th style="text-align: center">
                         <span class="glyphicon glyphicon-home"></span>
                     </th>
-                    <th>
+                    <th style="text-align: center">
                         <span class="glyphicon glyphicon-play"></span>
                     </th>
-                    <th>
+                    <th style="text-align: center">
                         <span class="glyphicon glyphicon-time"></span>
                     </th>
-                    <th>
+                    <th style="text-align: center">
                         <span class="glyphicon glyphicon-euro"></span>
                     </th>
 
                 </tr>
                 </thead>
                 {{#each data}}
-
                     <tr data-href="#">
                         <a href="#">
                             <div>
-                                <td>{{this.client_name}}</td>
-                                <td>{{this.date}}</td>
-                                <td>{{this.address}}</td>
-                                <td>{{this.start_hour}}</td>
-                                <td>{{this.duration}}</td>
-                                <td>{{this.price}}</td>
+                                <!--TODO put style inside style.css-->
+                                <td style="text-align: center">{{this.client_name}}</td>
+                                <td style="text-align: center">{{this.date}}</td>
+                                <td style="text-align: center">{{this.address}}</td>
+                                <td style="text-align: center">{{this.start_hour}}:00</td>
+                                <td style="text-align: center">{{this.duration}} horas</td>
+                                <td style="text-align: center">{{this.price}}€</td>
                             </div>
                         </a>
                     </tr>
