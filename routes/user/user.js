@@ -75,7 +75,7 @@ router.post('/fileupload', upload.any(), function (req, res) {
 });
 
 router.get('/profile', isLoggedIn, function (req, res) {
-    res.render('user/profile');
+    res.render('user/profile2');
 });
 
 router.get('/profile/edit',isLoggedIn,function (req, res) {

@@ -24,3 +24,15 @@ $('tr[data-href]').on("click", function() {
     // TODO colocar popup para aceitar/rejeitar marcação
     alert("Colocar popup aqui");
 });
+
+
+$('#photo_change').click(function () {
+    $('#uploadForm').toggle();
+
+});
+
+
+$('#photo_uploaded').click(function () {
+    $('#uploadForm').hide();
+
+});

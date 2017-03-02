@@ -17,17 +17,28 @@
             </button>
         </a>
         <!-- Default panel contents -->
-        <div class="panel-heading">{{user.name}}</div>
+        <h2>{{user.name}}</h2>
         <!-- Table -->
         <table class="table">
             <tr>
                 <td class="col-xs-1" colspan="3">
+
                     <a href="/user/profile/edit" style="display: block">
-                        <button type="button" style="float: right; margin-top: 5px;">
+                        <button type="submit" style="float: right; margin-top: 5px;">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </button>
                     </a>
                     <img class="img-circle img-responsive-big" src="{{user.photo_url}}">
+                    <div style="position: absolute">
+                        <form id="uploadForm"
+                              enctype="multipart/form-data"
+                              action="/user/fileupload"
+                              method="post">
+                            <input type="file" name="userPhoto"/>
+                            <input type="submit" value="Upload Image" name="submit">
+                        </form>
+
+                    </div>
                 </td>
                 <td style="height: 100%; width: 50%; padding-left: 20px">
                     <table style="height: 100%; width: 100%; ">
