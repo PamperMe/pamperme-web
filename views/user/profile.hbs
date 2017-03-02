@@ -1,136 +1,131 @@
-<!--<h6>{{user.email}}1</h6>
-<h6>{{user.name}}2</h6>
-<h6>{{user.age}}3</h6>
-<h6>{{user.location}}4</h6>
-<h6>{{user.evaluation}}5</h6>
-<h6>{{user.price}}6</h6>
-<h6>{{user.description}}7</h6>
-<h6>{{user.phone}}8</h6>-->
-
-<!--Se id profile == id user : é editavel-->
-<!--Se não : apenas para ler-->
-{{# if babysitter}}
-    <div class="container" xmlns:padding-top="http://www.w3.org/1999/xhtml">
+{{#if babysitter}}
+    <div class="container">
         <a href="/user/profile/edit">
-            <button type="button" class=" btn btn-primary" style="float: right; margin-top: 5px;">
+            <button type="button" class=" btn btn-primary edit-button">
                 <span class="glyphicon glyphicon-pencil"></span>
             </button>
         </a>
-        <!-- Default panel contents -->
-        <h2>{{user.name}}</h2>
-        <!-- Table -->
-        <table class="table">
-            <tr>
-                <td class="col-xs-1" colspan="3">
-
-                    <a href="/user/profile/edit" style="display: block">
-                        <button type="submit" style="float: right; margin-top: 5px;">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                    </a>
-                    <img class="img-circle img-responsive-big" src="{{user.photo_url}}">
-                    <div style="position: absolute">
-                        <form id="uploadForm"
-                              enctype="multipart/form-data"
-                              action="/user/fileupload"
-                              method="post">
-                            <input type="file" name="userPhoto"/>
-                            <input type="submit" value="Upload Image" name="submit">
-                        </form>
-
-                    </div>
-                </td>
-                <td style="height: 100%; width: 50%; padding-left: 20px">
-                    <table style="height: 100%; width: 100%; ">
-                        <tr>
-                            <td><h4>{{userAge}} anos</h4></td>
-                        </tr>
-                        <tr>
-                            <td><h4>{{user.location}}</h4></td>
-                        </tr>
-                        <tr>
-                            <td><h4>{{user.price}}</h4></td>
-                        </tr>
-                    </table>
-                </td>
-                <td style="height: 100%; width: 50%; padding-left: 20px">
-                    <table style="height: 100%; width: 100%; text-align: right">
-                        <tr style="text-content: center; height: 80%">
-                            <td><h2> 7/10 </h2></td>
-                        </tr>
-                        <tr style="text-align: right; height: 20%;">
-                            <td>
-                                <button class="btn-bitbucket"> Contactar</button>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <a>
-                        <button>Fazer Marcação</button>
-                    </a>
-                </td>
-            </tr>
-        </table>
-        <table style="width: 100%;">
-            <tr>
-                <td style="padding: 10px 5px;"> Descrição</td>
-            </tr>
-        </table>
-    </div>
-{{else}}
-    {{#if client}}
         <div class="jumbotron fill no-margin">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
-                    <div class="thumbnail profile-img">
-                        <!--Imagem Lado esquerdo-->
-                        <img class="img-circle img-responsive-big" src="{{user.photo_url}}">
+
+                    <div class="img-profile-big">
+                        <a href="#" style="display: block;">
+                            <button type="submit" id="photo_change" style="position: absolute; right: 50px; top: 2px;">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                        </a>
+                        {{#if user.photo_url}}
+                            <img style="background-image: url({{user.photo_url}}); margin: 0;">
+                        {{else}}
+                            <img class="img-profile-small"
+                                 style="background-image: url('/images/icon_undifined.png')">
+                        {{/if}}
+                        <form id="uploadForm" style="display: none;"
+                              enctype="multipart/form-data"
+                              action="/user/fileupload"
+                              method="post">
+                            <input type="file" name="userPhoto" required/>
+                            <input type="submit" id="photo_uploaded" value="Upload Image" name="submit">
+                        </form>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
                     <div class="thumbnail profile-info">
-                        <!--Info Centrado-->
-                        <p>
-                        <h3><span> Nome: {{user.name}} </span></h3></p>
-                        <p><h4><span class="glyphicon glyphicon-home"></span> {{user.address}}</h4></p>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                    <div class="thumbnail profile-contact">
-                        <!--Info rating/contact/price h-->
-                        <div><!--Contact-->
-                            <span class="glyphicon glyphicon-phone"> {{user.phone}} </span>
+                        <h2 class="small-h2">{{user.name}}</h2>
+                        <div class="col-xs-6">
+                            <h3 class="small-h3">{{userAge}} Anos</h3>
+                            <h3 class="small-h3"><span class="glyphicon glyphicon-home"></span>{{user.location}}</h3>
+                            <h3 class="small-h3"><span class="glyphicon glyphicon-star-empty"></span>10/10</h3>
+                        </div>
+                        <div class="col-xs-6 column-right">
+                            <br>
+                            <br>
+                            <h3 class="small-h3"><span class="glyphicon glyphicon-euro"></span>{{user.price}}</h3>
+                            <h3 class="small-h3"><span class="glyphicon glyphicon-phone"></span>{{user.phone}}</h3>
                         </div>
                     </div>
-                    <br>
-                    <a href="/user/profile/edit">
-                        <button type="button" class=" btn btn-primary">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </button>
-                    </a>
                 </div>
-                <form id="uploadForm"
-                      enctype="multipart/form-data"
-                      action="/user/fileupload"
-                      method="post">
-                    <input type="file" name="userPhoto"/>
-                    <input type="submit" value="Upload Image" name="submit">
-                </form>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <button class="btn btn-bitbucket btn-lg" style="margin: 0 auto; width: 100%">Marcar</button>
+                </div>
+                {{#if user.description}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="thumbnail">
+                            <h2>Descrição</h2>
+                            <h4>{{user.description}}</h4>
+                        </div>
+                    </div>
+                {{else}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 20px">
+                        <div class="thumbnail">
+                            <h2>Descrição</h2>
+                            <h3>Não existe Descrição</h3>
+                        </div>
+                    </div>
+                {{/if}}
             </div>
         </div>
-    {{/if}}
-{{/if}}
-
-<!--Aparecer só se reviews != null-->
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="thumbnail profile-reviews">
-            <!--Reviews Babysitter-->
-            <!--Criar uma div class thumbnail para ele por as reviews-->
-        </div>
     </div>
-</div>
-
+{{else}}
+    {{#if client}}
+        <div class="container">
+            <a href="/user/profile/edit">
+                <button type="button" class=" btn btn-primary edit-button">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </a>
+            <div class="jumbotron fill no-margin">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3" style="margin-bottom: 50px; ">
+                        <div class="img-profile-big">
+                            <a href="#" style="display: block;">
+                                <button type="submit" id="photo_change" style="position: absolute; right: 50px; top: 2px;">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            </a>
+                            {{#if user.photo_url}}
+                                <img style="background-image: url({{user.photo_url}}); margin: 0;">
+                            {{else}}
+                                <img class="img-profile-small"
+                                     style="background-image: url('/images/icon_undifined.png')">
+                            {{/if}}
+                            <form id="uploadForm" style="display: none;"
+                                  enctype="multipart/form-data"
+                                  action="/user/fileupload"
+                                  method="post">
+                                <input type="file" name="userPhoto" required/>
+                                <input type="submit" id="photo_uploaded" value="Upload Image" name="submit">
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+                        <div class="thumbnail profile-info">
+                            <h2 class="small-h2">{{user.name}}</h2>
+                            <div class="col-xs-8">
+                                <h3 class="small-h3">{{userAge}} Anos</h3>
+                                <h3 class="small-h3"><span class="glyphicon glyphicon-home"></span>{{user.address}}</h3>
+                                <h3 class="small-h3"><span class="glyphicon glyphicon-phone"></span>{{user.phone}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    {{#if user.description}}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="thumbnail">
+                                <h2>Descrição</h2>
+                                <h4>{{user.description}}</h4>
+                            </div>
+                        </div>
+                    {{else}}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 20px">
+                            <div class="thumbnail">
+                                <h2>Descrição</h2>
+                                <h3>Não existe Descrição</h3>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+    {{/if}}
+    </div>
+{{/if}}

@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const util = require('util');
 
-const query_sitters = "SELECT distinct uid, name, photo_url, location FROM babysitter";
+const query_sitters = "SELECT distinct uid, id, name, photo_url, location FROM babysitter";
 
-const search_query = "SELECT distinct b.uid,b.name, b.photo_url, b.location from babysitter b left join schedule s on s.id_babysitter = b.id %s";
+const search_query = "SELECT distinct b.uid,b.name, b,id, b.photo_url, b.location from babysitter b left join schedule s on s.id_babysitter = b.id %s";
 
 const connection = require('../../models/Connect');
 

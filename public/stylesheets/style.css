@@ -74,7 +74,7 @@ a, a:hover{
     background-color: #FFF59D;
 }
 .jumbotron-registar, .jumbotron-login{
-    margin-top: 0px;
+    margin-top: 0;
     z-index: 50;
     background-image: url('../images/blurredBG.jpg');
 }
@@ -90,9 +90,8 @@ a, a:hover{
     max-width: 50px;
 }
 .form-position{
-    padding-top: 50px;
     max-width: 330px;
-    padding: 15px;
+    padding: 50px 15px 15px 15px;
     margin: 0 auto;
 }
 
@@ -117,11 +116,17 @@ a, a:hover{
     background-size:cover;
 }
 
-.img-profile-big{
-    width:175px;
-    height: 175px;
+
+.img-profile-big img{
+    width:200px;
+    background-color: white;
+    height: 200px;
     background-position: center;
     background-size: cover;
+}
+
+.img-profile-big a img{
+    margin:0;
 }
 
 .img-profile-small{
@@ -245,9 +250,8 @@ a, a:hover{
     margin: 0 10px 0 0px;
 }
 
-.profile-info column-right{
+.profile-info .column-right{
     text-align: end;
-    text-align: right;
 }
 
 .profile-description{
@@ -350,6 +354,20 @@ a, a:hover{
     .menu-active{
         background-color: #ffffff;
         color:#223;
+    }
+}
+
+.pages{
+    text-align: center;
+}
+
+
+@media(max-width: 1000px){
+    .small-h2{
+        font-size: 18px;
+    }
+    .small-h3{
+        font-size: 16px;
     }
 }
 
