@@ -1,116 +1,117 @@
 <div class="fill no-margin">
 
-<div class="container ">
-    <h1> Marcações </h1>
-    {{#if data}}
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">Marcações por Confirmar</h2>
+    <div class="container ">
+        <h1> Marcações </h1>
+        {{#if toConfirm}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Marcações por Confirmar</h2>
+
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-euro"></span>
+                        </th>
+                        <th>Confirmação</th>
+                    </tr>
+                    </thead>
+                    {{#each toConfirm}}
+                        <tr data-href="#">
+                            <a href="#">
+                                <div>
+                                    <!--TODO put style inside style.css-->
+                                    <td style="text-align: center">{{this.client_name}}</td>
+                                    <td style="text-align: center">{{this.date}}</td>
+                                    <td style="text-align: center">{{this.address}}</td>
+                                    <td style="text-align: center">{{this.start_hour}}:00</td>
+                                    <td style="text-align: center">{{this.duration}} horas</td>
+                                    <td style="text-align: center">{{this.price}}€</td>
+                                    <td>
+                                        <div>Sim Nao</div>
+                                    </td>
+                                </div>
+                            </a>
+                        </tr>
+                    {{/each}}
+
+                </table>
 
             </div>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-home"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-play"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-euro"></span>
-                    </th>
-                    <th>Confirmação</th>
-                </tr>
-                </thead>
-                {{#each data}}
-                    <tr data-href="#">
-                        <a href="#">
-                            <div>
-                                <!--TODO put style inside style.css-->
-                                <td style="text-align: center">{{this.client_name}}</td>
-                                <td style="text-align: center">{{this.date}}</td>
-                                <td style="text-align: center">{{this.address}}</td>
-                                <td style="text-align: center">{{this.start_hour}}:00</td>
-                                <td style="text-align: center">{{this.duration}} horas</td>
-                                <td style="text-align: center">{{this.price}}€</td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="..." style="margin-left: 12px">
-                                        <button type="button" class="btn btn-default" style="background: #A4F7A3"><span class="glyphicon glyphicon-ok"></span></button>
-                                        <button type="button" class="btn btn-default" style="background: #F5A4A4"><span class="glyphicon glyphicon-remove"></span></button>
-                                    </div>
-                                </td>
-                            </div>
-                        </a>
+        {{else}}
+            <div class="container">
+                <h1 style="padding: 100px 0;">Não existem Dados.</h1>
+            </div>
+        {{/if}}
+        {{#if confirmed}}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Marcações Confirmadas</h2>
+
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-euro"></span>
+                        </th>
                     </tr>
-                {{/each}}
+                    </thead>
+                    {{#each confirmed}}
+                        <tr data-href="#">
+                            <a href="#">
+                                <div>
+                                    <!--TODO put style inside style.css-->
+                                    <td style="text-align: center">{{this.client_name}}</td>
+                                    <td style="text-align: center">{{this.date}}</td>
+                                    <td style="text-align: center">{{this.address}}</td>
+                                    <td style="text-align: center">{{this.start_hour}}:00</td>
+                                    <td style="text-align: center">{{this.duration}} horas</td>
+                                    <td style="text-align: center">{{this.price}}€</td>
+                                </div>
+                            </a>
+                        </tr>
+                    {{/each}}
 
-            </table>
-
-        </div>
-
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h2 class="panel-title">Marcações Confirmadas</h2>
+                </table>
 
             </div>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-home"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-play"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </th>
-                    <th style="text-align: center">
-                        <span class="glyphicon glyphicon-euro"></span>
-                    </th>
-                </tr>
-                </thead>
-                {{#each data}}
-                    <tr data-href="#">
-                        <a href="#">
-                            <div>
-                                <!--TODO put style inside style.css-->
-                                <td style="text-align: center">{{this.client_name}}</td>
-                                <td style="text-align: center">{{this.date}}</td>
-                                <td style="text-align: center">{{this.address}}</td>
-                                <td style="text-align: center">{{this.start_hour}}:00</td>
-                                <td style="text-align: center">{{this.duration}} horas</td>
-                                <td style="text-align: center">{{this.price}}€</td>
-                            </div>
-                        </a>
-                    </tr>
-                {{/each}}
 
-            </table>
-
-        </div>
-
-    {{else}}
-        <div class="container">
-            <h1 style="padding: 100px 0;">Não existem Dados.</h1>
-        </div>
-    {{/if}}
-</div>
+        {{else}}
+            <div class="container">
+                <h1 style="padding: 100px 0;">Não existem Dados.</h1>
+            </div>
+        {{/if}}
+    </div>
 </div>
