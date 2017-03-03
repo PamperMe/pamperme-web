@@ -1,8 +1,6 @@
 <div class="container ">
     <div class="jumbotron no-margin">
-        <div class="panel-heading">
-            <h3> Marcações </h3>
-        </div>
+        <h3> Marcações </h3>
         {{#if toConfirm}}
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -34,8 +32,8 @@
                             <a href="#">
                                 <div>
                                     <!--TODO put style inside style.css-->
-                                    <td >{{this.client_name}}</td>
-                                    <td >{{this.date}}</td>
+                                    <td>{{this.client_name}}</td>
+                                    <td>{{this.date}}</td>
                                     <td>{{this.address}}</td>
                                     <td>{{this.start_hour}}:00</td>
                                     <td>{{this.duration}} horas</td>
@@ -60,62 +58,80 @@
                         </tr>
                     {{/each}}
                 </table>
-
             </div>
         {{else}}
-            <div class="container">
-                <h3 style="padding: 100px 0;">Não existem Dados.</h3>
+            <div>
+                <h6 class="panel-title" style="margin-top: 20px">Marcações por Confirmar</h6>
             </div>
+        <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>
+                <span class="glyphicon glyphicon-user"></span>
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-calendar"></span>
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-home"></span>
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-time"></span>
+            </th>
+            <th>
+                <span class="glyphicon glyphicon-play"></span>
+            </th>
+        </thead>
+        </tr>
         {{/if}}
         {{#if confirmed}}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Marcações Confirmadas</h2>
-                </div>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>
-                            <span class="glyphicon glyphicon-user"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-home"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-time"></span>
-                        </th>
-                        <th>
-                            <span class="glyphicon glyphicon-play"></span>
-                        </th>
+        <div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        <span class="glyphicon glyphicon-user"></span>
+                    </th>
+                    <th>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </th>
+                    <th>
+                        <span class="glyphicon glyphicon-home"></span>
+                    </th>
+                    <th>
+                        <span class="glyphicon glyphicon-time"></span>
+                    </th>
+                    <th>
+                        <span class="glyphicon glyphicon-play"></span>
+                    </th>
+                    <h4> Não existe marcações por confirmar</h4>
+                </tr>
+                </thead>
+                <br>
+                <br>
+                {{#each confirmed}}
+                    <tr data-href="#">
+                        <a href="#">
+                            <div>
+                                <!--TODO put style inside style.css-->
+                                <td>{{this.client_name}}</td>
+                                <td>{{this.date}}</td>
+                                <td>{{this.address}}</td>
+                                <td>{{this.start_hour}}:00</td>
+                                <td>{{this.duration}} horas</td>
+                            </div>
+                        </a>
                     </tr>
-                    </thead>
-                    {{#each confirmed}}
-                        <tr data-href="#">
-                            <a href="#">
-                                <div>
-                                    <!--TODO put style inside style.css-->
-                                    <td>{{this.client_name}}</td>
-                                    <td>{{this.date}}</td>
-                                    <td>{{this.address}}</td>
-                                    <td>{{this.start_hour}}:00</td>
-                                    <td>{{this.duration}} horas</td>
-                                </div>
-                            </a>
-                        </tr>
-                    {{/each}}
-
-                </table>
-            </div>
+                {{/each}}
+            </table>
+        </div>
         {{else}}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2 class="panel-title">Marcações Confirmadas</h2>
-                </div>
-                <h3>Não existem Dados.</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="panel-title">Marcações Confirmadas</h2>
             </div>
+            <h3>Não existem marcações confirmadas.</h3>
+        </div>
         {{/if}}
     </div>
 </div>

@@ -1,8 +1,6 @@
 <div class="container">
     <div class="jumbotron no-margin">
-        <div class="panel-heading">
-            <h3>Pesquisar Babysitter</h3>
-        </div>
+        <h3>Pesquisar Babysitter</h3>
         <form action="/user/scheduling" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Nome" value="{{searchName}}" name="name" id="name">
@@ -30,9 +28,7 @@
         <br>
         <div style="width: 100%; height: 2px; background: #000"></div>
         <!-- Default panel contents -->
-        <div class="panel-heading">
             <h3>Babysitters</h3>
-        </div>
         <!-- List group -->
         {{# if data}}
             {{#each data}}
