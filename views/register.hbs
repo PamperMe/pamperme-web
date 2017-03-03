@@ -16,6 +16,11 @@
                 <button class="btn btn-lg btn-success btn-block" type="submit">Registar</button>
             </form>
             <hr>
+            {{#if hasErrors}}
+                <div class="alert alert-danger" style="margin-top: 20px">
+                    <h5>{{error}}</h5>
+                </div>
+            {{/if}}
             <!--Social Buttons-->
             <a style="opacity:0.4;" class="btn btn-block btn-social btn-facebook">
                 <span class="fa fa-facebook"></span>Registar com a conta de Facebook
@@ -23,11 +28,6 @@
             <a style="opacity:0.4;" class="btn btn-block btn-social btn-google">
                 <span class="fa fa-google"></span>Registar com a conta Google
             </a>
-            {{#if hasErrors}}
-                <div class="alert alert-danger" style="margin-top: 50px">
-                    <h5>{{error}}</h5>
-                </div>
-            {{/if}}
         </div>
     </div>
 </div>
