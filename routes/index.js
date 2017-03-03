@@ -12,7 +12,7 @@ var babysitter = false;
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
 const USER = "SELECT * from user_type where uid = '%s'";
-const counter_visits = "SELECT count(*) from visits where id_babysitter = id_client and confirmation = 0";
+const counter_visits = "SELECT count(*) as counter from visits where id_babysitter = %s and confirmation = 0 and date > now()";
 
 
 router.get('/', function (req, res) {
@@ -31,7 +31,7 @@ router.get('/register', function (req, res) {
 
 router.post('/register', function (req, res) {
     firebase.auth().createUserWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
-        res.redirect('/');
+        res.redirect('/user/firstLogin');
     }).catch(function (error) {
         res.send(error);
     })
@@ -41,11 +41,12 @@ router.post('/register', function (req, res) {
 router.post('/login', function (req, res) {
     firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
         if (data != null) {
-            getUser(data.uid, function (code, result) {
+            getUser(data.uid, function (code, result, counter) {
                 if (code == 1) {
                     var babysitter = new Babysitter(result);
                     req.app.locals.babysitter = true;
                     req.app.locals.user = babysitter;
+                    req.app.locals.badgeCounter = counter;
                     req.app.locals.userAge = getAge(result.birthday);
                     res.redirect('/user/profile');
                 } else if (code == 2) {
@@ -60,7 +61,14 @@ router.post('/login', function (req, res) {
             })
         }
     }).catch(function (error) {
-        res.send(error);
+        if (error.code == "auth/user-not-found") {
+            res.render("login", {
+                hasErrors: true,
+                error: 'O Utilizador errado. Se não tem conta, registe-se <a href="/register">aqui</a>'
+            });
+        } else if (error.code == "auth/wrong-password") {
+            res.render("login", {hasErrors: true, error: "Palavra-passe errada. Por favor tente de novo."});
+        }
     });
 });
 
@@ -105,21 +113,27 @@ function getUser(uid, callback) {
                         if (err) {
                             callback(null, err);
                         } else {
-                            callback(1, done);
+                            connection.query(util.format(counter_visits, done.id), function (err, result) {
+                                if (err) {
+                                    callback(1, done, null);
+                                } else {
+                                    callback(1, done, result[0].counter);
+                                }
+                            });
                         }
                     });
                 } else {
                     getClient(uid, function (err, done) {
                         if (err) {
-                            callback(null, err);
+                            callback(null, err, null);
                         } else {
-                            callback(2, done);
+                            callback(2, done, null);
                         }
                     });
                 }
             }
             else {
-                callback(3, null);
+                callback(3, null, null);
             }
         }
     })
@@ -131,7 +145,7 @@ function getClient(uid, callback) {
         if (err) {
             callback(err, null)
         }
-        if(rows != undefined){
+        if (rows != undefined) {
             if (rows.length > 0) {
                 callback(null, rows[0]);
             } else {
@@ -147,7 +161,7 @@ function getBabysitter(uid, callback) {
         if (err) {
             callback(err, null)
         }
-        if(rows != undefined){
+        if (rows != undefined) {
             if (rows.length > 0) {
                 callback(null, rows[0]);
             } else {
@@ -158,7 +172,7 @@ function getBabysitter(uid, callback) {
 }
 
 
-function Babysitter(data){
+function Babysitter(data) {
     var formattedDate = util.format("%s/%s/%s", data.birthday.getDate(), data.birthday.getMonth() + 1, data.birthday.getFullYear());
     this.birthday = formattedDate;
     this.description = data.description;
@@ -171,6 +185,7 @@ function Babysitter(data){
     this.photo_url = data.photo_url;
     this.price = data.price;
     this.uid = data.uid;
+    this.age = getAge(data.birthday);
 }
 
 function getAge(dateString) {
