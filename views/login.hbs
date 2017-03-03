@@ -23,7 +23,11 @@
             <a class="btn btn-block btn-social btn-google" href="/google">
                 <span class="fa fa-google"></span>Entrar com a conta Google
             </a>
-
+            {{#if hasErrors}}
+                <div class="alert alert-danger" style="margin-top: 50px">
+                    <h5>{{{error}}}</h5>
+                </div>
+            {{/if}}
         </div>
     </div>
 

@@ -38,6 +38,7 @@ router.post('/register', function (req, res) {
 });
 
 router.post('/login', function (req, res) {
+    var error;
     firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
         if (data != null) {
             getUser(data.uid, function (code, result, counter) {
@@ -59,7 +60,14 @@ router.post('/login', function (req, res) {
             })
         }
     }).catch(function (error) {
-        res.send(error);
+        if(error.code == "auth/user-not-found"){
+            res.render("login",{
+                hasErrors:true,
+                error:'O Utilizador errado. Se nao tem conta, registe-se <a href="/register">aqui</a>'
+            });
+        } else if(error.code == "auth/wrong-password"){
+            res.render("login",{hasErrors:true, error:"Palavra-passe errada. Por favor tente de novo."});
+        }
     });
 });
 
