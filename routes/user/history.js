@@ -20,7 +20,11 @@ router.get('/', isLoggedIn, function (req, res) {
         if(err){
             res.send(err);
         } else {
-            res.render('user/history', {data:done});
+            var visits= [];
+            for(var i = 0; i < done.length; i++){
+                visits[i] = new Visit(done[i]);
+            }
+            res.render('user/history', {data:visits});
         }
 
     });
@@ -35,6 +39,19 @@ function isLoggedIn(req,res,next) {
     res.redirect('/login');
 }
 
+
+function Visit(data){
+    var formattedDate = util.format("%s/%s/%s", data.date.getDate(), data.date.getMonth() + 1, data.date.getFullYear());
+    this.babysitter_name = data.babysitter_name;
+    this.client_name = data.client_name;
+    this.price = data.price;
+    this.date = formattedDate;
+    this.start_hour = data.start_hour;
+    this.duration = data.duration;
+    this.evaluation = data.evaluation;
+    this.address = data.address;
+    this.id = data.id_visits;
+}
 
 
 module.exports = router;
