@@ -63,7 +63,7 @@ router.post('/login', function (req, res) {
         if(error.code == "auth/user-not-found"){
             res.render("login",{
                 hasErrors:true,
-                error:'O Utilizador errado. Se nao tem conta, registe-se <a href="/register">aqui</a>'
+                error:'O Utilizador errado. Se não tem conta, registe-se <a href="/register">aqui</a>'
             });
         } else if(error.code == "auth/wrong-password"){
             res.render("login",{hasErrors:true, error:"Palavra-passe errada. Por favor tente de novo."});
