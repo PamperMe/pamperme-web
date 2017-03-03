@@ -121,8 +121,10 @@ router.get('/profile/edit',isLoggedIn,function (req, res) {
 
 router.post('/profile/edit',isLoggedIn,function (req, res) {
     var query;
-    var description = req.body.description;
-    description = description.replace(/\r\n/gi,'<br>');
+    if(req.body.description){
+        var description = req.body.description;
+        description = description.replace(/\r\n/gi,'<br>');
+    }
     if(req.app.locals.babysitter){
         query = util.format("UPDATE babysitter set name = '%s' , location = '%s', price = '%s' , phone = '%s' , description = '%s' where uid = '%s' "
             ,req.body.name, req.body.location, req.body.price, req.body.phone, description, req.app.locals.user.uid);
