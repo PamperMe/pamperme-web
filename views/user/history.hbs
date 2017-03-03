@@ -1,11 +1,11 @@
 <div class="container">
     <div class="jumbotron fill no-margin">
-        <div class="panel-heading">
-            <h3>Histórico</h3>
-        </div>
-        {{# if data}}
-            {{# if babysitter}}
-                <div class="panel panel-default">
+        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+            <div class="panel-heading">
+                <h2 class="panel-title">Histórico</h2>
+            </div>
+            {{# if data}}
+                {{# if babysitter}}
                     <!-- Table -->
                     <table class="table">
                         <thead>
@@ -48,11 +48,8 @@
                         {{/each}}
                         </tbody>
                     </table>
-                </div>
 
-            {{else}}
-
-                <div class="panel panel-default">
+                {{else}}
                     <!-- Table -->
                     <table class="table">
                         <thead>
@@ -94,13 +91,12 @@
                         {{/each}}
                         </tbody>
                     </table>
+                {{/if}}
+            {{else}}
+                <div class="container">
+                    <h1 style="padding: 100px 0;">Não existem Dados.</h1>
                 </div>
-
             {{/if}}
-        {{else}}
-            <div class="container">
-                <h1 style="padding: 100px 0;">Não existem Dados.</h1>
-            </div>
-        {{/if}}
+        </div>
     </div>
 </div>
