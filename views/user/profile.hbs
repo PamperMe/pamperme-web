@@ -48,16 +48,24 @@
                 </div>
                 {{#if user.description}}
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="thumbnail">
-                            <h2>Descrição</h2>
-                            <h4>{{user.description}}</h4>
+                        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Descrição</h3>
+
+                            </div>
+                            <h4 style="margin-left: 15px">{{user.description}}</h4>
                         </div>
                     </div>
                 {{else}}
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 20px">
-                        <div class="thumbnail">
-                            <h2>Descrição</h2>
-                            <h3>Não existe Descrição</h3>
+                        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Descrição</h2>
+
+                            </div>
+                            <h4 style="margin-left: 15px">Não existe Descrição</h4>
                         </div>
                     </div>
                 {{/if}}
@@ -111,7 +119,7 @@
                         <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
                             <!-- Default panel contents -->
                             <div class="panel-heading">
-                                <h2 class="panel-title">Descrição</h2>
+                                <h3 class="panel-title">Descrição</h3>
 
                             </div>
                             <h3>{{user.description}}</h3>
