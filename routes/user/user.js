@@ -5,7 +5,7 @@ var fs = require('fs');
 var firebase = require('firebase');
 
 
-var update_photo_url_query = "UPDATE %s SET photo_url = '%s' WHERE uid = '%s';";
+var update_photo_url_query = "UPDATE %s SET photo_url = '%s' WHERE uid = '%s'";
 
 var multer = require('multer');
 var upload = multer({dest: 'public/uploads/'});
@@ -75,7 +75,28 @@ router.post('/fileupload', upload.any(), function (req, res) {
 });
 
 router.get('/profile', isLoggedIn, function (req, res) {
-    res.render('user/profile');
+    if(req.app.locals.babysitter){
+        var query = util.format("SELECT distinct count(*) as counter from visits where id_babysitter = %s and confirmation = 0 and date > now()"
+            ,req.app.locals.user.id);
+        connection.query(query,function (err, result) {
+            if(err){
+                req.app.locals.badgeCounter = undefined;
+                res.render('user/profile');
+            } else {
+                if(result[0].counter > 0){
+                    req.app.locals.badgeCounter = result[0].counter;
+                    res.render('user/profile');
+                } else {
+                    req.app.locals.badgeCounter = undefined;
+                    res.render('user/profile');
+                }
+            }
+
+        })
+
+
+    }
+
 });
 
 router.get('/profile/edit',isLoggedIn,function (req, res) {

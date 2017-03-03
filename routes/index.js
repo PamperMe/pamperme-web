@@ -5,14 +5,13 @@ var session = require('express-session');
 var User = require('../models/User');
 var firebase = require('firebase');
 
-
 var connection = require('../models/Connect');
 
 var babysitter = false;
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
 const USER = "SELECT * from user_type where uid = '%s'";
-const counter_visits = "SELECT count(*) from visits where id_babysitter = id_client and confirmation = 0;";
+const counter_visits = "SELECT count(*) as counter from visits where id_babysitter = %s and confirmation = 0 and date > now()";
 
 
 router.get('/', function (req, res) {
@@ -41,12 +40,12 @@ router.post('/register', function (req, res) {
 router.post('/login', function (req, res) {
     firebase.auth().signInWithEmailAndPassword(req.body.email, req.body.password).then(function (data) {
         if (data != null) {
-            getUser(data.uid, function (code, result) {
+            getUser(data.uid, function (code, result, counter) {
                 if (code == 1) {
                     var babysitter = new Babysitter(result);
                     req.app.locals.babysitter = true;
                     req.app.locals.user = babysitter;
-                    req.app.locals.userAge = getAge(result.birthday);
+                    req.app.locals.badgeCounter = counter;
                     res.redirect('/user/profile');
                 } else if (code == 2) {
                     req.app.locals.client = true;
@@ -105,7 +104,14 @@ function getUser(uid, callback) {
                         if (err) {
                             callback(null, err);
                         } else {
-                            callback(1, done);
+                            connection.query(util.format(counter_visits,done.id),function (err, result) {
+                                if(err){
+                                    callback(1,done,0);
+                                } else {
+                                    callback(1, done, result[0].counter);
+                                }
+                            });
+
                         }
                     });
                 } else {
@@ -171,6 +177,7 @@ function Babysitter(data){
     this.photo_url = data.photo_url;
     this.price = data.price;
     this.uid = data.uid;
+    this.age = getAge(data.birthday);
 }
 
 function getAge(dateString) {
