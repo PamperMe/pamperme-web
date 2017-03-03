@@ -124,8 +124,8 @@ router.post('/profile/edit',isLoggedIn,function (req, res) {
     var description = req.body.description;
     description = description.replace(/\r\n/gi,'<br>');
     if(req.app.locals.babysitter){
-        query = util.format("UPDATE babysitter set name = '%s' , birthday =  '%s' , location = '%s', price = '%s' , phone = '%s' , description = '%s' where uid = '%s' "
-            ,req.body.name , req.body.birthday, req.body.location, req.body.price, req.body.phone, description, req.app.locals.user.uid);
+        query = util.format("UPDATE babysitter set name = '%s' , location = '%s', price = '%s' , phone = '%s' , description = '%s' where uid = '%s' "
+            ,req.body.name, req.body.location, req.body.price, req.body.phone, description, req.app.locals.user.uid);
 
     } else {
         query = util.format("UPDATE clients set name = '%s' , address =  '%s' , phone = '%s' where uid = '%s' "

@@ -173,6 +173,7 @@ function getBabysitter(uid, callback) {
 
 
 function Babysitter(data) {
+    this.birthdayRaw = data.birthday;
     var formattedDate = util.format("%s/%s/%s", data.birthday.getDate(), data.birthday.getMonth() + 1, data.birthday.getFullYear());
     this.birthday = formattedDate;
     this.description = data.description;
