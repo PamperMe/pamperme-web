@@ -67,7 +67,7 @@ router.post('/:uid/:id/confirm', isLoggedIn, function (req, res) {
     var query = "Select distinct * from babysitter where id = " + req.params.id;
     connection.query(query,function (err, done) {
         if(!err){
-            res.render("user/scheduleForm", {data: done, date:req.body.date, start_hour:req.body.start_hour, end_hour: req.body.end_hour});
+            res.render("user/scheduleForm", {data: done, rawData:req.body.rawData, date:req.body.date, start_hour:req.body.start_hour, end_hour: req.body.end_hour});
         }
     });
 });
@@ -77,12 +77,13 @@ router.post('/:uid/:id/confirmed', isLoggedIn, function (req, res) {
     var id_client, id_babysitter, date, start_hour, duration;
     id_client = req.app.locals.user.id;
     id_babysitter = req.params.id;
-    date = req.body.date;
+    date = new Date(req.body.date);
+    var formattedDate = util.format("%s/%s/%s", date.getFullYear(), date.getMonth() + 1,date.getDate());
     start_hour = req.body.start_hour;
     duration = req.body.duration;
     var query_schedule = "Insert into visits (id_client, id_babysitter, date, start_hour, duration, confirmation) " +
         "values (%s, %s, '%s', %s, %s, 0)";
-    var query = util.format(query_schedule, id_client, id_babysitter, date, start_hour, duration);
+    var query = util.format(query_schedule, id_client, id_babysitter, formattedDate, start_hour, duration);
     connection.query(query,function (err, done) {
         if(err){
             res.send(err);
@@ -128,6 +129,7 @@ function Sitter(data,uid){
 }
 
 function Availability(data) {
+    this.rawData = data.date;
     var formattedDate = util.format("%s/%s/%s", data.date.getDate(), data.date.getMonth() + 1, data.date.getFullYear());
     this.date = formattedDate;
     this.start_hour = data.start_hour;

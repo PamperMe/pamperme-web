@@ -32,11 +32,11 @@ $('.btn-fl-client').click(function(){
 });
 
 
-$('tr[data-href]').on("click", function() {
-    document.location = $(this).data('href');
-    // TODO colocar popup para aceitar/rejeitar marcação
-    alert("Colocar popup aqui");
-});
+// $('tr[data-href]').on("click", function() {
+//     document.location = $(this).data('href');
+//     // TODO colocar popup para aceitar/rejeitar marcação
+//     alert("Colocar popup aqui");
+// });
 
 
 $('#photo_change').click(function () {

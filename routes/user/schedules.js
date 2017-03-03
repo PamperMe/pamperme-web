@@ -7,7 +7,7 @@ var future_visits_confirmed = "SELECT b.name as babysitter_name, c.name as clien
     " v.date, v.start_hour, v.duration, v.evaluation, c.address FROM visits v inner join clients c on v.id_client = c.id" +
     " inner join babysitter b on b.id = v.id_babysitter WHERE date > NOW() and id_babysitter = %s and v.confirmation = 1";
 
-var future_visits_to_confirm = "SELECT b.name as babysitter_name, c.name as client_name, (v.duration*b.price) as price," +
+var future_visits_to_confirm = "SELECT v.id_visits, b.name as babysitter_name, c.name as client_name, (v.duration*b.price) as price," +
     " v.date, v.start_hour, v.duration, v.evaluation, c.address FROM visits v inner join clients c on v.id_client = c.id" +
     " inner join babysitter b on b.id = v.id_babysitter WHERE date > NOW() and id_babysitter = %s and v.confirmation = 0";
 
@@ -19,7 +19,7 @@ router.get('/', isLoggedIn, function (req, res) {
             res.render('user/schedules');
         } else {
             var confirmed = [];
-            for(var i = 0; i < confirmed.length; i++){
+            for(var i = 0; i < alreadyConfirmed.length; i++){
                 confirmed[i] = new Visit(alreadyConfirmed[i]);
             }
             connection.query(util.format(future_visits_to_confirm,req.app.locals.user.id), function (err, toConfirm) {
@@ -40,12 +40,38 @@ router.get('/', isLoggedIn, function (req, res) {
     });
 });
 
-router.post('/accepted', function (req,res) {
-
+router.post('/accept', isLoggedIn, function (req,res) {
+    if(req.body.visits_id){
+        var query = util.format("UPDATE visits SET confirmation = 1 WHERE id_visits ='%s';",req.body.visits_id);
+        connection.query(query,function (err, result) {
+            if(err){
+                res.redirect("/user/schedules");
+            } else {
+                if(result.affectedRows > 0){
+                    res.redirect("/user/schedules");
+                } else {
+                    res.redirect("/user/schedules");
+                }
+            }
+        })
+    }
 });
 
-router.post('/declined', function (req,res) {
-
+router.post('/decline', isLoggedIn, function (req,res) {
+    if(req.body.visits_id){
+        var query = util.format("UPDATE visits SET confirmation = 2 WHERE id_visits ='%s';",req.body.visits_id);
+        connection.query(query,function (err, result) {
+            if(err){
+                res.redirect("/user/schedules");
+            } else {
+                if(result.affectedRows > 0){
+                    res.redirect("/user/schedules");
+                } else {
+                    res.redirect("/user/schedules");
+                }
+            }
+        })
+    }
 });
 
 
@@ -66,5 +92,6 @@ function Visit(data){
     this.duration = data.duration;
     this.evaluation = data.evaluation;
     this.address = data.address;
+    this.id = data.id_visits;
 }
 module.exports = router;

@@ -23,13 +23,10 @@
                             <span class="glyphicon glyphicon-home"></span>
                         </th>
                         <th style="text-align: center">
-                            <span class="glyphicon glyphicon-play"></span>
-                        </th>
-                        <th style="text-align: center">
                             <span class="glyphicon glyphicon-time"></span>
                         </th>
                         <th style="text-align: center">
-                            <span class="glyphicon glyphicon-euro"></span>
+                            <span class="glyphicon glyphicon-play"></span>
                         </th>
                         <th>Confirmação</th>
                     </tr>
@@ -44,14 +41,19 @@
                                     <td style="text-align: center">{{this.address}}</td>
                                     <td style="text-align: center">{{this.start_hour}}:00</td>
                                     <td style="text-align: center">{{this.duration}} horas</td>
-                                    <td style="text-align: center">{{this.price}}€</td>
                                     <td>
                                         <div class="btn-group" role="group" aria-label="...">
                                             <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-success"> SIM</button>
+                                                <form class="no-margin" action="/user/schedules/accept" method="post">
+                                                    <input type="text" name="visits_id" hidden value="{{this.id}}">
+                                                    <button type="submit" class="btn btn-success">SIM</button>
+                                                </form>
                                             </div>
                                             <div class="btn-group" role="group">
-                                                <button type="button" class="btn btn-danger"> NÃO</button>
+                                                <form class="no-margin" action="/user/schedules/decline" method="post">
+                                                    <input type="text" name="visits_id" hidden value="{{this.id}}">
+                                                    <button type="submit" class="btn btn-danger">NÃO</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>
@@ -87,13 +89,10 @@
                             <span class="glyphicon glyphicon-home"></span>
                         </th>
                         <th style="text-align: center">
-                            <span class="glyphicon glyphicon-play"></span>
-                        </th>
-                        <th style="text-align: center">
                             <span class="glyphicon glyphicon-time"></span>
                         </th>
                         <th style="text-align: center">
-                            <span class="glyphicon glyphicon-euro"></span>
+                            <span class="glyphicon glyphicon-play"></span>
                         </th>
                     </tr>
                     </thead>
@@ -107,7 +106,6 @@
                                     <td style="text-align: center">{{this.address}}</td>
                                     <td style="text-align: center">{{this.start_hour}}:00</td>
                                     <td style="text-align: center">{{this.duration}} horas</td>
-                                    <td style="text-align: center">{{this.price}}€</td>
                                 </div>
                             </a>
                         </tr>

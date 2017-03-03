@@ -7,6 +7,11 @@ var firebase = require('firebase');
 
 var update_photo_url_query = "UPDATE %s SET photo_url = '%s' WHERE uid = '%s'";
 
+var future_visits_confirmed = "SELECT b.name as babysitter_name, confirmation, c.name as client_name, (v.duration*b.price) as price," +
+    " v.date, v.start_hour, v.duration, v.evaluation, c.address FROM visits v inner join clients c on v.id_client = c.id" +
+    " inner join babysitter b on b.id = v.id_babysitter WHERE date > NOW() and id_client = %s";
+
+
 var multer = require('multer');
 var upload = multer({dest: 'public/uploads/'});
 
@@ -93,7 +98,18 @@ router.get('/profile', isLoggedIn, function (req, res) {
             }
 
         })
-
+    } else {
+        connection.query(util.format(future_visits_confirmed,req.app.locals.user.id),function (err, result) {
+           if(err){
+               res.render("user/profile");
+           } else {
+               var visits = [];
+               for(var i = 0; i < result.length; i++){
+                   visits[i] = new Visit(result[i])
+               }
+               res.render("user/profile", {scheduledVisits:visits});
+           }
+        });
 
     }
 
@@ -139,6 +155,26 @@ router.post('/profile/edit',isLoggedIn,function (req, res) {
     });
 
 });
+
+function Visit(data){
+    var formattedDate = util.format("%s/%s/%s", data.date.getDate(), data.date.getMonth() + 1, data.date.getFullYear());
+    this.babysitter_name = data.babysitter_name;
+    this.client_name = data.client_name;
+    this.price = data.price;
+    this.date = formattedDate;
+    this.start_hour = data.start_hour;
+    this.duration = data.duration;
+    this.evaluation = data.evaluation;
+    this.address = data.address;
+    this.id = data.id_visits;
+    if(data.confirmation == 0){
+        this.noAnswer = true;
+    } else if(data.confirmation == 1){
+        this.accepted = true;
+    } else {
+        this.rejected = true;
+    }
+}
 
 function isLoggedIn(req, res, next) {
     if (req.app.locals.user) {

@@ -106,7 +106,7 @@ function getUser(uid, callback) {
                         } else {
                             connection.query(util.format(counter_visits,done.id),function (err, result) {
                                 if(err){
-                                    callback(1,done,0);
+                                    callback(1,done,null);
                                 } else {
                                     callback(1, done, result[0].counter);
                                 }
@@ -117,15 +117,15 @@ function getUser(uid, callback) {
                 } else {
                     getClient(uid, function (err, done) {
                         if (err) {
-                            callback(null, err);
+                            callback(null, err, null);
                         } else {
-                            callback(2, done);
+                            callback(2, done, null);
                         }
                     });
                 }
             }
             else {
-                callback(3, null);
+                callback(3, null, null);
             }
         }
     })
