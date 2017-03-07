@@ -1,7 +1,5 @@
-
 <div class="container ">
-    <div class="jumbotron fill no-margin">
-
+    <div class="jumbotron container-fluid no-margin">
         {{#if toConfirm}}
             <div class="panel panel-danger">
                 <div class="panel-heading">
@@ -41,13 +39,15 @@
                                     <td>
                                         <div class="btn-group" role="group" aria-label="...">
                                             <div class="btn-group" role="group">
-                                                <form class="no-margin" action="/user/schedules/accept" method="post">
+                                                <form class="no-margin" action="/user/schedules/accept"
+                                                      method="post">
                                                     <input type="text" name="visits_id" hidden value="{{this.id}}">
                                                     <button type="submit" class="btn btn-success">SIM</button>
                                                 </form>
                                             </div>
                                             <div class="btn-group" role="group">
-                                                <form class="no-margin" action="/user/schedules/decline" method="post">
+                                                <form class="no-margin" action="/user/schedules/decline"
+                                                      method="post">
                                                     <input type="text" name="visits_id" hidden value="{{this.id}}">
                                                     <button type="submit" class="btn btn-danger">NÃO</button>
                                                 </form>

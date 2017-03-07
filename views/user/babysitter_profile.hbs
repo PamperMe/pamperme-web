@@ -5,15 +5,24 @@
                 <span class="glyphicon glyphicon-pencil"></span>
             </button>
         </a>
-        <div class="jumbotron no-margin">
+        <div class="jumbotron container-fluid no-margin">
             <div class="row">
-                <div class="col-xs-12 col-sm-4 col-md-3 col-lg-3">
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <div class="img-profile-big">
-                        {{#if this.photo_url}}
-                            <img style="background-image: url({{data.photo_url}}); margin: 0;">
-                        {{else}}
-                            <img style="background-image: url('/images/icon_undifined.png')">
-                        {{/if}}
+                        <div
+                            {{#if data.photo_url}}
+                            style="background-image: url({{data.photo_url}})"
+                            {{else}}
+                            style="background-image: url('/images/icon_undifined.png')">
+                            {{/if}}
+                            <a href="#" style="display: block;">
+                                <button type="submit" class="btn btn-primary" id="photo_change"
+                                        style="position: absolute; margin: 5px;">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
@@ -21,9 +30,9 @@
                         <h2 class="small-h2">{{data.name}}</h2>
                         <div class="col-xs-6">
                             <h3 class="small-h3">{{data.age}} Anos</h3>
-                            <h3 class="small-h3"><span class="glyphicon glyphicon-home"></span>{{data.location}}</h3>
-                            <h3 class="small-h3"><span class="glyphicon glyphicon-star-empty"></span>{{data.evaluation}}
-                                /10</h3>
+                            <h3 class="small-h3"><span class="glyphicon glyphicon-home"></span>{{data.location}}
+                            </h3>
+                            <h3 class="small-h3"><span class="glyphicon glyphicon-star-empty"></span>10/10</h3>
                         </div>
                         <div class="col-xs-6 column-right">
                             <br>
@@ -33,23 +42,31 @@
                         </div>
                     </div>
                 </div>
-                {{#if data.description}}
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="thumbnail">
-                            <h2>Descrição</h2>
-                            <h4>{{data.description}}</h4>
+                {{#if user.description}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-margin">
+                        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Descrição</h3>
+
+                            </div>
+                            <h4 style="margin-left: 15px">{{data.description}}</h4>
                         </div>
                     </div>
                 {{else}}
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 20px">
-                        <div class="thumbnail">
-                            <h2>Descrição</h2>
-                            <h3>Não existe Descrição</h3>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">
+                                <h2 class="panel-title">Descrição</h2>
+
+                            </div>
+                            <h4 style="margin-left: 15px">Não existe Descrição</h4>
                         </div>
                     </div>
                 {{/if}}
                 {{#if availability}}
-
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
                         <!-- Default panel contents -->
                         <div class="panel-heading">
@@ -106,6 +123,7 @@
                             </ul>
                         </nav>
                     </div>
+                </div>
                 {{/if}}
             </div>
         </div>

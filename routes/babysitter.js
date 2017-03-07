@@ -8,11 +8,11 @@ const query_availability = "select date, start_hour, end_hour, babysitter.id fro
     "inner join babysitter on babysitter.id = schedule.id_babysitter where babysitter.uid = '%s' and date > now() order by date limit %s, %s";
 
 const query_page_counter = "select count(*) entries from schedule " +
-    "inner join babysitter on babysitter.id = schedule.id_babysitter where babysitter.uid = '%s'"
+    "inner join babysitter on babysitter.id = schedule.id_babysitter where babysitter.uid = '%s' and date > now()"
 
 const connection = require('../models/Connect');
 
-router.get('/:uid/:page',isLoggedIn, function (req, res) {
+router.get('/:uid/:page', function (req, res) {
     var data,uid;
     connection.query(util.format(query_sitters, req.params.uid), function (err, done) {
         if (err) {
@@ -89,7 +89,7 @@ router.post('/:uid/:id/confirmed', isLoggedIn, function (req, res) {
             res.send(err);
         } else {
             if(done.affectedRows == 1){
-                res.redirect("/user/profile");
+                res.redirect("/user/profile/1");
             }
         }
     });

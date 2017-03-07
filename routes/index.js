@@ -48,11 +48,11 @@ router.post('/login', function (req, res) {
                     req.app.locals.user = babysitter;
                     req.app.locals.badgeCounter = counter;
                     req.app.locals.userAge = getAge(result.birthday);
-                    res.redirect('/user/profile');
+                    res.redirect('/user/profile/1');
                 } else if (code == 2) {
                     req.app.locals.client = true;
                     req.app.locals.user = result;
-                    res.redirect('/user/profile');
+                    res.redirect('/user/profile/1');
                 } else if (code == 3) {
                     //TODO First time login
                     req.app.locals.email = data.email;

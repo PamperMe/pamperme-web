@@ -37,7 +37,7 @@ router.post('/babysitter', function (req, res) {
                             var babysitter = new Babysitter(result[0]);
                             req.app.locals.babysitter = true;
                             req.app.locals.user = babysitter;
-                            res.redirect('/user/profile');
+                            res.redirect('/user/profile/1');
                         }
                     }
                 });
@@ -70,7 +70,7 @@ router.post('/client', function (req, res) {
                     } else {
                         req.app.locals.client = true;
                         req.app.locals.user = result[0];
-                        res.redirect('/user/profile');
+                        res.redirect('/user/profile/1');
                     }
                 });
             } else {

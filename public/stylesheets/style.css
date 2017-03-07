@@ -1,3 +1,7 @@
+/**{*/
+    /*border:1px solid;*/
+/*}*/
+
 .fill {
     width: 100%;
     height: 100%;
@@ -119,16 +123,16 @@ a, a:hover{
 }
 
 
-.img-profile-big img{
+.img-profile-big div{
     width:200px;
+    margin:10px auto;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
     background-color: white;
     height: 200px;
     background-position: center;
     background-size: cover;
-}
-
-.img-profile-big a img{
-    margin:0;
 }
 
 .img-profile-small{
@@ -239,8 +243,9 @@ a, a:hover{
 }
 
 .profile-info{
-    min-height:200px;
+    min-height: 200px;
     padding: 15px;
+    margin: 10px 0;
 }
 
 
@@ -311,6 +316,9 @@ a, a:hover{
 .fl-client{
     display: none;
 }
+.small-h3{
+    margin:10px 0;
+}
 @media(max-width:768px){
 
     .small-h2{
@@ -318,6 +326,7 @@ a, a:hover{
     }
     .small-h3{
         font-size: 16px;
+        margin:10px 0 0 0;
     }
     .btn-sso{
      display: inline;
@@ -358,6 +367,7 @@ a, a:hover{
         color:#223;
     }
 }
+
 
 .pages{
     text-align: center;
