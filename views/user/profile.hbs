@@ -1,6 +1,6 @@
 {{#if babysitter}}
     <div class="container">
-        <a href="/user/profile/edit">
+        <a href="/user/edit">
             <button type="button" class=" btn btn-primary edit-button">
                 <span class="glyphicon glyphicon-pencil"></span>
             </button>
@@ -64,7 +64,7 @@
                                 <h3 class="panel-title">Descrição</h3>
 
                             </div>
-                            <h4 style="margin-left: 15px">{{user.description}}</h4>
+                            <h4 style="margin-left: 15px">{{{user.description}}}</h4>
                         </div>
                     </div>
                 {{else}}
@@ -85,13 +85,13 @@
 {{else}}
     {{#if client}}
         <div class="container">
-            <a href="/user/profile/edit">
+            <a href="/user/edit">
                 <button type="button" class=" btn btn-primary edit-button">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
             </a>
-            <div class="jumbotron container-fluid no-margin">
-                <div class="row">
+        <div class="jumbotron container-fluid no-margin">
+            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                     <div class="img-profile-big">
                         {{#if user.photo_url}}
@@ -124,85 +124,65 @@
                                     <h2 class="small-h2">{{user.name}}</h2>
                                 </div>
                                 <div class="col-xs-10 col-sm-10 col-md-6 col-lg-10">
-                                    <h3 class="small-h3"><span class="glyphicon glyphicon-home"></span>{{user.address}}</h3>
+                                    <h3 class="small-h3"><span class="glyphicon glyphicon-home"></span>{{user.address}}
+                                    </h3>
                                 </div>
                                 <div class="col-xs-10 col-sm-10 col-md-6 col-lg-10">
-                                    <h3 class="small-h3"><span class="glyphicon glyphicon-phone"></span>{{user.phone}}</h3>
+                                    <h3 class="small-h3"><span class="glyphicon glyphicon-phone"></span>{{user.phone}}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {{#if user.description}}
+                    {{#if scheduledVisits}}
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
                                 <!-- Default panel contents -->
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Descrição</h3>
+                                    <h2 class="panel-title">Marcações</h2>
 
                                 </div>
-                                <h3>{{user.description}}</h3>
-                            </div>
-                        </div>
-                    {{else}}
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 20px">
-                            <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
-                                <!-- Default panel contents -->
-                                <div class="panel-heading">
-                                    <h2 class="panel-title">Descrição</h2>
-
-                                </div>
-                                <h4 style="margin-left: 15px">Não existe Descrição</h4>
-                            </div>
-                        </div>
-                    </div>
-                    {{/if}}
-                    {{#if scheduledVisits}}
-                        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
-                            <!-- Default panel contents -->
-                            <div class="panel-heading">
-                                <h2 class="panel-title">Marcações</h2>
-
-                            </div>
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Babysitter</th>
-                                    <th>Data</th>
-                                    <th>Hora Inicio</th>
-                                    <th>Duração</th>
-                                    <th>Estado</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {{#each scheduledVisits}}
+                                <table class="table table-hover">
+                                    <thead>
                                     <tr>
-                                        <td>
-                                            {{this.babysitter_name}}
-                                        </td>
-                                        <td>
-                                            {{this.date}}
-                                        </td>
-                                        <td>
-                                            {{this.start_hour}}:00
-                                        </td>
-                                        <td>
-                                            {{this.duration}} horas
-                                        </td>
-                                        <td>
-                                            {{#if this.accepted}}
-                                                <span class="glyphicon glyphicon-ok"></span>
-                                            {{/if}}
-                                            {{#if this.noAnswer}}
-                                                <span class="glyphicon glyphicon-question-sign"></span>
-                                            {{/if}}
-                                            {{#if this.rejected}}
-                                                <span class="glyphicon glyphicon-remove"></span>
-                                            {{/if}}
-                                        </td>
+                                        <th>Babysitter</th>
+                                        <th>Data</th>
+                                        <th>Hora Inicio</th>
+                                        <th>Duração</th>
+                                        <th>Estado</th>
                                     </tr>
-                                {{/each}}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                    {{#each scheduledVisits}}
+                                        <tr>
+                                            <td>
+                                                {{this.babysitter_name}}
+                                            </td>
+                                            <td>
+                                                {{this.date}}
+                                            </td>
+                                            <td>
+                                                {{this.start_hour}}:00
+                                            </td>
+                                            <td>
+                                                {{this.duration}} horas
+                                            </td>
+                                            <td>
+                                                {{#if this.accepted}}
+                                                    <span class="glyphicon glyphicon-ok"></span>
+                                                {{/if}}
+                                                {{#if this.noAnswer}}
+                                                    <span class="glyphicon glyphicon-question-sign"></span>
+                                                {{/if}}
+                                                {{#if this.rejected}}
+                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                {{/if}}
+                                            </td>
+                                        </tr>
+                                    {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     {{else}}
                         <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">

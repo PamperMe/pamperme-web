@@ -143,7 +143,7 @@ router.get('/profile/:page', isLoggedIn, function (req, res) {
 
 });
 
-router.get('/profile/edit', isLoggedIn, function (req, res) {
+router.get('/edit', isLoggedIn, function (req, res) {
     res.render('user/edit_profile');
 });
 
@@ -179,7 +179,7 @@ router.post('/profile/edit', isLoggedIn, function (req, res) {
                     req.app.locals.user.phone = req.body.phone;
                     req.app.locals.user.address = req.body.address;
                 }
-                res.redirect('/user/profile');
+                res.redirect('/user/profile/1');
             }
         }
     });
