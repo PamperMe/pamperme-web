@@ -293,19 +293,19 @@ a, a:hover{
 .menu{
     display: inline;
     width:100%;
-    padding:18px 12px 18px 10px;
+    padding:18px 0px;
     color: #fff;
-
     transition: color .4s,background-color .4s;
+}
+
+.menu span{
+    padding:0 10px;
 }
 .menu:hover{
     background-color: #ffffff;
     color:#222;
 }
 
-.menu span{
-    padding-right: 10px;
-}
 .menu-active{
     background-color: #ffffff;
     color:#223;
