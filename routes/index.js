@@ -72,6 +72,50 @@ router.post('/login', function (req, res) {
     });
 });
 
+router.get('/facebook/:token', function (req, res) {
+    // Build Firebase credential with the Facebook access token.
+    var credential = firebase.auth.FacebookAuthProvider.credential(req.params.token);
+
+// // Sign in with credential from the Google user.
+//     firebase.auth().signInWithCredential(credential).catch(function(error) {
+//         // Handle Errors here.
+//
+//     });
+
+    firebase.auth().signInWithCredential(credential).then(function (data) {
+        if (data != null) {
+            getUser(data.uid, function (code, result, counter) {
+                if (code == 1) {
+                    var babysitter = new Babysitter(result);
+                    req.app.locals.babysitter = true;
+                    req.app.locals.user = babysitter;
+                    req.app.locals.badgeCounter = counter;
+                    req.app.locals.userAge = getAge(result.birthday);
+                    res.redirect('/user/profile/1');
+                } else if (code == 2) {
+                    req.app.locals.client = true;
+                    req.app.locals.user = result;
+                    res.redirect('/user/profile/1');
+                } else if (code == 3) {
+                    //TODO First time login
+
+                    req.app.locals.email = data.email;
+                    res.redirect('/user/firstLogin');
+                }
+            })
+        }
+    }).catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+        res.render("login", {hasErrors: true, error: "Algo Correu mal. Por favor tente de novo."});
+    })
+});
+
 router.get('/google', function (req, res) {
     function onSignIn(googleUser) {
         console.log('Google Auth Response', googleUser);

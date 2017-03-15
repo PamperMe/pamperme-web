@@ -10,7 +10,7 @@
                 <div class="form-group fl-client">
                     <form method="post" action="firstLogin/client">
                         <label for="clienteName">Nome</label><br>
-                        <input type="input" class="form-control" id="clienteName" name="name"/><br>
+                        <input type="input" class="form-control" id="clienteName" name="name" value="{{firebaseUser.displayName}}"/><br>
                         <label for="clienteAddres">Morada</label><br>
                         <input type="input" class="form-control" id="clienteAddres" name="address"/><br>
                         <label for="clientPhone">Telefone</label><br>
@@ -21,7 +21,7 @@
                 <div class="form-group fl-bbsitter">
                     <form method="post" action="firstLogin/babysitter">
                         <label for="sitterNome">Nome</label><br>
-                        <input type="input" class="form-control" id="sitterNome" name="name"/><br>
+                        <input type="input" class="form-control" id="sitterNome" name="name" value="{{firebaseUser.displayName}}"/><br>
                         <label for="dayMonth">Aniversário</label><br>
                         <input type="text" class="form-control" id="dayMonth" placeholder="Aniversário"  name="birthday"><br>
                         <label for="sitterLocation">Localidade</label><br>

@@ -1,5 +1,5 @@
 /**{*/
-    /*border:1px solid;*/
+/*border:1px solid;*/
 /*}*/
 
 .fill {
@@ -293,19 +293,19 @@ a, a:hover{
 .menu{
     display: inline;
     width:100%;
-    padding:18px 0px;
+    padding:18px 12px 18px 10px;
     color: #fff;
-    transition: color .4s,background-color .4s;
-}
 
-.menu span{
-    padding:0 10px;
+    transition: color .4s,background-color .4s;
 }
 .menu:hover{
     background-color: #ffffff;
     color:#222;
 }
 
+.menu span{
+    padding-right: 10px;
+}
 .menu-active{
     background-color: #ffffff;
     color:#223;
@@ -329,7 +329,7 @@ a, a:hover{
         margin:10px 0 0 0;
     }
     .btn-sso{
-     display: inline;
+        display: inline;
         padding-right: 15px;
         top:50px;
         position: relative;
@@ -382,5 +382,3 @@ a, a:hover{
         font-size: 16px;
     }
 }
-
-

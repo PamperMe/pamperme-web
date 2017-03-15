@@ -15,7 +15,7 @@ var session  = require('express-session');
 
 const CLIENTS = "SELECT * from clients";
 const BABYSITTER = "SELECT * from babysitter";
-const USER = "SELECT * from clienttype where UID = '%s'";
+const USER = "SELECT * from user_type where UID = '%s'";
 
 
 var firebase = require('firebase');
@@ -124,7 +124,6 @@ firebase.auth().onAuthStateChanged(function (user) {
         });
         app.locals.firebaseUser = user;
     }
-
 })
 
 
@@ -162,23 +161,28 @@ function getUser(uid,callback) {
     connection.query(query, function (err, data) {
         if (err) {
         } else {
-            if (data[0].type == 1) {
-                getBabysitter(uid, function (err, done) {
-                    if (err) {
-                        callback(null,err);
-                    } else {
-                        callback(1,done);
-                    }
-                });
+            if(data.length > 0){
+                if (data[0].type == 1) {
+                    getBabysitter(uid, function (err, done) {
+                        if (err) {
+                            callback(null,err);
+                        } else {
+                            callback(1,done);
+                        }
+                    });
+                } else {
+                    getClient(uid, function (err, done) {
+                        if (err) {
+                            callback(null,err);
+                        } else {
+                            callback(2,done);
+                        }
+                    });
+                }
             } else {
-                getClient(uid, function (err, done) {
-                    if (err) {
-                        callback(null,err);
-                    } else {
-                        callback(2,done);
-                    }
-                });
+
             }
+
         }
     })
 }
