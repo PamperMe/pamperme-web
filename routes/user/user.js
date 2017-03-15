@@ -91,13 +91,28 @@ router.get('/profile/:page', isLoggedIn, function (req, res) {
                 req.app.locals.badgeCounter = undefined;
                 res.render('user/profile');
             } else {
-                if (result[0].counter > 0) {
-                    req.app.locals.badgeCounter = result[0].counter;
-                    res.render('user/profile');
-                } else {
-                    req.app.locals.badgeCounter = undefined;
-                    res.render('user/profile');
-                }
+                var soonVisits = "Select b.name as babysitter_name, c.name as client_name, (v.duration*b.price) as price," +
+                    " v.date, v.start_hour, v.duration, v.evaluation, c.address FROM visits v inner join clients c on v.id_client = c.id" +
+                    " inner join babysitter b on b.id = v.id_babysitter where id_babysitter = %s and confirmation = 1 and date between now() and (now() + interval 15 day) order by date";
+                connection.query(util.format(soonVisits,req.app.locals.user.id),function (error, visits) {
+                    if(error){
+                        req.app.locals.badgeCounter = undefined;
+                        res.render('user/profile');
+                    } else {
+                        var v = [];
+                        for (var i = 0; i < visits.length; i++) {
+                            v[i] = new Visit(visits[i]);
+                        }
+                        if (result[0].counter > 0) {
+                            req.app.locals.badgeCounter = result[0].counter;
+                            res.render('user/profile', {visitsSoon:v});
+                        } else {
+                            req.app.locals.badgeCounter = undefined;
+                            res.render('user/profile', {visitsSoon:v});
+                        }
+                    }
+                });
+
             }
 
         })

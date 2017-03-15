@@ -79,6 +79,57 @@
                         </div>
                     </div>
                 {{/if}}
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top: 20px">
+                    <div class="panel panel-danger col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Marcações Proximas</h2>
+
+                        </div>
+                        {{#if visitsSoon}}
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center">
+                                        <span class="glyphicon glyphicon-user"></span>
+                                    </th>
+                                    <th style="text-align: center">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </th>
+                                    <th style="text-align: center">
+                                        <span class="glyphicon glyphicon-home"></span>
+                                    </th>
+                                    <th style="text-align: center">
+                                        <span class="glyphicon glyphicon-time"></span>
+                                    </th>
+                                    <th style="text-align: center">
+                                        <span class="glyphicon glyphicon-play"></span>
+                                    </th>
+                                </tr>
+                                </thead>
+                                {{#each visitsSoon}}
+                                    <tr data-href="#">
+                                        <a href="#">
+                                            <div>
+                                                <!--TODO put style inside style.css-->
+                                                <td style="text-align: center">{{this.client_name}}</td>
+                                                <td style="text-align: center">{{this.date}}</td>
+                                                <td style="text-align: center">{{this.address}}</td>
+                                                <td style="text-align: center">{{this.start_hour}}:00</td>
+                                                <td style="text-align: center">{{this.duration}} horas</td>
+                                            </div>
+                                        </a>
+                                    </tr>
+                                {{/each}}
+
+                            </table>
+                        {{else}}
+                            <h4 style="margin-left: 15px">Não existem Marcações.</h4>
+                        {{/if}}
+
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
