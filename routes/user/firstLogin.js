@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
 
 
 router.post('/babysitter', function (req, res) {
-    var name, phone, location, price, birthday, description, uid, email;
+    var name, phone, location, price, birthday, description, uid, email, photo_url;
     name = req.body.name;
     phone = req.body.phone;
     location = req.body.location;
@@ -20,8 +20,17 @@ router.post('/babysitter', function (req, res) {
     uid = firebase.auth().currentUser.uid;
     email = firebase.auth().currentUser.email;
 
-    var query = util.format("Insert into babysitter (uid,email,name,birthday,location,price,description,phone) values ('%s'," +
-        " '%s', '%s', '%s','%s','%s', '%s', '%s')", uid, email, name, birthday, location, price, description, phone);
+    if(firebase.auth().currentUser.providerData[0].providerId != null &&
+        firebase.auth().currentUser.providerData[0].providerId == "facebook.com"
+    ){
+        var facebookUserId = firebase.auth().currentUser.providerData[0].uid;
+        photo_url = "'https://graph.facebook.com/" + facebookUserId + "/picture?height=250'"
+    } else {
+        photo_url = NULL;
+    }
+
+    var query = util.format("Insert into babysitter (uid,email,name,birthday,location,price,description,phone, photo_url) values ('%s'," +
+        " '%s', '%s', '%s','%s','%s', '%s', '%s, %s')", uid, email, name, birthday, location, price, description, phone, photo_url);
 
     connection.query(query, function (err, done) {
         if (err) {
@@ -49,15 +58,24 @@ router.post('/babysitter', function (req, res) {
 });
 
 router.post('/client', function (req, res) {
-    var name, phone, address, uid, email;
+    var name, phone, address, uid, email, photo_url;
     name = req.body.name;
     phone = req.body.phone;
     address = req.body.address;
     uid = firebase.auth().currentUser.uid;
     email = firebase.auth().currentUser.email;
 
-    var query = util.format("Insert into clients (uid, name, address, email, phone) values ('%s', '%s', '%s', '%s','%s')"
-        , uid, name, address, email, phone);
+    if(firebase.auth().currentUser.providerData[0].providerId != null &&
+        firebase.auth().currentUser.providerData[0].providerId == "facebook.com"
+    ){
+        var facebookUserId = firebase.auth().currentUser.providerData[0].uid;
+        photo_url = "'https://graph.facebook.com/" + facebookUserId + "/picture?height=250'"
+    } else {
+        photo_url = NULL;
+    }
+
+    var query = util.format("Insert into clients (uid, name, address, email, phone, photo_url) values ('%s', '%s', '%s', '%s','%s', %s)"
+        , uid, name, address, email, phone, photo_url);
     connection.query(query, function (err, done) {
         if (err) {
             res.send(err);
