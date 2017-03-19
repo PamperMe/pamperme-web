@@ -30,7 +30,7 @@ router.post('/babysitter', function (req, res) {
     }
 
     var query = util.format("Insert into babysitter (uid,email,name,birthday,location,price,description,phone, photo_url) values ('%s'," +
-        " '%s', '%s', '%s','%s','%s', '%s', '%s, %s')", uid, email, name, birthday, location, price, description, phone, photo_url);
+        " '%s', '%s', '%s','%s','%s', '%s', '%s', %s)", uid, email, name, birthday, location, price, description, phone, photo_url);
 
     connection.query(query, function (err, done) {
         if (err) {
