@@ -10,5 +10,4 @@ function User(client){
     this.description = client.description;
 }
 
-
 module.exports = User;
