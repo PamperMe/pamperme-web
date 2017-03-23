@@ -1,0 +1,51 @@
+<div class="jumbotron container-fluid">
+    <div class="container">
+        <div class="form-position">
+            <form method="post" action="/user/profile/edit">
+                {{# if babysitter}}
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" class="form-control" value="{{user.name}}" name="name" id="name">
+                        <br>
+                        <!--<label for="dayMonth">Aniversário</label>-->
+                        <!--<input type="text" class="form-control" id="dayMonth" placeholder="Aniversário" name="birthday"-->
+                               <!--value="{{user.birthday}}">-->
+                        <!--<br>-->
+                        <label for="location">Localidade</label>
+                        <input type="text" id="location" class="form-control" value="{{user.location}}" name="location">
+                        <br>
+                        <label for="price">Preço (€/H)</label>
+                        <input type="number" id="price" class="form-control" value="{{user.price}}" name="price">
+                        <br>
+                        <label for="phone">Telefone</label>
+                        <input type="text" id="phone" class="form-control" value="{{user.phone}}" name="phone">
+                        <br>
+                        <label for="description">Descrição</label>
+                        <textarea rows="5" id="description" class="form-control"
+                                  name="description">{{user.description}}</textarea>
+                    </div>
+
+                    <button class="btn btn-success btn-block" type="submit">Guardar</button>
+                {{else}}
+                    {{#if client}}
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" value="{{user.name}}" name="name" id="name">
+                            </p>
+                            <label for="address">Morada</label>
+                            <input type="text" class="form-control" value="{{user.address}}" name="address"
+                                   id="address">
+                            </p>
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control" value="{{user.phone}}" name="phone" id="phone">
+                            </p>
+                        </div>
+                        <button class="btn btn-success btn-block" type="submit">Guardar</button>
+                    {{/if}}
+                {{/ if}}
+
+            </form>
+        </div>
+    </div>
+
+</div>

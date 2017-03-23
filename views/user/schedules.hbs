@@ -1,0 +1,128 @@
+<div class="container ">
+    <div class="jumbotron container-fluid no-margin">
+        {{#if toConfirm}}
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h6 class="panel-title">Marcações por Confirmar</h6>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </th>
+                        <th>Confirmação</th>
+                    </tr>
+                    </thead>
+                    {{#each toConfirm}}
+                        <tr data-href="#">
+                            <a href="#">
+                                <div>
+                                    <!--TODO put style inside style.css-->
+                                    <td style="text-align: center">{{this.client_name}}</td>
+                                    <td style="text-align: center">{{this.date}}</td>
+                                    <td style="text-align: center">{{this.address}}</td>
+                                    <td style="text-align: center">{{this.start_hour}}:00</td>
+                                    <td style="text-align: center">{{this.duration}} horas</td>
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="...">
+                                            <div class="btn-group" role="group">
+                                                <form class="no-margin" action="/user/schedules/accept"
+                                                      method="post">
+                                                    <input type="text" name="visits_id" hidden value="{{this.id}}">
+                                                    <button type="submit" class="btn btn-success">SIM</button>
+                                                </form>
+                                            </div>
+                                            <div class="btn-group" role="group">
+                                                <form class="no-margin" action="/user/schedules/decline"
+                                                      method="post">
+                                                    <input type="text" name="visits_id" hidden value="{{this.id}}">
+                                                    <button type="submit" class="btn btn-danger">NÃO</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </div>
+                            </a>
+                        </tr>
+                    {{/each}}
+
+                </table>
+
+            </div>
+        {{else}}
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Marcações por Confirmar</h2>
+
+                </div>
+                <h4 style="margin-left: 15px">Não existem Marcações</h4>
+            </div>
+        {{/if}}
+        {{#if confirmed}}
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Marcações Confirmadas</h2>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-home"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-time"></span>
+                        </th>
+                        <th style="text-align: center">
+                            <span class="glyphicon glyphicon-play"></span>
+                        </th>
+                    </tr>
+                    </thead>
+                    {{#each confirmed}}
+                        <tr data-href="#">
+                            <a href="#">
+                                <div>
+                                    <!--TODO put style inside style.css-->
+                                    <td style="text-align: center">{{this.client_name}}</td>
+                                    <td style="text-align: center">{{this.date}}</td>
+                                    <td style="text-align: center">{{this.address}}</td>
+                                    <td style="text-align: center">{{this.start_hour}}:00</td>
+                                    <td style="text-align: center">{{this.duration}} horas</td>
+                                </div>
+                            </a>
+                        </tr>
+                    {{/each}}
+
+                </table>
+
+            </div>
+
+        {{else}}
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Marcações Confirmadas</h2>
+
+                </div>
+                <h3>Não existem Dados.</h3>
+            </div>
+        {{/if}}
+    </div>
+</div>

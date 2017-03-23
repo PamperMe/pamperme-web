@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="jumbotron container-fluid no-margin">
+        <div class="panel-heading">
+            <h3>Pesquisar Babysitter</h3>
+        </div>
+        <form action="/user/scheduling" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nome" value="{{searchName}}" name="name" id="name">
+                <input type="text" class="form-control" placeholder="Localização" value="{{searchLocation}}"
+                       name="location"
+                       id="location">
+                <input type="text" class="form-control" placeholder="Preço Mínimo" value="{{searchPriceMin}}"
+                       name="priceMin" id="priceMin">
+                <input type="text" class="form-control" placeholder="Preço Máximo" value="{{searchPriceMax}}"
+                       name="priceMax" id="priceMax">
+                <input type="text" class="form-control" placeholder="Data" value="{{searchDate}}" name="date"
+                       id="dayMonth">
+                <select id="babysitterRate" name="evaluation">
+                    <option value=""></option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit" class="btn btn-sm btn-bitbucket"><span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+        </form>
+        <br>
+        <div style="width: 100%; height: 2px; background: #000"></div>
+        <!-- Default panel contents -->
+            <h3>Babysitters</h3>
+        <!-- List group -->
+        {{# if data}}
+            {{#each data}}
+                <a href="/babysitter/{{this.uid}}/1">
+                    <ul class="list-group babysitter-list">
+                        <li class="list-group-item babysitter-list-cell">
+                            <table>
+                                <tr>
+                                    <td class="start">
+                                        {{#if this.photo_url}}
+                                            <img class="img-profile-small"
+                                                 style="background-image: url({{this.photo_url}})">
+                                        {{else}}
+                                            <img class="img-profile-small"
+                                                 style="background-image: url('/images/icon_undifined.png')">
+                                        {{/if}}
+                                    </td>
+                                    <td class="middle">
+                                        <div class="-align-left">
+                                            {{this.name}}
+                                        </div>
+                                    </td>
+                                    <td class="end">
+                                        <div class="-align-right">
+                                            {{#if this.location}}
+                                                {{this.location}}
+                                            {{else}}
+                                                <span>Indisponível</span>
+                                            {{/if}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                    </ul>
+                </a>
+            {{/each}}
+        {{else}}
+            <div class="container">
+                <h1 style="padding: 100px 0;"> Não existem Dados.</h1>
+            </div>
+        {{/if}}
+    </div>
+</div>

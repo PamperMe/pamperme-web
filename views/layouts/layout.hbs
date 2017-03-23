@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>{{title}}</title>
+    <meta name="google-signin-client_id" content="881083284025-h4nfsdlvmocgpco9p99rrvte2332n263.apps.googleusercontent.com .apps.googleusercontent.com">
+    <meta charset="utf-8">
+    <meta name="google-signin-client_id" content="881083284025-h4nfsdlvmocgpco9p99rrvte2332n263.apps.googleusercontent.com ">
+    <meta name="google-signin-cookiepolicy" content="single_host_origin">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap-social.css">
+    <link rel="stylesheet" type="text/css" href="/datepicker/css/main.css">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib_scripts/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+</head>
+<body>
+{{> header }}
+
+    {{{body}}}
+
+{{> footer }}
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/scripts/script.js"></script>
+
+
+<!--DATEPICKER-->
+<script src="http://code.jquery.com/ui/1.12.0/jquery-ui.js" integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
+<script>
+    $('#dayMonth').datepicker({
+        inline: true,
+        dateFormat: "yy/mm/dd",
+        showOtherMonths: true,
+        prevText: "Prev",
+        nextText: "Next",
+        selectOtherMonths: true,
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    });
+
+    $(function() {
+        $('#babysitterRate').barrating({
+            allowEmpty:true,
+            theme: 'fontawesome-stars',
+            initialRating:"{{searchEvaluation}}"
+        });
+    });
+</script>
+
+<!--DATEPICKER-->
+
+<script src="/lib_scripts/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
+
+
+</body>
+</html>

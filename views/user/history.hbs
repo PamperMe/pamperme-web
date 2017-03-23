@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="jumbotron container-fluid no-margin">
+        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+            <div class="panel-heading">
+                <h2 class="panel-title">Histórico</h2>
+            </div>
+            {{# if data}}
+                {{# if babysitter}}
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                <span class="glyphicon glyphicon-user"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-home"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-play"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-time"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-euro"></span>
+                            </th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each data}}
+                            <tr>
+                                <td>{{this.client_name}}</td>
+                                <td>{{this.date}}</td>
+                                <td>{{this.address}}</td>
+                                <td>{{this.start_hour}}</td>
+                                <td>{{this.duration}}</td>
+                                <td>{{this.evaluation}}</td>
+                                <td>{{this.price}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+
+                {{else}}
+                    <!-- Table -->
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-play"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-time"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </th>
+                            <th>
+                                <span class="glyphicon glyphicon-euro"></span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each data}}
+                            <tr class="link">
+                                <td>{{this.date}}</td>
+                                <td>{{this.start_hour}}</td>
+                                <td>{{this.duration}}</td>
+                                <td>
+                                    {{#if this.evaluation}}
+                                        {{this.evaluation}}
+                                    {{else}}
+                                        <!--TODO put input if empty-->
+                                        0
+                                    {{/if}}
+
+                                </td>
+                                <td>{{this.price}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                {{/if}}
+            {{else}}
+                <div class="container">
+                    <h3 style="padding: 100px 0;">Não existem Dados.</h3>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

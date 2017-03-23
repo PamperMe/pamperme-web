@@ -1,0 +1,384 @@
+/**{*/
+/*border:1px solid;*/
+/*}*/
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    margin-top: -50px;
+}
+textarea{
+    resize: none;
+}
+a, a:hover{
+    text-transform: none;
+    text-decoration: none;
+}
+
+.profile-sitter:hover{
+    color: black;
+}
+
+.img-action, .navbar-img{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-top: -4px;
+}
+
+.navbar-img{
+    margin-left: 0px;
+    margin-top: -10px;
+}
+.navbar{
+    border: 0;
+}
+
+.navbar,.jumbotron{
+    margin-bottom: 0;
+}
+.jumbotron{
+
+}
+.navbarbottom{
+    border-radius: 0px;
+    text-align:center;
+}
+.navbartop{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    border-radius: 0px;
+}
+
+.full-screen {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.btn-group:after, .navbar-header:after{
+    clear: none;
+}
+.jumbotron-missao, .jumbotron-visao, .jumbotron-valores, .jumbotron-instagram{
+    text-align: center;
+}
+.jumbotron-missao{
+    background-color: #F8BBD0;
+}
+.jumbotron-visao{
+    background-color: #FFF59D;
+}
+.jumbotron-valores{
+    background-color: #90CAF9;
+}
+.jumbotron-instagram{
+    background-color: #FFF59D;
+}
+.jumbotron-registar, .jumbotron-login{
+    margin-top: 0;
+    z-index: 50;
+    background-image: url('../images/blurredBG.jpg');
+}
+
+
+.footer{
+    background-color: #222;
+    color: #fff;
+}
+
+.icon-social{
+    max-height:50px;
+    max-width: 50px;
+}
+.form-position{
+    max-width: 330px;
+    padding: 50px 15px 15px 15px;
+    margin: 0 auto;
+}
+
+.caret{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.group-action{
+    margin-top: 10px;
+}
+.no-padding{
+    padding:0px;
+}
+.no-margin{
+    margin:0px;
+}
+
+.img-profile{
+    width: 100px;
+    height: 100px;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+
+.img-profile-big div{
+    width:200px;
+    margin:10px auto;
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    background-color: white;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+}
+
+.img-profile-small{
+    width: 75px;
+    height: 75px;
+    background-position: center;
+    background-size: cover;
+}
+
+.edit-button{
+    float: right;
+    margin: 10px 10px 0 0;
+}
+
+.babysitter-list-cell table{
+    width:100%;
+}
+
+.babysitter-list-cell table tr .start{
+    width: 10%
+}
+
+.babysitter-list-cell table tr .middle{
+    width: 70%
+}
+
+.babysitter-list-cell table tr  span{
+    font-size: 18px;
+    opacity: 0.7;
+}
+
+.babysitter-list-cell table tr .end{
+    width: 20%;
+    text-align: right;
+}
+
+.babysitter-list-cell table tr td div{
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+
+.babysitter-list{
+    margin-bottom: 15px;
+}
+
+
+.thumbnail{
+    border:0px;
+
+}
+.thumb-name, .thumb-price, .thumb-price, .thumb-deion, .thumb-age{
+    display: inline-block;
+    width: 100%;
+}
+.thumb-price, .thumb-age{
+    width: 50%;
+}
+.thumb-name, .thumb-price, .thumb-price, .thumb-deion, .img-profile, .thumb-age{
+    margin-top: 5px;
+}
+.link-profile:link, .link-profile:hover, .link-profile:visited,.link-profile:active{
+
+    text-decoration: none;
+    color: #222;
+}
+.thumb-deion{
+    color:#777;
+}
+
+.babysitter-list a{
+    text-transform: none;
+    color:black;
+
+}
+
+.babysitter-list li:hover{
+    background-color: #f3f3f3;
+}
+
+.move-group{
+    margin-top: -12px;
+    margin-bottom: -12px;
+}
+
+@media (min-width: 768px){
+    .navbar {
+        border-radius: 0px;
+    }
+}
+.img-responsive{
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.img-responsive-big{
+    max-height:200px;
+    max-width:200px;
+
+}
+.profile-contact{
+
+}
+
+.profile-img{
+    width: 200px;
+    height: 200px;
+}
+
+.profile-info{
+    min-height: 200px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+
+.profile-info h2{
+    margin:0;
+}
+
+.profile-info h3 span{
+    margin: 0 10px 0 0px;
+}
+
+.profile-info .column-right{
+    text-align: end;
+}
+
+.profile-description{
+    padding:10px;
+    text-align: justify;
+}
+
+.profile-contact{
+    text-align: center;
+
+}
+.group-action{
+    margin:0;
+}
+.btn-sso{
+    color: #fff;
+    display: none;
+    cursor: pointer;
+    line-height: 50px;
+    font-size: 30px;
+}
+.menu-nav{
+    margin:0;
+    padding:0;
+    padding-top: 15px;
+
+
+}
+.menu-nav-container{
+    padding-top: 0px;
+}
+.menu{
+    display: inline;
+    width:100%;
+    padding:18px 12px 18px 10px;
+    color: #fff;
+
+    transition: color .4s,background-color .4s;
+}
+.menu:hover{
+    background-color: #ffffff;
+    color:#222;
+}
+
+.menu span{
+    padding-right: 10px;
+}
+.menu-active{
+    background-color: #ffffff;
+    color:#223;
+}
+.nav-pills{
+    margin: 10px 0px 10px 0px;
+}
+.fl-client{
+    display: none;
+}
+.small-h3{
+    margin:10px 0;
+}
+@media(max-width:768px){
+
+    .small-h2{
+        font-size: 18px;
+    }
+    .small-h3{
+        font-size: 16px;
+        margin:10px 0 0 0;
+    }
+    .btn-sso{
+        display: inline;
+        padding-right: 15px;
+        top:50px;
+        position: relative;
+    }
+    .menu-nav-container{
+        background-color: #222;
+        padding-top: 50px;
+    }
+    .menu-orientation{
+        margin-top: -100px;
+        width:100%;
+    }
+    .group-action{
+        width:100%;
+    }
+    .menu-nav{
+        display: none;
+        top:50px;
+    }
+    .menu{
+        text-align: center;
+        display: block;
+        width:100%;
+        padding:18px 0px 18px 0px;
+        color: #fff;
+
+        transition: color .4s,background-color .4s;
+    }
+    .menu:hover{
+        background-color: #ffffff;
+        color:#222;
+    }
+    .menu-active{
+        background-color: #ffffff;
+        color:#223;
+    }
+}
+
+
+.pages{
+    text-align: center;
+}
+
+
+@media(max-width: 1000px){
+    .small-h2{
+        font-size: 18px;
+    }
+    .small-h3{
+        font-size: 16px;
+    }
+}

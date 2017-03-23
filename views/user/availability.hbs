@@ -1,0 +1,114 @@
+
+    <div class="container">
+        <div class="jumbotron container-fluid no-margin">
+        <form class="form-signin" method="post" action="/user/availability">
+            <h3 class="panel-heading">Agendar</h3>
+            <div class="thumbnail">
+                <div class="row">
+                    <div class="col-lg-2 col-xs-12">
+                        <input type="text" id="dayMonth" placeholder="Data" name="dayMonth" required>
+                    </div>
+                    <div class="col-lg-3 col-xs-12">
+
+                        <label for="startHour">Hora de Inicio</label>
+                        <select name="startHour" id="startHour" required>
+                            <option value="0">00h</option>
+                            <option value="1">01h</option>
+                            <option value="2">02h</option>
+                            <option value="3">03h</option>
+                            <option value="4">04h</option>
+                            <option value="5">05h</option>
+                            <option value="6">06h</option>
+                            <option value="7">07h</option>
+                            <option value="8">08h</option>
+                            <option value="9">09h</option>
+                            <option value="10">10h</option>
+                            <option value="11">11h</option>
+                            <option value="12">12h</option>
+                            <option value="13">13h</option>
+                            <option value="14">14h</option>
+                            <option value="15">15h</option>
+                            <option value="16">16h</option>
+                            <option value="17">17h</option>
+                            <option value="18">18h</option>
+                            <option value="19">19h</option>
+                            <option value="20">20h</option>
+                            <option value="21">21h</option>
+                            <option value="22">22h</option>
+                            <option value="23">23h</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-xs-12">
+                        <label for="duration">Duração</label>
+                        <select name="duration" id="duration">
+                            <option value="1">01h</option>
+                            <option value="2">02h</option>
+                            <option value="3">03h</option>
+                            <option value="4">04h</option>
+                            <option value="5">05h</option>
+                            <option value="6">06h</option>
+                            <option value="7">07h</option>
+                            <option value="8">08h</option>
+                            <option value="9">09h</option>
+                            <option value="10">10h</option>
+                            <option value="11">11h</option>
+                            <option value="12">12h</option>
+                            <option value="13">13h</option>
+                            <option value="14">14h</option>
+                            <option value="15">15h</option>
+                            <option value="16">16h</option>
+                            <option value="17">17h</option>
+                            <option value="18">18h</option>
+                            <option value="19">19h</option>
+                            <option value="20">20h</option>
+                            <option value="21">21h</option>
+                            <option value="22">22h</option>
+                            <option value="23">23h</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-xs-12">
+
+                        <!--TODO put adding form inside bootstrap table for better handling-->
+                        <!--<span><button class="glyphicon glyphicon-plus" type="submit"></button></span>-->
+                        <button class="btn btn-sm btn-success" type="submit">Adicionar Disponibilidade</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <h2 class="panel-title">Disponibilidade</h2>
+
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Hora Inicio</th>
+                        <th>Hora Fim</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{# if schedule}}
+                        {{#each schedule}}
+                            <tr>
+                                <td>
+                                    {{this.date}}
+                                </td>
+                                <td>
+                                    {{this.start_hour}}:00
+                                </td>
+                                <td>
+                                    {{this.end_hour}}:00
+                                </td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+
+</div>

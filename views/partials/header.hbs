@@ -1,0 +1,76 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                {{# if client }}
+                    <!--TODO put correct image-->
+                    <img src="/images/logo.png" class="navbar-img" class="img-circle navbar-img">
+                {{else}}
+                    {{# if babysitter}}
+                        <!--TODO put correct image-->
+                        <img src="/images/logo.png" class="navbar-img" class="img-circle navbar-img">
+                    {{else}}
+                        <img alt="Brand" class="img-circle navbar-img" src="/images/logo.png">
+                    {{/if}}
+                {{/if}}
+            </a>
+        </div>
+        <div class="clearfix hidden"></div>
+        {{# if client }}
+            <div class="pull-right menu-orientation">
+                <div class="btn-group group-action">
+                    <i class="material-icons btn-sso pull-right">menu</i>
+                    <ul class="menu-nav">
+                        <a href="/user/profile/1"><li class="menu"><strong>{{user.name}}</strong></li></a>
+                        <a href="/user/scheduling"><li class="menu"><strong>Marcar</strong></li></a>
+                        <a href="/user/history"><li class="menu"><strong>Histórico</strong></li></a>
+                        <a href="/user/logout"><li class="menu"><strong><span class="glyphicon glyphicon-log-out"></span></strong></li></a>
+                    </ul>
+                </div>
+            </div>
+        {{else}}
+            {{# if babysitter}}
+            <div class="pull-right menu-orientation">
+                <div class="btn-group group-action">
+                    <i class="material-icons btn-sso pull-right">menu</i>
+                    <div class="menu-nav-container">
+                        <ul class="menu-nav">
+                            <a href="/user/profile/1"><li class="menu"><strong>{{user.name}}</strong></li></a>
+                            <a href="/user/schedules"><li class="menu"><strong>Marcações</strong> <span class="badge">{{badgeCounter}}</span></li></a>
+                            <a href="/user/history"><li class="menu"><strong>Histórico</strong></li></a>
+                            <a href="/user/availability"><li class="menu"><strong>Disponibilidade</strong></li></a>
+                            <a href="/user/logout"><li class="menu"><strong><span class="glyphicon glyphicon-log-out"></span></strong></li></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+                {{# if email}}
+                    <div class="pull-right menu-orientation">
+                    <div class="btn-group group-action">
+                        <i class="material-icons btn-sso">menu</i>
+                        <ul class="menu-nav">
+                            <a href="/user/firstlogin"><li class="menu">{{email}}</li></a>
+                            <!--Fica só disponivel o email e sair já que ainda não preencheu os dados
+                            <li><a href="/user/scheduling">Marcações</a></li>
+                            <li><a href="/user/history">Histórico</a></li>
+                            <li><a href="/user/availability">Disponibilidade</a></li>
+                            <li role="separator" class="divider"></li>
+                            -->
+
+                            <a href="/user/firstlogin"><li class="menu"><strong><span class="glyphicon glyphicon-log-out"></span></strong></li></a>
+                        </ul>
+                    </div>
+                </div>
+                {{else}}
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <a href="/login" class="btn btn-primary navbar-btn">Entrar</a>
+                        <a href="/register" class="btn btn-success navbar-btn">Registar</a>
+                    </div>
+                </div>
+                {{/if}}
+            {{/if}}
+        {{/if}}
+    </div>
+</nav>
